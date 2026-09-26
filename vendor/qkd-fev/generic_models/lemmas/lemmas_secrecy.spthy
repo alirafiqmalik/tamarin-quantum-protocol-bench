@@ -1,0 +1,40 @@
+
+// lemma secret_k:
+//  " All k #i. Secret(k)@i
+//  ==> (not (Ex #j. K(k)@j))
+//  | (Ex X #r. Rev(X,k)@r & Honest(X)@i) "
+
+
+lemma secret_key_A:
+  "All k #i.
+      Secret_A(k)@i
+      ==> (not (Ex #j. K(k)@j)) 
+  "
+
+
+lemma secret_key_B:
+  "All k #i.
+      Secret_B(k)@i
+      ==> (not (Ex #j. K(k)@j))  
+  "
+
+
+
+// lemma secret_key_A:
+// "All A B sid Kab #init #i #j.
+//     SessionInitA(A,B,sid)@init
+//   & CommitKey_A(A,B,sid,Kab)@i
+//   & K(Kab)@j
+//   ==> F
+// "
+
+
+
+// lemma secret_key_B:
+// "All A B sid Kab #init #i #j.
+//     SessionInitB(A,B,sid)@init
+//   & CommitKey_B(A,B,sid,Kab)@i
+//   & K(Kab)@j
+//   // & init<i & i<k & k<m & k< k<j
+//   ==> F
+// "

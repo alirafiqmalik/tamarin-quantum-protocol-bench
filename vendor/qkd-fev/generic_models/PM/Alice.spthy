@@ -1,0 +1,108 @@
+
+// Quantum Phase
+rule Alice_quantum_phase:
+ let 
+    KAraw=RawKey(key(noise(~kab),BA(~ba)))
+    qA=encode(KAraw,BA(~ba))
+ in
+ [
+   Fr(~ba), 
+   Fr(~kab), 
+   SessionA('A',Y,~sid)
+ ] 
+ --[ 
+   SessionInitA('A',Y,~sid), 
+   Create_A('B',~sid)
+ ]-> 
+ [
+   !AuthSession('A',psk(~sid)),
+   Out_QuantumChannel('A',Y,qA),
+   Encoded('A',Y,~sid,KAraw), 
+   AliceBasis('A',Y,~sid,BA(~ba)), 
+   GetBobBasis('A',Y,~sid)
+ ]
+
+
+
+// Key Sifting
+rule Alice_Send_BA:
+ [ AliceBasis('A',Y,~sid,BA) ]
+ --[ Send_BA('A',Y,BA) ]->
+ [
+   Out_Auth('A',Y,BA,'sift'), 
+   Alice_Sent_BA('A',Y,~sid,BA)
+ ]
+
+
+rule Alice_Receive_BB:
+ [
+   GetBobBasis('A',Y,~sid), 
+   In_Auth(Y,'A',BB,'sift')
+ ]
+ --[Receive_BB(Y,'A',BB)]->
+ [
+   Alice_Received_BB('A',Y,~sid,BB)
+ ]
+
+
+rule Alice_SiftA:
+ let 
+    KA=siftkey(KAraw,BA,BB)
+ in
+ [ 
+   Encoded('A',Y,~sid,KAraw), 
+   Alice_Sent_BA('A',Y,~sid,BA), 
+   Alice_Received_BB('A',Y,~sid,BB) ]
+ --[SiftA('A',Y,~sid,KA)
+ ]->
+ [SifttedKeyA('A',Y,~sid,BB,KA), SampleKeyA('A',Y,~sid,KA), GetSampleA('A',Y,~sid)]
+
+
+
+// Paramater Estimation
+rule Alice_Send_SampleA:
+ let
+    KsampleA=sample(KA)
+ in
+ [SampleKeyA('A',Y,~sid,KA)]
+ --[Send_SampleA('A',Y,KsampleA)]->
+ [
+   Out_Auth('A',Y,KsampleA,'sample'), 
+   Alice_Sent_KsampleA('A',Y,~sid,KsampleA)
+ ]
+
+
+rule Alice_Receive_SampleB:
+ [GetSampleA('A',Y,~sid), In_Auth(Y,'A',KsampleB,'sample')]
+ --[Receive_SampleB(Y,'A',KsampleB)]->
+ [Alice_Received_KsampleB('A',Y,~sid,KsampleB)]
+
+//// NoEve
+rule Alice_Paramater_Estimation_NoEve:
+ let
+    NoEve=checkError(KsampleA,KsampleB)
+ in 
+ [
+   SifttedKeyA('A',Y,~sid,BB,KA), 
+   Alice_Sent_KsampleA('A',Y,~sid,KsampleA), 
+   Alice_Received_KsampleB('A',Y,~sid,KsampleB)
+ ]
+ --[Eq(true,NoEve)]->
+ [KeywithErrorA('A',Y,~sid,KA)]
+
+
+//// Eve
+rule Alice_Paramater_Estimation_Eve:
+ let
+    NoEve=checkError(KsampleA,KsampleB)
+ in 
+ [
+   Alice_Sent_KsampleA('A',Y,~sid,KsampleA), 
+   Alice_Received_KsampleB('A',Y,~sid,KsampleB)
+ ]
+ --[
+   Neq(true,NoEve), 
+   EveDetected_A('A',Y,~sid)
+ ]->
+ []
+

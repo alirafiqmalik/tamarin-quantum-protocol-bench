@@ -1,0 +1,107 @@
+
+
+// lemma test_part1[sources]:
+// exists-trace
+// "Ex A B sid qA qB BA BB KSA KSB #initiala #initialb 
+//     #i1 #j1 #k1 #l1 
+//     #i2 #j2 #k2 #l2.
+//       SessionInitA(A,B,sid)@initiala
+//     & SessionInitB(A,B,sid)@initialb
+//     //Alice Sequence
+//     & Receive_qA(A,B, sid,qA)@i1
+//     & Send_BA(A,B,BA)@j1
+//     & Receive_BB(B,A,BB)@k1
+//     & SiftA(A,B,sid,KSA)@l1
+//     //Bob Sequence
+//     & Receive_qB(A,B, sid,qB,BB)@i2
+//     & Send_BB(B,A,BB)@j2
+//     & Receive_BA(A,B,BA)@k2
+//     & SiftB(A,B,sid,KSB)@l2
+// "
+
+
+
+// lemma test_part2[sources]:
+// exists-trace
+// "Ex A B KsampleA KsampleB 
+//     #m1 #n1  
+//     #m2 #n2 
+//     // sid Kab #o2
+//     sid Kab #o1 #o2
+//     .
+//     //Alice Sequence
+//       Send_SampleA(A,B,KsampleA)@m1
+//     & Receive_SampleB(B,A,KsampleB)@n1
+//     & CommitKey_A(A,B,sid,Kab)@o1
+//     //Bob Sequence
+//     & Send_SampleB(B,A,KsampleB)@m2
+//     & Receive_SampleA(A,B,KsampleA)@n2
+//     & CommitKey_B(A,B,sid,Kab)@o2
+// "
+
+lemma executability_success[sources]:
+exists-trace
+"(Ex A B sid Kab #i #j.
+    //Alice Sequence
+      CommitKey_A(A,B,sid,Kab)@i
+    //Bob Sequence
+    & CommitKey_B(A,B,sid,Kab)@j)
+    |
+    
+  (Ex A B sid #x #y.
+      EveDetected_A(A,B,sid) @x
+    & EveDetected_B(A,B,sid) @y)
+"
+
+// lemma executability_terminate[sources]:
+// exists-trace
+// "
+
+// "
+
+
+
+// lemma Executability[sources]:
+// exists-trace
+// "Ex A B sid Kab #initiala #initialb #i #j.
+//       SessionInitA(A,B,sid)@initiala
+//     & SessionInitB(A,B,sid)@initialb
+//     //Alice Sequence
+//     & CommitKey_A(A,B,sid,Kab)@i
+//     //Bob Sequence
+//     & CommitKey_B(A,B,sid,Kab)@j
+// "
+
+
+
+// lemma messsage_authenticiation[sources]:
+// "All A B msg #i.
+//      AChanIn(A,B,msg)@i ==> 
+//      Ex #k. AChanOut(A,msg)@k"
+
+
+// lemma Executability[sources]:
+// exists-trace
+// "Ex A B sid qA qB BA BB KSA KSB KsampleA KsampleB Kab #initiala #initialb 
+//     #i1 #j1 #k1 #l1 #m1 #n1 #o1 
+//     #i2 #j2 #k2 #l2 #m2 #n2 #o2.
+//       SessionInitA(A,B,sid)@initiala
+//     & SessionInitB(A,B,sid)@initialb
+//     //Alice Sequence
+//     & Receive_qA(A,B, sid,qA)@i1
+//     & Send_BA(A,B,BA)@j1
+//     & Receive_BB(B,A,BB)@k1
+//     & SiftA(A,B,sid,KSA)@l1
+//     & Send_SampleA(A,B,KsampleA)@m1
+//     & Receive_SampleB(B,A,KsampleB)@n1
+//     & CommitKey_A(A,B,sid,Kab)@o1
+//     //Bob Sequence
+//     & Receive_qB(A,B, sid,qB,BB)@i2
+//     & Send_BB(B,A,BB)@j2
+//     & Receive_BA(A,B,BA)@k2
+//     & SiftB(A,B,sid,KSB)@l2
+//     & Send_SampleB(B,A,KsampleB)@m2
+//     & Receive_SampleA(A,B,KsampleA)@n2
+//     & CommitKey_B(A,B,sid,Kab)@o2
+// "
+

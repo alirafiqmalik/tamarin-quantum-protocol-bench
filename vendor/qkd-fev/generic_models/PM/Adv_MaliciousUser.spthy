@@ -1,0 +1,128 @@
+/* Session Setup rules */
+
+restriction OnlyOnce1:
+"All #i #j. OnlyOnce1() @i & OnlyOnce1() @j ==> #i = #j"
+
+restriction OnlyOnce2:
+"All #i #j. OnlyOnce2() @i & OnlyOnce2() @j ==> #i = #j"
+
+restriction OnlyOnce3:
+"All #i #j. OnlyOnce3() @i & OnlyOnce3() @j ==> #i = #j"
+
+
+
+// Rules to restrict unique user sessions pairs to ('A','B'), ('A','E'), ('E','B')
+// restriction unique_user_pairs:
+//   "All roleA roleB sid1 sid2 #i #j.
+//    SessionSetup(roleA, roleB, sid1) @i &
+//    SessionSetup(roleA, roleB, sid2) @j ==>
+//    (#i = #j) & (sid1 = sid2)"
+
+rule Setup_AB:
+  [ Fr(~sid) ]
+  --[ OnlyOnce1()]->
+  [ 
+    SessionA('A','B',~sid),
+    SessionB('A','B',~sid) 
+  ]
+
+rule Setup_AE:
+  [ Fr(~sid) ]
+  --[ OnlyOnce2()]->
+  [ 
+    SessionA('A','E',~sid),
+    SessionB('A','E',~sid) 
+  ]
+
+rule Setup_EB:
+  [ Fr(~sid) ]
+  --[ OnlyOnce3()]->
+  [ 
+    SessionA('E','B',~sid),
+    SessionB('E','B',~sid) 
+  ]
+
+
+/* Quantum Channel rules */
+rule QChan_Out_In:
+  [ Out_QuantumChannel(roleA,roleB,qA) ]
+  --[ EveKnowns(qA), QChanOut(roleA,roleB,qA)]->
+  [ In_QuantumChannel(roleA,roleB,qA) ]
+
+  
+// rule Chan_In_Forward:
+//   [ Quantum(qA), In(<roleA,roleB>)]
+//   --[EveForgets(qA), QChanIn(roleA,roleB,qA)]->
+//   [ In_QuantumChannel(roleA,roleB,qA) ]
+
+
+/* Authenticated Classical Channel rules */
+//  rule ChanOut_Auth:
+//  [ Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
+//  [ !Auth(roleA,roleB,msg,type)]
+
+// rule ChanIn_Auth:
+//  [ !Auth(roleA,roleB,msg,type)]--[ AChanIn(roleA,roleB,<msg,type>) ]->
+//  [ In_Auth(roleA,roleB,msg,type) ]
+
+
+/* Authenticated Classical Channel rules */
+rule ChanOut_Auth:
+  let
+    tag=mac(msg,key_roleA)
+  in
+[ !AuthSession(roleA,key_roleA), Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
+[ !Auth(roleA,roleB,msg,tag,type)]
+
+rule ChanIn_Auth:
+  let
+  verifymac_tag=verifymac(tag,key_roleB)
+  in
+[ !AuthSession(roleB,key_roleB), !Auth(roleA,roleB,msg,tag,type)]--[ Eq(msg,verifymac_tag), AChanIn(roleA,roleB,<msg,type>) ]->
+[ In_Auth(roleA,roleB,msg,type) ]
+
+
+/* Malicious User Rules */
+
+//// Eve Session Rules
+rule Session_Eve_as_A:
+  [SessionA('E',Y,~sid_eb)] -->[SessAE('E',Y,~sid_eb), !AuthSession('E',psk(~sid_eb)), Out(~sid_eb)]
+
+rule Session_Eve_as_B:
+  [SessionB(X,'E',~sid_ae)] -->[SessEB(X,'E',~sid_ae), !AuthSession('E',psk(~sid_ae)), Out(~sid_ae)]
+
+
+rule Eve_as_B_receiveqA:
+  [SessAE(X,'E',sid_ae), In_QuantumChannel(X,'E',qAE)] --> [ Eve_StoreqA(qAE)]
+
+//// Eve Quantum Rules
+rule Eve_as_B_forwardqA_to_B_over_Eve_as_A:
+  [ SessEB('E',Y,sid_eb), Eve_StoreqA(qAE)] --> [Out_QuantumChannel('E',Y,qAE)]
+
+
+
+rule Eve_as_B_measureqA:
+  let
+    KBEraw=measure(qAE,BU)
+  in
+  [In(BU), SessAE(X,'E',sid_ae), Eve_StoreqA(qAE)] --> [Out(KBEraw)]
+
+
+rule Eve_as_A_sendqA:
+  let
+    qEB=encode(key(noise(KE),BE),BE)
+  in
+  [In(<Y,KE,BE>)] --> [ Out_QuantumChannel('E',Y,qEB) ]
+
+
+
+
+
+//// Eve Auth Channel Rules
+rule Eve_as_A_In_Auth:
+  [ In(Sender), In_Auth(Sender,'E',msg,type)  ] --> [ Out(<msg,type>) ]
+
+rule Eve_as_A_Out_Auth:
+  [ In(<Receiver,msg,type>)] --> [ Out_Auth('E',Receiver,msg,type) ]
+
+

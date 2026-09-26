@@ -1,0 +1,37 @@
+// HEURISTICS = [ 's', 'S', 'c', 'C', 'i', 'I' ]
+// heuristic: S
+
+// functions
+functions: true/0
+functions: BA/1,BB/1
+functions: noise/1, genEntpair/2, measure/2[private], siftkey/3, genkey/1, sample/3, checkError/2, Correct/2
+equations:
+        checkError(sample(siftkey(measure(genEntpair(noise(kab),stateid),BA(ba)), BA(ba), BB(bb) ), BA(ba), BB(bb)), sample(siftkey(measure(genEntpair(noise(kab),stateid),BB(bb)), BA(ba), BB(bb) ), BA(ba), BB(bb)))=true,
+        genkey(siftkey(measure(genEntpair(noise(kab),stateid), BA(ba)), BA(ba), BB(bb) ))=noise(kab),
+        genkey(siftkey(measure(genEntpair(noise(kab),stateid), BB(bb)), BA(ba), BB(bb) ))=noise(kab)
+
+functions: encode/2
+equations:
+        checkError(sample(siftkey(measure(genEntpair(noise(kab),stateid),BA(ba)), BA(ba), BB(bb) ), BA(ba), BB(bb)), sample(siftkey(measure(encode(measure(genEntpair(noise(kab),stateid),BA(ba)), BA(ba) ), BB(bb) ), BA(ba), BB(bb) ),BA(ba), BB(bb)) )=true,
+        checkError(sample(siftkey(measure(encode(measure(genEntpair(noise(kab),stateid),BB(bb)), BB(bb) ), BA(ba) ), BA(ba), BB(bb) ),BA(ba), BB(bb)),sample(siftkey(measure(genEntpair(noise(kab),stateid),BB(bb)), BA(ba), BB(bb) ), BA(ba), BB(bb)))=true,
+        genkey(siftkey(measure(encode(measure(genEntpair(noise(kab),stateid),BB(bb)), BB(bb) ), BA(ba) ), BA(ba), BB(bb) ))=noise(kab),
+        genkey(siftkey(measure(encode(measure(genEntpair(noise(kab),stateid),BA(ba)), BA(ba) ), BB(bb) ), BA(ba), BB(bb) ))=noise(kab)
+
+functions: mac/2[private], verifymac/2, psk/1
+equations: verifymac(mac(msg,psk(id)),psk(id))=msg
+
+        // encode(RawKey(measure(genEntpair(noise(kab),stateid),BA(ba)), BA(ba))=key(noise(kab),BA(ba)),
+        // encode(RawKey(measure(genEntpair(noise(kab),stateid),BB(bb)), BA(ba))=key(noise(kab),BB(bb)),
+
+// measure(genEntpair(noise(kab),stateid),BB(bb))
+
+// functions: key/2
+
+// equations: 
+// // Measuring encoded qubits with the same measurement basis with same basis gives original raw key
+//         measure(encode(RawKey(key(noise(kab),BA(ba))), BA(ba) ), BA(ba) ) = key(noise(kab),BA(ba)),
+//         measure(encode(RawKey(key(noise(kab),BB(bb))), BB(bb) ), BB(bb) ) = key(noise(kab),BB(bb)),
+// // If sampled keys originated from undisturbed source 
+//         checkError(sample(siftkey(RawKey(key(noise(kab),BA(ba))), BA(ba), BB(bb) )), sample(siftkey(measure(encode(RawKey(key(noise(kab),BA(ba))), BA(ba) ), BB(bb) ), BA(ba), BB(bb) )) )=true,
+//         genkey(siftkey(RawKey(key(noise(kab),BA(ba))), BA(ba), BB(bb) ))=noise(kab),
+//         genkey(siftkey(measure(encode(RawKey(key(noise(kab),BA(ba))), BA(ba) ), BB(bb) ), BA(ba), BB(bb) ))=noise(kab),

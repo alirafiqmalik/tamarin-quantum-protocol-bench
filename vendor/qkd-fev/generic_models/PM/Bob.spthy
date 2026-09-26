@@ -1,0 +1,120 @@
+// Quantum Phase
+rule Bob_quantum_phase:
+ let 
+    KBraw=measure(qA,BB(~bb)) 
+ in
+ [
+   Fr(~bb), 
+   SessionB(X,'B',~sid), 
+   In_QuantumChannel(X,'B',qA)
+ ] 
+ --[
+   SessionInitB(X,'B',~sid), 
+   Create_B('A',~sid)
+ ]-> 
+ [
+   !AuthSession('B',psk(~sid)),
+   Measured(X,'B',~sid,KBraw), 
+   BobBasis(X,'B',~sid,BB(~bb)), 
+   GetAliceBasis(X,'B',~sid)
+ ]
+
+
+// Key Sifting
+rule Bob_Send_BB:
+ [ BobBasis(X,'B',~sid,BB) ]
+ --[ Send_BB('B',X,BB) ]->
+ [
+   Out_Auth('B',X,BB,'sift'), 
+   Bob_Sent_BB('B',X,~sid,BB)
+]
+
+rule Bob_Receive_BA:
+ [
+   GetAliceBasis(X,'B',~sid), 
+   In_Auth(X,'B',BA,'sift')
+ ]
+ --[ Receive_BA(X,'B',BA) ]->
+ [ Bob_Received_BA(X,'B',~sid,BA) ]
+
+
+ 
+rule Bob_SiftB:
+ let 
+  KB=siftkey(KBraw,BA,BB)
+ in
+ [ 
+   Measured(X,'B',~sid,KBraw), 
+   Bob_Sent_BB('B',X,~sid,BB), 
+   Bob_Received_BA(X,'B',~sid,BA) 
+ ]
+ --[
+   SiftB(X,'B',~sid,KB)
+ ]->
+ [
+   SifttedKeyB(X,'B',~sid,BA,KB), 
+   SampleKeyB(X,'B',~sid,KB), 
+   GetSampleB(X,'B',~sid)
+ ]
+
+
+// Paramater Estimation
+rule Bob_Send_SampleB:
+ let
+    KsampleB=sample(KB)
+ in
+ [SampleKeyB(X,'B',~sid,KB)]
+ --[Send_SampleB('B',X,KsampleB)]->
+ [
+   Out_Auth('B',X,KsampleB,'sample'), 
+   Bob_Sent_KsampleB(X,'B',~sid,KsampleB)
+ ]
+
+
+rule Bob_Receive_SampleA:
+ [
+   GetSampleB(X,'B',~sid), 
+   In_Auth(X,'B',KsampleA,'sample')
+ ]
+ --[Receive_SampleA(X,'B',KsampleA)]->
+ [Bob_Received_KsampleA(X,'B',~sid,KsampleA)]
+
+//// NoEve
+rule Bob_Paramater_Estimation_NoEve:
+ let
+    NoEve=checkError(KsampleA,KsampleB)
+    KAB=genkey(KB)
+ in 
+ [
+   SifttedKeyB(X,'B',~sid,BA,KB),
+   Bob_Sent_KsampleB(X,'B',~sid,KsampleB), 
+   Bob_Received_KsampleA(X,'B',~sid,KsampleA)
+ ]
+ --[Eq(true,NoEve)]->
+ [KeywithErrorB(X,'B',~sid,KB)]
+
+
+
+
+
+
+
+
+//// Eve
+rule Bob_Paramater_Estimation_Eve:
+ let
+    NoEve=checkError(KsampleA,KsampleB)
+ in 
+ [
+   Bob_Sent_KsampleB(X,'B',~sid,KsampleB), 
+   Bob_Received_KsampleA(X,'B',~sid,KsampleA)
+ ]
+ --[
+   Neq(true,NoEve), 
+   EveDetected_B(X,'B',~sid)
+ ]->
+ []
+
+
+
+ 

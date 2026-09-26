@@ -1,0 +1,20 @@
+//Dont need a restriction for post measure as this will happen when no restriction is given accroding to normal execution of rules
+
+
+// restriction Basis_Announcement_order_Post_Measurement:
+// "All A B sid qA BA BB #iA #iB #sBA #sBB #rBA #rBB.
+//     Receive_qA(A,B, sid,qA,BA)
+
+//     SessionInitA(A,B,sid)@iA
+//   & SessionInitB(A,B,sid)@iB
+  
+//   & Send_BA(A,B,BA)@sBA 
+//   & Receive_BA(A,B,BA)@rBA
+  
+//   & Send_BB(B,A,BB)@sBB 
+//   & Receive_BB(B,A,BB)@rBB
+
+//   ==>  
+//   #iA<
+//   #iA<#iB & #sBB<#rBB & #rBB<#sBA
+// "

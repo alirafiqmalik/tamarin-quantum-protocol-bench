@@ -1,0 +1,5 @@
+
+
+restriction Eq_checks_succeed: "(All x y #j. Eq(x, y) @ j ==> x = y)"
+
+restriction Neq_checks_succeed: "(All x #j. Neq(x, x) @ j ==> F)"

@@ -1,0 +1,11 @@
+restriction Basis_Announcement_order_Sequential_Alice_First:
+"All A B BA BB #sBA #sBB #rBA #rBB.
+    Send_BA(A,B,BA)@sBA 
+  & Receive_BA(A,B,BA)@rBA
+  & Send_BB(B,A,BB)@sBB 
+  & Receive_BB(B,A,BB)@rBB
+  ==> 
+      #sBA<#rBA
+    & #rBA<#sBB
+    & #sBB<#rBB
+"

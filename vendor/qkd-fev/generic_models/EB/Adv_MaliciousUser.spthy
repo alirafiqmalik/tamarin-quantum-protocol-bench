@@ -1,0 +1,194 @@
+/* Authenticated Classical Channel rules */
+rule ChanOut_Auth:
+[ Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
+[ !Auth(roleA,roleB,msg,type)]
+
+rule ChanIn_Auth:
+[ !Auth(roleA,roleB,msg,type)]--[ AChanIn(roleA,roleB,<msg,type>) ]->
+[ In_Auth(roleA,roleB,msg,type) ]
+
+
+/* Session Setup rules */
+
+restriction OnlyOnce1:
+"All #i #j. OnlyOnce1() @i & OnlyOnce1() @j ==> #i = #j"
+
+restriction OnlyOnce2:
+"All #i #j. OnlyOnce2() @i & OnlyOnce2() @j ==> #i = #j"
+
+restriction OnlyOnce3:
+"All #i #j. OnlyOnce3() @i & OnlyOnce3() @j ==> #i = #j"
+
+
+
+rule Setup_AB:
+  [ Fr(~sid) ]
+  --[OnlyOnce1()]->
+  [ 
+    QState('A','B',~sid),
+    SessionA('A','B',~sid),
+    SessionB('A','B',~sid) 
+  ]
+
+rule Setup_AE:
+  [ Fr(~sid), Fr(~ba), Fr(~bb) ]
+  --[ OnlyOnce2()]->
+  [ 
+    QState('A','E',~sid),
+    SessionA('A','E',~sid),
+    SessionB('A','E',~sid) 
+  ]
+
+rule Setup_EB:
+  [ Fr(~sid), Fr(~ba), Fr(~bb) ]
+  --[ OnlyOnce3()]->
+  [ 
+    QState('E','B',~sid),
+    SessionA('E','B',~sid),
+    SessionB('E','B',~sid) 
+  ]
+
+
+
+/* Quantum Channel rules */
+/* Quantum Channel rules */
+rule Charlie_Source_quantum_phase:
+ let qA=genEntpair(noise(~kab),~stateid)
+     qB=genEntpair(noise(~kab),~stateid)
+ in
+  [ Fr(~stateid), Fr(~kab) ]
+  --[ EveKnownsA(qA),EveKnownsB(qB)]->
+  [ QuantumA(qA), QuantumB(qB)]
+
+
+
+rule Chan_In_Forward:
+  [ QuantumA(qA), In(X) ]
+  --[EveForgetsA(qA)]->
+  [ In_QuantumChannel(X,qA) ]
+
+rule Chan_In_Forward_B:
+  [ QuantumB(qB), In(Y) ]
+  --[EveForgetsB(qB)]->
+  [ In_QuantumChannel(Y,qB) ]
+
+
+
+// rule Source_quantum_phase_EB:
+//   let qA=genEntpair(noise(~keb),ba,bb)
+//       qB=genEntpair(noise(~keb),ba,bb)
+//   in
+//    [ Fr(~keb), QState('E','B',sid,ba,bb) ]
+//    --[ EveKnownsA(qA),EveKnownsB(qB)]->
+//    [ In_QuantumChannel('A',qA), In_QuantumChannel('B',qB)]
+
+
+
+// rule Source_quantum_phase_AE:
+//    let qA=genEntpair(noise(~keb),ba,bb)
+//        qB=genEntpair(noise(~keb),ba,bb)
+//    in
+//     [ Fr(~keb), QState('A','E',sid,ba,bb) ]
+//     --[ EveKnownsA(qA),EveKnownsB(qB)]->
+//     [ In_QuantumChannel('A',qA), In_QuantumChannel('B',qB)]
+ 
+
+
+
+
+// rule Chan_In_Forward_qB:
+//   [ QuantumB(qB), In(B) ]
+//   --[EveForgetsA(qB)]->
+//   [ In_QuantumChannel(B,qB) ]
+
+/* Malicious User Rules */
+//// Eve Session Rules
+rule Session_Eve_A:
+[SessionA('E',Y,~sid_eb)] -->[SessEB('E',Y,~sid_eb), !AuthSession('E',psk(~sid_eb))]
+   
+rule Session_Eve_B:
+[SessionB(X,'E',~sid_ae)] -->[SessAE(X,'E',~sid_ae), !AuthSession('E',psk(~sid_ae))]
+
+// //// Eve Quantum Rules
+// rule Eve_forward_qA:
+//   [ SessEB('E',Y,sid_eb),SessAE(X,'E',~sid_ae), In_QuantumChannel('E',qA)] --> [In_QuantumChannel(X,qA)]
+
+// //// Eve Quantum Rules
+// rule Eve_forward_qA:
+//   [ SessEB('E',Y,sid_eb),SessAE(X,'E',~sid_ae), In_QuantumChannel('E',qB)] --> [In_QuantumChannel(Y,qB)]
+
+
+
+//// Eve Auth Channel Rules
+rule Eve_as_A_In_Auth:
+  [ In(Sender), In_Auth(Sender,'E',msg,type)  ] --> [ Out(<msg,type>) ]
+
+rule Eve_as_A_Out_Auth:
+  [ In(<Receiver,msg,type>)] --> [ Out_Auth('E',Receiver,msg,type) ]
+
+
+
+
+
+
+
+// rule Eve_as_A_receiveqA:
+// [SessEB('E',Y,~sid_eb), In_QuantumChannel('E', qE)] --> [ Eve_StoreqA(qE)]
+
+
+// rule Eve_as_A_forwardqA_to_B:
+//   [SessEB('E',Y,~sid_eb), SessAE(X,'E',~sid_ae), Eve_StoreqA(qE)] --> [In_QuantumChannel(Y, qE)]
+
+
+// rule Eve_as_A_measureqA:
+//   let
+//     KE=measure(qE,BE)
+//   in
+//   [In(BE), SessEB('E',Y,~sid_eb), Eve_StoreqA(qE)] --> [Out(KE)]
+      
+// rule Eve_as_A_ForwardEncode_to_A:
+//   let
+//     qE=encode(KE,BE)
+//   in
+//   [In(<KE,BE>), !SessEB('E',Y,~sid_eb), !SessAE(X,'E',~sid_ae)] --> [In_QuantumChannel(Y, qE)]
+
+// rule Eve_as_B_receiveqB:
+// [!SessAE(X,'E',~sid_ae), In_QuantumChannel('E', qE)] --> [ Eve_StoreqB(qE)]
+
+// rule Eve_as_B_forwardqA_to_A:
+//   [!SessAE(X,'E',~sid_ae), !SessEB('E',Y,~sid_eb), Eve_StoreqA(qE)] --> [In_QuantumChannel(X, qE)]
+
+
+// rule Eve_as_B_measureqA:
+//   let
+//     KE=measure(qE,BE)
+//   in
+//   [In(BE), !SessAE(X,'E',~sid_ae), Eve_StoreqB(qE)] --> [Out(KE)]
+      
+// rule Eve_as_B_ForwardEncode_to_B:
+//   let
+//     qE=encode(KE,BE)
+//   in
+//   [In(<KE,BE>), !SessAE(X,'E',~sid_ae), !SessEB('E',Y,~sid_eb)] --> [In_QuantumChannel(X, qE)]
+
+
+
+// rule QChan_Adv_Measure:
+//   let KUeve=measure(qU, BU)
+//       qE=encode(KUeve,BU)
+//   in
+//     [ In(<U,BU>),Quantum(U,qU) ]
+//     --[ EveForgets(qU)]->
+//     [ Out(KUeve), In_QuantumChannel(U,qE)]
+      
+      
+// rule Eve_as_B_forwardqA_to_B_over_Eve_as_A:
+// [!SessAE(X,'E',sid_ae), !SessEB('E',Y,sid_eb), Eve_StoreqB(qE)] --> [Out_QuantumChannel(X,Y,qE)]
+
+
+
+
+
+
+
+

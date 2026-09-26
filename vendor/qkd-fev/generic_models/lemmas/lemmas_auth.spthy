@@ -1,0 +1,53 @@
+
+
+lemma aliveness_A:
+  "All B sid kab #i.
+    CommitKey_A('A',B,sid,kab) @i
+    ==> (Ex #j. Create_B('A',sid) @j)
+  "
+
+
+lemma aliveness_B:
+  "All A sid kab #i.
+    CommitKey_B(A,'B',sid,kab) @i
+    ==> (Ex #j. Create_A('B',sid) @j
+      & j < i)
+  "
+
+
+lemma weak_agreement_A:
+  "All B sid kab #i.
+  CommitKey_A('A',B,sid,kab) @i
+    ==> (Ex sid2 kab2 #j. Running_B('A',B,sid2, kab2) @j)
+  "
+
+lemma weak_agreement_B:
+  "All A sid kab #i.
+  CommitKey_B(A,'B',sid,kab) @i
+    ==> (Ex sid2 kab2 #j. Running_A(A,'B',sid2,kab2) @j)
+  "
+
+lemma noninjectiveagreement_A:
+  "All B sid kab #i.
+    CommitKey_A('A',B,sid,kab) @i
+    ==> (Ex #j. Running_B('A',B,sid,kab) @j)
+  "
+
+
+lemma noninjectiveagreement_B:
+  "All A sid kab #i.
+    CommitKey_B(A,'B',sid,kab) @i
+    ==> (Ex #j. Running_A(A,'B',sid,kab) @j )
+  "
+
+  
+
+
+// lemma NoUks:
+//   "All A B E sid1 sid2 kae keb #i #j.
+//       CommitKey_A(A,E,sid1,kae) @i
+//     & CommitKey_B(E,B,sid2,keb) @j
+//     & not(E=B)
+//     & not(E=A)
+//     ==> not(kae=keb) 
+//     "

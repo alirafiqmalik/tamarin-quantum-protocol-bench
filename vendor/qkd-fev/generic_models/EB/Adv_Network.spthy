@@ -1,0 +1,124 @@
+
+
+restriction OnlyOnce:
+  "All #i #j. OnlyOnce() @i & OnlyOnce() @j ==> #i = #j"
+
+rule Setup:
+   [In(<A,B>),Fr(~sid)] --[OnlyOnce()]->[SessionA(A,B,~sid), SessionB(A,B,~sid)]
+
+
+
+/* Quantum Channel rules */
+rule Charlie_Source_quantum_phase:
+ let qA=genEntpair(noise(~kab),~stateid)
+     qB=genEntpair(noise(~kab),~stateid)
+ in
+  [ Fr(~stateid), Fr(~kab) ]
+  --[ EveKnownsA(qA),EveKnownsB(qB)]->
+  [ QuantumA(qA), QuantumB(qB)]
+
+
+
+rule Chan_In_Forward_A:
+  [ QuantumA(qA), In(<X,Y>) ]
+  --[EveForgetsA(qA)]->
+  [ In_QuantumChannel(X,qA) ]
+
+rule Chan_In_Forward_B:
+  [ QuantumB(qB), In(Y) ]
+  --[EveForgetsB(qB)]->
+  [ In_QuantumChannel(Y,qB) ]
+
+
+
+
+rule QChan_Adv_Measure_A:
+  let KUeve=measure(qA, BU)
+      qE=encode(KUeve,BU)
+  in
+    [ In(<U,BU>),QuantumA(qA) ]
+    --[ EveForgetsA(qA)]->
+    [ Out(KUeve), In_QuantumChannel(U,qE)]
+
+rule QChan_Adv_Measure_B:
+    let KUeve=measure(qB, BU)
+        qE=encode(KUeve,BU)
+    in
+      [ In(<U,BU>),QuantumB(qB) ]
+      --[ EveForgetsB(qB)]->
+      [ Out(KUeve), In_QuantumChannel(U,qE)]
+
+
+// rule QChan_Create_State_A:
+//   let 
+//     KAraw=RawKey(KE)
+//     qE=encode(KAraw,BA)
+//   in
+//     [In(<'A','B',KE,BA>)]
+//     --[]->
+//     [ In_QuantumChannel('A','B',qE)]
+
+
+// /* Authenticated Classical Channel rules */
+// rule ChanOut_Auth:
+// [ Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
+// [ !Auth(roleA,msg,type), Out(<roleA,roleB,msg,type>)]
+
+// rule ChanIn_Auth:
+// [ !Auth(roleA,msg,type), In(roleB)]--[ AChanIn(roleA,roleB,<msg,type>) ]->
+// [ In_Auth(roleA,roleB,msg,type) ]
+
+// /* Authenticated Classical Channel rules */
+rule ChanOut_Auth:
+  let
+    tag=mac(msg,key_roleA)
+  in
+[ !AuthSession(roleA, key_roleA), Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
+[ !Auth(roleA,msg,tag,type), Out(<roleA,roleB,msg,tag,type>)]
+
+rule ChanIn_Auth:
+  let
+  verifymac_tag=verifymac(tag, key_roleB)
+  in
+[ !AuthSession(roleB,key_roleB), !Auth(roleA,msg,tag,type), In(<roleB>)]--[ Eq(msg,verifymac_tag), AChanIn(roleA,roleB,<msg,type>) ]->
+[ In_Auth(roleA,roleB,msg,type) ]
+
+/* Authenticated Classical Channel rules */
+// rule ChanOut_Auth:
+// [ Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
+// [ !Auth(roleA,msg,type), Out(<roleA,roleB,msg,type>)]
+
+// rule ChanIn_Auth:
+// [ !Auth(roleA,msg,type), In(roleB)]--[ AChanIn(roleA,roleB,<msg,type>) ]->
+// [ In_Auth(roleA,roleB,msg,type) ]
+
+
+
+
+
+// rule QChan_Out:
+//   [ Out_QuantumChannel('A','B',qA) ]
+//   --[ EveKnowns(qA), QChanOut('A','B',qA)]->
+//   [ Quantum(qA) ]
+
+// rule QChan_Adv_Measure:
+//   let Keve=measure(qA, BA)
+//   in
+//     [ In(BA),Quantum(qA) ]
+//     --[ EveForgets(qA)]->
+//     [ Out(Keve)]
+
+// rule QChan_Create_State:
+//   let 
+//     KAraw=RawKey(KE)
+//     qE=encode(KAraw,BA)
+//   in
+//     [In(<'A','B',KE,BA>)]
+//     --[]->
+//     [ In_QuantumChannel('A','B',qE)]
+
+  
+// rule Chan_In_Forward:
+//   [ Quantum(qA), In(<'A','B'>)]
+//   --[EveForgets(qA), QChanIn('A','B',qA)]->
+//   [ In_QuantumChannel('A','B',qA) ]

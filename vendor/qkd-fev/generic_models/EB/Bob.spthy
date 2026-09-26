@@ -1,0 +1,106 @@
+
+
+rule Bob_quantum_phase:
+ let 
+    KBraw=measure(qB,BB(~bb)) 
+ in
+ [
+  Fr(~bb),
+  SessionB(X,'B',~sid), 
+  In_QuantumChannel('B',qB)
+] 
+ --[
+  SessionInitB(X,'B',~sid), 
+  Create_B('A',~sid)
+  ]-> 
+ [
+  !AuthSession('B',psk(~sid)),
+  MeasuredB(X,'B',~sid,KBraw), 
+  BobBasis(X,'B',~sid,BB(~bb)), 
+  GetAliceBasis(X,'B',~sid)
+]
+
+
+
+rule Bob_Send_BB:
+ [BobBasis(X,'B',sid,BB)]
+ --[Send_BB('B',X,BB)]->
+ [Out_Auth('B',X,BB,'sift'), Bob_Sent_BB('B',X,BB)]
+
+
+
+
+rule Bob_Receive_BA:
+ [GetAliceBasis(X,'B',sid), In_Auth(X,'B',BA,'sift')]
+ --[Receive_BA(X,'B',BA)]->
+ [Bob_Received_BA(X,'B',BA)]
+
+
+ 
+rule Bob_SiftB:
+ let 
+  KB=siftkey(KBraw,BA,BB)
+ in
+ [ MeasuredB(X,'B',sid,KBraw), Bob_Sent_BB('B',X,BB), Bob_Received_BA(X,'B',BA) ]
+ --[SiftB(X,'B',sid,KB)]->
+ [SifttedKeyB(X,'B',sid,KB), SampleKeyB(X,'B',sid,BA,BB,KB), GetSampleB(X,'B',sid)]
+
+
+// Paramater Estimation
+rule Bob_Send_SampleB:
+ let
+    KsampleB=sample(KB,BA,BB)
+ in
+ [SampleKeyB(X,'B',~sid,BA,BB,KB)]
+ --[Send_SampleB('B',X,KsampleB)]->
+ [
+   Out_Auth('B',X,KsampleB,'sample'), 
+   Bob_Sent_KsampleB(X,'B',~sid,KsampleB)
+ ]
+
+
+rule Bob_Receive_SampleA:
+ [
+   GetSampleB(X,'B',~sid), 
+   In_Auth(X,'B',KsampleA,'sample')
+ ]
+ --[Receive_SampleA(X,'B',KsampleA)]->
+ [Bob_Received_KsampleA(X,'B',~sid,KsampleA)]
+
+//// NoEve
+rule Bob_Paramater_Estimation_NoEve:
+ let
+    NoEve=checkError(KsampleA,KsampleB)
+    KAB=genkey(KB)
+ in 
+ [
+   SifttedKeyB(X,'B',~sid,KB), 
+   Bob_Sent_KsampleB(X,'B',~sid,KsampleB), 
+   Bob_Received_KsampleA(X,'B',~sid,KsampleA)
+ ]
+ --[Eq(true,NoEve)]->
+ [KeywithErrorB(X,'B',~sid,KB)]
+
+
+//// Error Correction
+
+
+
+//// Eve
+rule Bob_Paramater_Estimation_Eve:
+ let
+    NoEve=checkError(KsampleA,KsampleB)
+ in 
+ [
+   Bob_Sent_KsampleB(X,'B',~sid,KsampleB), 
+   Bob_Received_KsampleA(X,'B',~sid,KsampleA)
+ ]
+ --[
+   Neq(true,NoEve), 
+   EveDetected_B(X,'B',~sid)
+ ]->
+ []
+
+
+
+ 

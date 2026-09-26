@@ -1,0 +1,44 @@
+//// Equational theory for Error Correct Codes
+functions: FEC/1, REC/1
+equations: Correct(noise(kab),<FEC(noise(kab)),REC(noise(kab))>)=kab
+
+////// Error Correction
+rule Alice_Send_FEC:
+let NKAB=genkey(KA)
+    EA=FEC(NKAB)
+in
+[KeywithErrorA('A',Y,~sid,KA)]
+-->
+[
+   NKeyA('A',Y,~sid,EA,NKAB),
+   Out_Auth('A',Y,EA,'error')
+]
+
+rule Alice_TWEC:
+ let
+    KAB=Correct(NKAB, <EA,EB>)
+ in 
+ [NKeyA('A',Y,~sid,EA,NKAB), In_Auth(Y,'A',EB,'error')]
+ --[Secret_A(KAB), CommitKey_A('A',Y,~sid,KAB), Running_A('A',Y,~sid,KAB) ]->
+ []
+
+
+rule Bob_Send_REC:
+ let
+    NKAB=genkey(KB)
+    EB=REC(NKAB)
+ in 
+ [KeywithErrorB(X,'B',~sid,KB)]
+ -->
+ [NKeyA(X,'B',~sid,EB,NKAB), Out_Auth('B',X,EB,'error')]
+
+
+rule Bob_TWEC:
+ let
+    KAB=Correct(NKAB,<EA,EB>)
+ in 
+ [NKeyA(X,'B',~sid,EB,NKAB), In_Auth(X,'B',EA,'error')]
+ --[
+   Secret_B(KAB), CommitKey_B(X,'B',~sid,KAB), Running_B(X,'B',~sid,KAB)
+]->
+ []
