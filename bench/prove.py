@@ -92,7 +92,7 @@ def prove_file(path, heuristic="S", timeout=40, use_cache=True):
         "lemmas": parsed["lemmas"],
         "seconds": parsed["seconds"],
         "timed_out": timed_out,
-        "warning": parsed["warning"],
+        "warning": parsed["warning"] or (not timed_out and not parsed["lemmas"]),
         "log": tail,
         "cached": False,
         "heuristic": heuristic,

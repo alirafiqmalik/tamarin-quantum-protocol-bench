@@ -13,7 +13,7 @@ from bench.prove import LOCK, prove_file
 
 ROOT = Path(__file__).resolve().parent
 STATIC = ROOT / "static"
-HOST = "0.0.0.0"
+HOST = "127.0.0.1"
 PORT = 8765
 MAX_THEORY = 200_000
 

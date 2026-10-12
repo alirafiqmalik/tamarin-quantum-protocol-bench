@@ -7,8 +7,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CLIENT_PATH = ROOT / "vendor" / "tamarin-ml-api" / "client.py"
 SPEC = importlib.util.spec_from_file_location("tamarin_ml_client", CLIENT_PATH)
-upstream = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(upstream)
 
 
 def overview(timeout=1.5):
@@ -51,6 +49,12 @@ def overview(timeout=1.5):
 def proof_methods(theory_kind, theory_index, lemma):
     if theory_index is None or not lemma:
         raise ValueError("theoryIndex and lemma are required.")
+    try:
+        import requests  # noqa: F401 - required by the vendored client
+    except ImportError as exc:
+        raise RuntimeError("Install requests to use the optional Tamarin ML API client.") from exc
+    upstream = importlib.util.module_from_spec(SPEC)
+    SPEC.loader.exec_module(upstream)
     remote = upstream.TamarinClient()
     response = remote.get_initial_constraint_system(theory_kind or "trace", theory_index, lemma)
     if not response.ok:

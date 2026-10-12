@@ -155,7 +155,7 @@ async function verify() {
     renderLemmas(data.lemmas);
     logEl.textContent = data.log || "";
     if (data.timed_out) statusEl.textContent = "Tamarin hit the time limit.";
-    else if (data.warning) statusEl.textContent = "Tamarin rejected the theory.";
+    else if (data.warning) statusEl.textContent = "Tamarin returned no lemma results. Check the prover log.";
     else if (data.cached) statusEl.textContent = `Cached result from a ${data.seconds ?? "?"}s run.`;
     else statusEl.textContent = `Finished in ${data.seconds ?? "?"}s.`;
   } catch (err) {
