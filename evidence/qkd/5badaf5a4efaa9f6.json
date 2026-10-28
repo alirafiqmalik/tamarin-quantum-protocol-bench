@@ -1,0 +1,158 @@
+{
+ "id": "5badaf5a4efaa9f6",
+ "protocol": "qkd",
+ "options": {
+  "type": "PM",
+  "adv": "Network",
+  "er": "FEC",
+  "bo": "SeqA",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": true,
+  "cm2": false
+ },
+ "label": "PM / Network / FEC / A2B / CM1",
+ "lemma": "weak_agreement_B",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 8,
+ "seconds": 19.28,
+ "wall": 19.52,
+ "timed_out": false,
+ "hash": "90d98f1a3092c8e047778f11a1061e9b640439fbc5bd264352d5128a5a72db55",
+ "version": "1.12.0",
+ "recorded": "2026-10-28T01:51:57",
+ "proof": {
+  "size": 15,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "KeywithErrorB( A, 'B', ~sid, KB ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'B', 'B', EA, 'error' ) \u25b6\u2081 #i )",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 3,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'B', 'B', EA, 'error' ) \u25b6\u2081 #i )",
+    "status": "closed"
+   },
+   {
+    "i": 11,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory PM_protocol] Theory loaded\n[Theory PM_protocol] Theory translated\n[Theory PM_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_PM_Network_FEC_SeqA_true_true_true_cm1.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/39978ac7c83a31ab74fadae29e301fc5a6929ba5a48849930d2524553824d5a4.spthy\n  processing time: 19.28s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): analysis incomplete (1 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): verified (8 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_PM_Network_FEC_SeqA_true_true_true_cm1.spthy"
+}

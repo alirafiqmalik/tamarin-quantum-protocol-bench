@@ -1,0 +1,186 @@
+{
+ "id": "852d18a8a063abae",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "plain",
+  "authorize_slave": true,
+  "keyid_transport": "authenticated",
+  "consume": true,
+  "reuse_guard": false
+ },
+ "label": "plain / authorized slave / MAC'd key ID / consume / key reuse",
+ "lemma": "single_delivery",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 10,
+ "seconds": 0.48,
+ "wall": 0.56,
+ "timed_out": false,
+ "hash": "e7846b48de54fe0d1f7d145aae608488b8fcecc38fa6afa9ed7cf82ae5950a41",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:56:19",
+ "proof": {
+  "size": 19,
+  "depth": 9,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "(#i < #j)  \u2225 (#j < #i)",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "!Authz( ~kid, s1 ) \u25b6\u2082 #i",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', ~kid, ~k ) \u25b6\u2081 #j",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "case_2",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 3,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 4,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 5,
+    "kind": "solve",
+    "label": "!Authz( ~kid, s1 ) \u25b6\u2082 #i",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 6,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 7,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', ~kid, ~k ) \u25b6\u2081 #j",
+    "status": "closed"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_plain_authz_macid_consume_reuse] Theory loaded\n[Theory KeyUse_plain_authz_macid_consume_reuse] Theory translated\n[Theory KeyUse_plain_authz_macid_consume_reuse] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_plain_true_authenticated_true_false.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/e8ea510ccd6119536261a8360310cb09ac65b0162e3f26c6b4eb88d5dad81c6e.spthy\n  processing time: 0.48s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): analysis incomplete (1 steps)\n  single_delivery (all-traces): verified (10 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_plain_true_authenticated_true_false.spthy"
+}

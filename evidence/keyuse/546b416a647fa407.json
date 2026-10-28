@@ -1,0 +1,381 @@
+{
+ "id": "546b416a647fa407",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "plain",
+  "authorize_slave": false,
+  "keyid_transport": "public",
+  "consume": false,
+  "reuse_guard": true
+ },
+ "label": "plain / bearer key ID / public key ID / persistent pool / single use",
+ "lemma": "message_integrity",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 5,
+ "seconds": 0.53,
+ "wall": 0.64,
+ "timed_out": false,
+ "hash": "016b283a6e6dd9e7021a5b330f60082477542755a4a43f0cfd7f955f3e6f8ed3",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:57:15",
+ "proof": {
+  "size": 9,
+  "depth": 7,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "SaeBKey( kid, k ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "SaeB_KeyIn",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!KU( otp(m, k) ) @ #vk.4",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "SaeA_Send",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "!KU( mac(~m, k) ) @ #vk.6",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "SaeA_Send",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_KeyUse_plain_bearer_pubid_persist_once_SL2-AS0-CL0-A1-C1-NB_message_integrity-SaeB_KeyIn-SaeA_Send-SaeA_Send",
+  "lanes": [
+   "alice",
+   "bob",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr.7",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_SAEs",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vk.4",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( kid )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( kid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.10",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "!KU( k )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( k )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.16",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "!KU( kid.1 )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( kid.1 )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.6",
+    "t": 4,
+    "lane": "alice",
+    "rule": "SaeA_GetKey",
+    "kind": "rule",
+    "actions": [
+     "MasterRequest( 'SAE_A', 'SAE_B' )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.2",
+    "t": 5,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( kid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'KME_B', 'SAE_B', kid, k> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.4",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'KME_A', 'SAE_A', kid.1, k> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.1",
+    "t": 8,
+    "lane": "bob",
+    "rule": "SaeB_GetKeyWithId",
+    "kind": "rule",
+    "actions": [
+     "SlaveRequest( 'SAE_B', kid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.5",
+    "t": 9,
+    "lane": "alice",
+    "rule": "SaeA_KeyIn",
+    "kind": "rule",
+    "actions": [
+     "KeyHeld( 'SAE_A', kid.1, k )",
+     "Named( kid.1, 'SAE_B' )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 10,
+    "lane": "bob",
+    "rule": "SaeB_KeyIn",
+    "kind": "rule",
+    "actions": [
+     "KeyHeld( 'SAE_B', kid, k )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.2",
+    "t": 11,
+    "lane": "alice",
+    "rule": "SaeA_Send",
+    "kind": "rule",
+    "actions": [
+     "Sent( ~m, kid.1, k )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.3",
+    "t": 12,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <otp(~m, k), mac(~m, k)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 13,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( otp(~m, k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 14,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(~m, k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf",
+    "t": 15,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <kid, otp(~m, k), mac(~m, k)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 16,
+    "lane": "bob",
+    "rule": "SaeB_Recv",
+    "kind": "rule",
+    "actions": [
+     "Received( ~m, kid, k )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vr.7",
+    "to": "#vr.6",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 4,
+    "fact": "SaeAInit",
+    "label": "SaeAInit( )",
+    "full": "SaeAInit( )",
+    "channel": "state",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vf.2",
+    "to": "#vr.1",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 8,
+    "fact": "In",
+    "label": "In( kid )",
+    "full": "In( kid )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.4",
+    "to": "#vr.5",
+    "fromLane": "attacker",
+    "toLane": "alice",
+    "t": 9,
+    "fact": "In",
+    "label": "In( <'KME_A', 'SAE_A', kid.1, k> )",
+    "full": "In( <'KME_A', 'SAE_A', kid.1, k> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.1",
+    "to": "#vr",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 10,
+    "fact": "In",
+    "label": "In( <'KME_B', 'SAE_B', kid, k> )",
+    "full": "In( <'KME_B', 'SAE_B', kid, k> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.2",
+    "to": "#vr.3",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 12,
+    "fact": "Out",
+    "label": "Out( <kid.1, otp(~m, k), mac(~m, k)> )",
+    "full": "Out( <kid.1, otp(~m, k), mac(~m, k)> )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#vf",
+    "to": "#i",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 16,
+    "fact": "In",
+    "label": "In( <kid, otp(~m, k), mac(~m, k)> )",
+    "full": "In( <kid, otp(~m, k), mac(~m, k)> )",
+    "channel": "public",
+    "relation": "default"
+   }
+  ],
+  "violation": [
+   "#vr.2",
+   "#i"
+  ],
+  "size": 17
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_plain_bearer_pubid_persist_once] Theory loaded\n[Theory KeyUse_plain_bearer_pubid_persist_once] Theory translated\n[Theory KeyUse_plain_bearer_pubid_persist_once] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_plain_false_public_false_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/3843e80f5568e4f442da54f2e2b5adc2b0a3812a792b95a97ecadc5a4e508237.spthy\n  processing time: 0.53s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): analysis incomplete (1 steps)\n  single_delivery (all-traces): analysis incomplete (1 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): falsified - found trace (5 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_plain_false_public_false_true.spthy"
+}

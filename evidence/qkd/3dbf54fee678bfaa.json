@@ -1,0 +1,1163 @@
+{
+ "id": "3dbf54fee678bfaa",
+ "protocol": "qkd",
+ "options": {
+  "type": "PM",
+  "adv": "Network",
+  "er": "TWEC",
+  "bo": "SeqA",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": false,
+  "cm2": false
+ },
+ "label": "PM / Network / TWEC / A2B",
+ "lemma": "secret_key_A",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 17,
+ "seconds": 201.41,
+ "wall": 202.02,
+ "timed_out": false,
+ "hash": "5d9de3c45a8a078bbcaafface4b986f8bab08bd8cf9fd149429315b9c0dcb8d5",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T04:39:07",
+ "proof": {
+  "size": 33,
+  "depth": 31,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "NKeyA( 'A', Y, ~sid, EA, NKAB ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Send_FEC",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( Y, 'A', EB, 'error' ) \u25b6\u2081 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'A', sample(siftkey(x, BA(~ba), BB)), 'sample' ) \u25b6\u2081 #vr.4",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'A', BB, 'sift' ) \u25b6\u2081 #vr.7",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( Correct(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), < FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), ",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "c_Correct",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))) ) @ #vk.25",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "c_genkey",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)) ) @ #vk.26",
+    "status": "trace"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 14,
+    "kind": "case",
+    "label": "c_siftkey",
+    "status": "trace"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( RawKey(key(noise(~kab), BA(~ba))) ) @ #vk.27",
+    "status": "trace"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 16,
+    "kind": "case",
+    "label": "c_RawKey",
+    "status": "trace"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.28",
+    "status": "trace"
+   },
+   {
+    "i": 19,
+    "p": 18,
+    "d": 18,
+    "kind": "case",
+    "label": "QChan_Adv_Measure",
+    "status": "trace"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 19,
+    "kind": "solve",
+    "label": "!KU( mac(FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), psk(~sid)) ) @ #vk.17",
+    "status": "trace"
+   },
+   {
+    "i": 21,
+    "p": 20,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "trace"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 21,
+    "kind": "solve",
+    "label": "!KU( mac(sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), psk(~sid)) ) @ #vk.22",
+    "status": "trace"
+   },
+   {
+    "i": 23,
+    "p": 22,
+    "d": 22,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "trace"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 23,
+    "kind": "solve",
+    "label": "!KU( mac(BA(~ba), psk(~sid)) ) @ #vk.27",
+    "status": "trace"
+   },
+   {
+    "i": 25,
+    "p": 24,
+    "d": 24,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "trace"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 25,
+    "kind": "solve",
+    "label": "!KU( FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))) ) @ #vk.19",
+    "status": "trace"
+   },
+   {
+    "i": 27,
+    "p": 26,
+    "d": 26,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 28,
+    "p": 27,
+    "d": 27,
+    "kind": "solve",
+    "label": "!KU( sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))) ) @ #vk.24",
+    "status": "trace"
+   },
+   {
+    "i": 29,
+    "p": 28,
+    "d": 28,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 30,
+    "p": 29,
+    "d": 29,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.27",
+    "status": "trace"
+   },
+   {
+    "i": 31,
+    "p": 30,
+    "d": 30,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 32,
+    "p": 31,
+    "d": 31,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_PM_protocol_SL2-AS0-CL0-A1-C1-NB_secret_key_A-Alice_Send_FEC-ChanIn_Auth_case_1-ChanIn_Auth-ChanIn_Auth-c_Correct-c_genkey-c_siftkey-c_RawKey-QChan_Adv_Measure-ChanOut_Auth-ChanOut_Auth-ChanOut_Auth-ChanOut_Auth_case_1-ChanOut_Auth_case_1-ChanOut_Auth_case_1",
+  "lanes": [
+   "alice",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vf.2",
+    "t": 0,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'A', 'A'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.8",
+    "t": 1,
+    "lane": "channel",
+    "rule": "Setup",
+    "kind": "rule",
+    "actions": [
+     "OnlyOnce( )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.5",
+    "t": 2,
+    "lane": "alice",
+    "rule": "Alice_quantum_phase",
+    "kind": "rule",
+    "actions": [
+     "SessionInitA( 'A', 'A', ~sid )",
+     "Create_A( 'B', ~sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.6",
+    "t": 3,
+    "lane": "alice",
+    "rule": "Alice_Send_BA",
+    "kind": "rule",
+    "actions": [
+     "Send_BA( 'A', 'A', BA(~ba) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.16",
+    "t": 4,
+    "lane": "channel",
+    "rule": "QChan_Out",
+    "kind": "rule",
+    "actions": [
+     "EveKnowns( encode(RawKey(key(noise(~kab), BA(~ba))), BA(~ba)) )",
+     "QChanOut( 'A', 'A', encode(RawKey(key(noise(~kab), BA(~ba))), BA(~ba)))"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.14",
+    "t": 5,
+    "lane": "channel",
+    "rule": "ChanOut_Auth",
+    "kind": "rule",
+    "actions": [
+     "AChanOut( 'A', <BA(~ba), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vl.3",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', 'A', BA(~ba), mac(BA(~ba), psk(~sid)), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.25",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', BA(~ba), mac(BA(~ba), psk(~sid)), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.26",
+    "t": 8,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <BA(~ba), mac(BA(~ba), psk(~sid)), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.10",
+    "t": 9,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( BA(~ba) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.27",
+    "t": 10,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <mac(BA(~ba), psk(~sid)), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.7",
+    "t": 11,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( BA(~ba) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.7",
+    "t": 12,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(BA(~ba), psk(~sid)) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.15",
+    "t": 13,
+    "lane": "channel",
+    "rule": "QChan_Adv_Measure",
+    "kind": "rule",
+    "actions": [
+     "EveForgets( encode(RawKey(key(noise(~kab), BA(~ba))), BA(~ba)) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.6",
+    "t": 14,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'A', 'A', BA(~ba), mac(BA(~ba), psk(~sid)), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.4",
+    "t": 15,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( key(noise(~kab), BA(~ba)) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.13",
+    "t": 16,
+    "lane": "channel",
+    "rule": "ChanIn_Auth",
+    "kind": "rule",
+    "actions": [
+     "Eq( BA(~ba), BA(~ba) )",
+     "AChanIn( 'A', 'A', <BA(~ba), 'sift'> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.3",
+    "t": 17,
+    "lane": "attacker",
+    "rule": "Constrc_RawKey",
+    "kind": "attacker",
+    "actions": [
+     "!KU( RawKey(key(noise(~kab), BA(~ba))) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.7",
+    "t": 18,
+    "lane": "alice",
+    "rule": "Alice_Receive_BB",
+    "kind": "rule",
+    "actions": [
+     "Receive_BB( 'A', 'A', BA(~ba) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 19,
+    "lane": "attacker",
+    "rule": "Constrc_siftkey",
+    "kind": "attacker",
+    "actions": [
+     "!KU( siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.2",
+    "t": 20,
+    "lane": "alice",
+    "rule": "Alice_SiftA",
+    "kind": "rule",
+    "actions": [
+     "SiftA( 'A', 'A', ~sid, siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 21,
+    "lane": "attacker",
+    "rule": "Constrc_genkey",
+    "kind": "attacker",
+    "actions": [
+     "!KU( genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))))"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.3",
+    "t": 22,
+    "lane": "alice",
+    "rule": "Alice_Send_SampleA",
+    "kind": "rule",
+    "actions": [
+     "Send_SampleA( 'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~b\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.12",
+    "t": 23,
+    "lane": "channel",
+    "rule": "ChanOut_Auth",
+    "kind": "rule",
+    "actions": [
+     "AChanOut( 'A', < sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vl.2",
+    "t": 24,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.21",
+    "t": 25,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.22",
+    "t": 26,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( < sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), ma\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.9",
+    "t": 27,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))))"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.23",
+    "t": 28,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( < mac(sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.6",
+    "t": 29,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.5",
+    "t": 30,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~b\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.11",
+    "t": 31,
+    "lane": "channel",
+    "rule": "ChanIn_Auth",
+    "kind": "rule",
+    "actions": [
+     "Eq( sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), sampl\u2026",
+     "AChanIn( 'A', 'A', < sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba),\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.4",
+    "t": 32,
+    "lane": "alice",
+    "rule": "Alice_Receive_SampleB",
+    "kind": "rule",
+    "actions": [
+     "Receive_SampleB( 'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.1",
+    "t": 33,
+    "lane": "alice",
+    "rule": "Alice_Paramater_Estimation_NoEve",
+    "kind": "rule",
+    "actions": [
+     "Eq( true, true )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 34,
+    "lane": "alice",
+    "rule": "Alice_Send_FEC",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.10",
+    "t": 35,
+    "lane": "channel",
+    "rule": "ChanOut_Auth",
+    "kind": "rule",
+    "actions": [
+     "AChanOut( 'A', < FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba),\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vl.1",
+    "t": 36,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.17",
+    "t": 37,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~b\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.18",
+    "t": 38,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( < FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.8",
+    "t": 39,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))))"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.19",
+    "t": 40,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( < mac(FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~b\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 41,
+    "lane": "attacker",
+    "rule": "Constrc_Correct",
+    "kind": "attacker",
+    "actions": [
+     "!KU( Correct(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.5",
+    "t": 42,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 43,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( Correct(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.4",
+    "t": 44,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'A', 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), B\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.9",
+    "t": 45,
+    "lane": "channel",
+    "rule": "ChanIn_Auth",
+    "kind": "rule",
+    "actions": [
+     "Eq( FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), \u2026",
+     "AChanIn( 'A', 'A', < FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 46,
+    "lane": "alice",
+    "rule": "Alice_TWEC",
+    "kind": "rule",
+    "actions": [
+     "Secret_A( Correct(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA\u2026",
+     "CommitKey_A( 'A', 'A', ~sid, Correct(genkey(siftkey(RawKey(key(noise(~kab), BA(\u2026",
+     "Running_A( 'A', 'A', ~sid, Correct(genkey(siftkey(RawKey(key(noise(~kab), BA(~b\u2026"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vf.2",
+    "to": "#vr.8",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 1,
+    "fact": "In",
+    "label": "In( <'A', 'A'> )",
+    "full": "In( <'A', 'A'> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.8",
+    "to": "#vr.5",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 2,
+    "fact": "SessionA",
+    "label": "SessionA( 'A', 'A', ~sid )",
+    "full": "SessionA( 'A', 'A', ~sid )",
+    "channel": "state",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.16",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 4,
+    "fact": "Out_QuantumChannel",
+    "label": "Out_QuantumChannel( 'A', 'A', encode(RawKey(key\u2026",
+    "full": "Out_QuantumChannel( 'A', 'A', encode(RawKey(key(noise(~kab), BA(~ba))), BA(~ba)))",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.14",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 5,
+    "fact": "!AuthSession",
+    "label": "!AuthSession( 'A', psk(~sid) )",
+    "full": "!AuthSession( 'A', psk(~sid) )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.6",
+    "to": "#vr.14",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 5,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'A', 'A', BA(~ba), 'sift' )",
+    "full": "Out_Auth( 'A', 'A', BA(~ba), 'sift' )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.14",
+    "to": "#vl.3",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 6,
+    "fact": "Out",
+    "label": "Out( <'A', 'A', BA(~ba), mac(BA(~ba), psk(~sid)\u2026",
+    "full": "Out( <'A', 'A', BA(~ba), mac(BA(~ba), psk(~sid)), 'sift'> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.7",
+    "to": "#vr.15",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 13,
+    "fact": "In",
+    "label": "In( BA(~ba) )",
+    "full": "In( BA(~ba) )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.16",
+    "to": "#vr.15",
+    "fromLane": "channel",
+    "toLane": "channel",
+    "t": 13,
+    "fact": "Quantum",
+    "label": "Quantum( encode(RawKey(key(noise(~kab), BA(~ba)\u2026",
+    "full": "Quantum( encode(RawKey(key(noise(~kab), BA(~ba))), BA(~ba)) )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.15",
+    "to": "#vk.4",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 15,
+    "fact": "Out",
+    "label": "Out( key(noise(~kab), BA(~ba)) )",
+    "full": "Out( key(noise(~kab), BA(~ba)) )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#vf.6",
+    "to": "#vr.13",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 16,
+    "fact": "In",
+    "label": "In( <'A', 'A', BA(~ba), mac(BA(~ba), psk(~sid))\u2026",
+    "full": "In( <'A', 'A', BA(~ba), mac(BA(~ba), psk(~sid)), 'sift'> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.14",
+    "to": "#vr.13",
+    "fromLane": "channel",
+    "toLane": "channel",
+    "t": 16,
+    "fact": "!Auth",
+    "label": "!Auth( 'A', BA(~ba), mac(BA(~ba), psk(~sid)), '\u2026",
+    "full": "!Auth( 'A', BA(~ba), mac(BA(~ba), psk(~sid)), 'sift' )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.13",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 16,
+    "fact": "!AuthSession",
+    "label": "!AuthSession( 'A', psk(~sid) )",
+    "full": "!AuthSession( 'A', psk(~sid) )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.13",
+    "to": "#vr.7",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 18,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'A', 'A', BA(~ba), 'sift' )",
+    "full": "In_Auth( 'A', 'A', BA(~ba), 'sift' )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.3",
+    "to": "#vr.12",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 23,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'A', 'A', sample(siftkey(RawKey(key(n\u2026",
+    "full": "Out_Auth( 'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), 'sample')",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.12",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 23,
+    "fact": "!AuthSession",
+    "label": "!AuthSession( 'A', psk(~sid) )",
+    "full": "!AuthSession( 'A', psk(~sid) )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.12",
+    "to": "#vl.2",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 24,
+    "fact": "Out",
+    "label": "Out( <'A', 'A', sample(siftkey(RawKey(key(noise\u2026",
+    "full": "Out( <'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), mac(sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), psk(~sid)), 'sample'>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.5",
+    "to": "#vr.11",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 31,
+    "fact": "In",
+    "label": "In( <'A', 'A', sample(siftkey(RawKey(key(noise(\u2026",
+    "full": "In( <'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), mac(sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), psk(~sid)), 'sample'>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.12",
+    "to": "#vr.11",
+    "fromLane": "channel",
+    "toLane": "channel",
+    "t": 31,
+    "fact": "!Auth",
+    "label": "!Auth( 'A', sample(siftkey(RawKey(key(noise(~ka\u2026",
+    "full": "!Auth( 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), mac(sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), psk(~sid)), 'sample')",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.11",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 31,
+    "fact": "!AuthSession",
+    "label": "!AuthSession( 'A', psk(~sid) )",
+    "full": "!AuthSession( 'A', psk(~sid) )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.11",
+    "to": "#vr.4",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 32,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'A', 'A', sample(siftkey(RawKey(key(no\u2026",
+    "full": "In_Auth( 'A', 'A', sample(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba))), 'sample')",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr",
+    "to": "#vr.10",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 35,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'A', 'A', FEC(genkey(siftkey(RawKey(k\u2026",
+    "full": "Out_Auth( 'A', 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), 'error')",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.10",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 35,
+    "fact": "!AuthSession",
+    "label": "!AuthSession( 'A', psk(~sid) )",
+    "full": "!AuthSession( 'A', psk(~sid) )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.10",
+    "to": "#vl.1",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 36,
+    "fact": "Out",
+    "label": "Out( <'A', 'A', FEC(genkey(siftkey(RawKey(key(n\u2026",
+    "full": "Out( <'A', 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), mac(FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), psk(~sid)), 'error'>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.4",
+    "to": "#vr.9",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 45,
+    "fact": "In",
+    "label": "In( <'A', 'A', FEC(genkey(siftkey(RawKey(key(no\u2026",
+    "full": "In( <'A', 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), mac(FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), psk(~sid)), 'error'>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.10",
+    "to": "#vr.9",
+    "fromLane": "channel",
+    "toLane": "channel",
+    "t": 45,
+    "fact": "!Auth",
+    "label": "!Auth( 'A', FEC(genkey(siftkey(RawKey(key(noise\u2026",
+    "full": "!Auth( 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), mac(FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), psk(~sid)), 'error')",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vr.9",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 45,
+    "fact": "!AuthSession",
+    "label": "!AuthSession( 'A', psk(~sid) )",
+    "full": "!AuthSession( 'A', psk(~sid) )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.9",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 46,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'A', 'A', FEC(genkey(siftkey(RawKey(ke\u2026",
+    "full": "In_Auth( 'A', 'A', FEC(genkey(siftkey(RawKey(key(noise(~kab), BA(~ba))), BA(~ba), BA(~ba)))), 'error')",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   }
+  ],
+  "violation": [
+   "#i"
+  ],
+  "size": 47
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory PM_protocol] Theory loaded\n[Theory PM_protocol] Theory translated\n[Theory PM_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_PM_Network_TWEC_SeqA_true_true_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/84d3b36e799d849d2fa93348b65f3880496f6efe03e3ea7275d2385e3aec9829.spthy\n  processing time: 201.41s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): falsified - found trace (17 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): analysis incomplete (1 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_PM_Network_TWEC_SeqA_true_true_true.spthy"
+}

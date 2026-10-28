@@ -15,15 +15,16 @@ rule Alice_quantum_phase:
    Create_A('B',~sid)
    ]-> 
  [
-   !AuthSession('A',psk(~sid)),
+   !AuthSession('A',psk(~sid)CM2_ONLY(<!,'initiator'!>)),
    MeasuredA('A',Y,~sid,KAraw), 
    AliceBasis('A',Y,~sid,BA(~ba)), 
-   GetBobBasis('A',Y,~sid)
+   GetBobBasis('A',Y,~sid)CM1_ONLY(<!,
+   ToCommitA('A',Y,~sid,KAraw)!>)
 ]
 
 //  Key Sifting
 rule Alice_Send_BA:
- [AliceBasis('A',Y,sid,BA)]
+ [AliceBasis('A',Y,sid,BA)CM1_ONLY(<!, Alice_Received_CommitB('A',Y,sid,cB)!>)]
  --[Send_BA('A',Y,BA)]->
  [Out_Auth('A',Y,BA,'sift'), Alice_Sent_BA('A',Y,BA)]
 

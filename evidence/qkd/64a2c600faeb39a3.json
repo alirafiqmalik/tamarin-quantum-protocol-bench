@@ -1,0 +1,126 @@
+{
+ "id": "64a2c600faeb39a3",
+ "protocol": "qkd",
+ "options": {
+  "type": "PM",
+  "adv": "Network",
+  "er": "REC",
+  "bo": "SeqA",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": false,
+  "cm2": true
+ },
+ "label": "PM / Network / REC / A2B / CM2",
+ "lemma": "aliveness_B",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 6,
+ "seconds": 63.05,
+ "wall": 63.86,
+ "timed_out": false,
+ "hash": "627de951448a71f1ab38468cbd708719b12076302ab3f5fe3e5c5f8fb1d9bf1a",
+ "version": "1.12.0",
+ "recorded": "2026-10-28T01:31:38",
+ "proof": {
+  "size": 11,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "KeywithErrorB( A, 'B', ~sid, KB ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "leaf",
+    "label": "solve( In_Auth( A, 'B',",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( A, 'B', sample(siftkey(x, BA.1, BB(~bb))), 'sample' ) \u25b6\u2081 #vr.3",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory PM_protocol] Theory loaded\n[Theory PM_protocol] Theory translated\n[Theory PM_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Open Chains] Too many chain constraints, stopping precomputation. Open Chains limits (can be changed with -c=): 10\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_PM_Network_REC_SeqA_true_true_true_cm2.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/f015da9a9d9cd0abc4ab736b7dc624af9df028ceb2d83c48e390c8b27576ab9a.spthy\n  processing time: 63.05s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): analysis incomplete (1 steps)\n  aliveness_B (all-traces): verified (6 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_PM_Network_REC_SeqA_true_true_true_cm2.spthy"
+}

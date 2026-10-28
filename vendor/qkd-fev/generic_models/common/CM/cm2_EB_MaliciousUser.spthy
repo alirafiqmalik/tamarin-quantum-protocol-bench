@@ -1,0 +1,19 @@
+/* Authenticated Classical Channel rules, countermeasure 2 (this demo's encoding).
+   The tag covers <sender identity, sender role, receiver identity, message kind, message>
+   under the per-session key psk(sid) held in !AuthSession(identity, key, role).
+   The receiver only accepts a tag whose receiver field is its own identity, whose
+   sender field is the claimed peer, and whose role field is not its own role. */
+rule ChanOut_Auth:
+  let
+    tag=mac(<roleA,rA,roleB,mtype,msg>,key_roleA)
+  in
+[ !AuthSession(roleA,key_roleA,rA), Out_Auth(roleA,roleB,msg,mtype) ]--[ AChanOut(roleA,<msg,mtype>) ]->
+[ !Auth(roleA,rA,roleB,msg,tag,mtype) ]
+
+rule ChanIn_Auth:
+  let
+    verified=verifymac(tag,key_roleB)
+  in
+[ !AuthSession(roleB,key_roleB,rB), !Auth(roleA,rA,roleB,msg,tag,mtype) ]
+--[ Eq(<roleA,rA,roleB,mtype,msg>,verified), Neq(rA,rB), AChanIn(roleA,roleB,<msg,mtype>) ]->
+[ In_Auth(roleA,roleB,msg,mtype) ]

@@ -1,0 +1,390 @@
+{
+ "id": "e4e3c8a82c6fc9f1",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "plain",
+  "authorize_slave": true,
+  "keyid_transport": "public",
+  "consume": false,
+  "reuse_guard": true
+ },
+ "label": "plain / authorized slave / public key ID / persistent pool / single use",
+ "lemma": "single_delivery",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 8,
+ "seconds": 0.55,
+ "wall": 0.62,
+ "timed_out": false,
+ "hash": "31ad1f79f608241e296bfd6e4b643b06bf540f0f3a3c23ea3cdd343a89e22405",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:56:39",
+ "proof": {
+  "size": 15,
+  "depth": 13,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "(#i < #j)  \u2225 (#j < #i)",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "case_1",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!KMEPoolB( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "!Authz( ~kid, s1 ) \u25b6\u2082 #i",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KMEPoolB( 'KME_B', ~kid, ~k ) \u25b6\u2081 #j",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "!Authz( ~kid, s2 ) \u25b6\u2082 #j",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( ~kid ) @ #vk.9",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_KeyUse_plain_authz_pubid_persist_once_SL2-AS0-CL0-A1-C1-NB_single_delivery-case_1-Source_QKD-KmeA_Deliver-Source_QKD-KmeA_Deliver-KmeA_Deliver",
+  "lanes": [
+   "kme_a",
+   "kme_b",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_QKD",
+    "kind": "rule",
+    "actions": [
+     "QkdKey( ~kid, ~k )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( s1 )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( s1 )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.10",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "!KU( master )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( master )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.4",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <master, 'KME_A', 'getkey', s1> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.1",
+    "t": 4,
+    "lane": "kme_a",
+    "rule": "KmeA_Deliver",
+    "kind": "rule",
+    "actions": [
+     "MasterNamed( master, ~kid, s1 )",
+     "DeliveredA( ~kid, ~k, master )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 5,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~kid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <s1, 'KME_B', 'getkeyid', ~kid> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <s1, 'KME_B', 'getkeyid', ~kid> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 8,
+    "lane": "kme_b",
+    "rule": "KmeB_Deliver",
+    "kind": "rule",
+    "actions": [
+     "DeliveredB( ~kid, ~k, s1 )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#j",
+    "t": 9,
+    "lane": "kme_b",
+    "rule": "KmeB_Deliver",
+    "kind": "rule",
+    "actions": [
+     "DeliveredB( ~kid, ~k, s1 )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vf.4",
+    "to": "#vr.1",
+    "fromLane": "attacker",
+    "toLane": "kme_a",
+    "t": 4,
+    "fact": "In",
+    "label": "In( <master, 'KME_A', 'getkey', s1> )",
+    "full": "In( <master, 'KME_A', 'getkey', s1> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#vr.1",
+    "fromLane": "channel",
+    "toLane": "kme_a",
+    "t": 4,
+    "fact": "KMEPool",
+    "label": "KMEPool( 'KME_A', ~kid, ~k )",
+    "full": "KMEPool( 'KME_A', ~kid, ~k )",
+    "channel": "state",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#vk",
+    "fromLane": "kme_a",
+    "toLane": "attacker",
+    "t": 5,
+    "fact": "Out",
+    "label": "Out( <'KME_A', master, ~kid, ~k> )",
+    "full": "Out( <'KME_A', master, ~kid, ~k> )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#vf",
+    "to": "#i",
+    "fromLane": "attacker",
+    "toLane": "kme_b",
+    "t": 8,
+    "fact": "In",
+    "label": "In( <s1, 'KME_B', 'getkeyid', ~kid> )",
+    "full": "In( <s1, 'KME_B', 'getkeyid', ~kid> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "kme_b",
+    "t": 8,
+    "fact": "!KMEPoolB",
+    "label": "!KMEPoolB( 'KME_B', ~kid, ~k )",
+    "full": "!KMEPoolB( 'KME_B', ~kid, ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#i",
+    "fromLane": "kme_a",
+    "toLane": "kme_b",
+    "t": 8,
+    "fact": "!Authz",
+    "label": "!Authz( ~kid, s1 )",
+    "full": "!Authz( ~kid, s1 )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vf.1",
+    "to": "#j",
+    "fromLane": "attacker",
+    "toLane": "kme_b",
+    "t": 9,
+    "fact": "In",
+    "label": "In( <s1, 'KME_B', 'getkeyid', ~kid> )",
+    "full": "In( <s1, 'KME_B', 'getkeyid', ~kid> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "kme_b",
+    "t": 9,
+    "fact": "!KMEPoolB",
+    "label": "!KMEPoolB( 'KME_B', ~kid, ~k )",
+    "full": "!KMEPoolB( 'KME_B', ~kid, ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#j",
+    "fromLane": "kme_a",
+    "toLane": "kme_b",
+    "t": 9,
+    "fact": "!Authz",
+    "label": "!Authz( ~kid, s1 )",
+    "full": "!Authz( ~kid, s1 )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   }
+  ],
+  "violation": [
+   "#i",
+   "#j"
+  ],
+  "size": 10
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_plain_authz_pubid_persist_once] Theory loaded\n[Theory KeyUse_plain_authz_pubid_persist_once] Theory translated\n[Theory KeyUse_plain_authz_pubid_persist_once] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_plain_true_public_false_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/0bb2acc99b009bd516022ab9a632595acce5d63856665d4d48b1dcc0fce098d3.spthy\n  processing time: 0.55s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): analysis incomplete (1 steps)\n  single_delivery (all-traces): falsified - found trace (8 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_plain_true_public_false_true.spthy"
+}

@@ -1,0 +1,158 @@
+{
+ "id": "9c977f7dd5420a0a",
+ "protocol": "qkd",
+ "options": {
+  "type": "EB",
+  "adv": "Network",
+  "er": "REC",
+  "bo": "PostM",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": false,
+  "cm2": false
+ },
+ "label": "EB / Network / REC / unordered",
+ "lemma": "aliveness_A",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 8,
+ "seconds": 59.12,
+ "wall": 59.42,
+ "timed_out": false,
+ "hash": "1134d4e09296855beb53c44d30a696c05b2d71fdbf04ad93e6966c1dde62c610",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T04:49:52",
+ "proof": {
+  "size": 15,
+  "depth": 3,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "KeywithErrorA( 'A', B, ~sid, KA ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 5,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 7,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 13,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory EB_protocol] Theory loaded\n[Theory EB_protocol] Theory translated\n[Theory EB_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_EB_Network_REC_PostM_true_true_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/828655d2894df51c88361b9a8fa9a8a3d9d88a45e242dbe5c4b3cfdb922916d9.spthy\n  processing time: 59.12s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): verified (8 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_EB_Network_REC_PostM_true_true_true.spthy"
+}

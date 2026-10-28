@@ -1,0 +1,199 @@
+{
+ "id": "5072b35003e57715",
+ "protocol": "superdense",
+ "options": {
+  "trusted_source": true,
+  "confirm": true
+ },
+ "label": "trusted source / confirmation MAC",
+ "lemma": "message_integrity",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 11,
+ "seconds": 0.63,
+ "wall": 0.73,
+ "timed_out": false,
+ "hash": "1ecff224e0e36f6bad4cf44814f237aed03e46b7057bfb2354b1b7eb98a43134",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 21,
+  "depth": 13,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairB( sid, hB ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_Pair",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "QIn( ~sid, q ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_QIn",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 7,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Eve_Inject",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 5,
+    "kind": "solve",
+    "label": "!PSK( k ) \u25b6\u2083 #i",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 7,
+    "kind": "solve",
+    "label": "splitEqs(0)",
+    "status": "closed"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 8,
+    "kind": "case",
+    "label": "split_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( encodeSD(halfA(~e), m) ) @ #vk.3",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 10,
+    "kind": "case",
+    "label": "c_encodeSD",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( halfA(~e) ) @ #vk.4",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 12,
+    "kind": "case",
+    "label": "c_halfA",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 13,
+    "kind": "leaf",
+    "label": "solve( !KU( ~e ) @ #vk.6 )",
+    "status": "closed"
+   },
+   {
+    "i": 17,
+    "p": 10,
+    "d": 8,
+    "kind": "case",
+    "label": "split_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', ~sid, h(decodeSD(q, halfB(~e)))>, ~k) ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 19,
+    "p": 18,
+    "d": 10,
+    "kind": "case",
+    "label": "c_mac",
+    "status": "closed"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 11,
+    "kind": "leaf",
+    "label": "solve( !KU( ~k ) @ #vk.6 )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Superdense_trusted_confirm] Theory loaded\n[Theory Superdense_trusted_confirm] Theory translated\n[Theory Superdense_trusted_confirm] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/superdense_trusted_confirm.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/f206ca3c5a717e16588b913632423bd5e5ef877bd5c5d2a3b501efd5123932af.spthy\n  processing time: 0.63s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): verified (11 steps)\n\n==============================================================================",
+ "theory_file": "superdense_trusted_confirm.spthy"
+}

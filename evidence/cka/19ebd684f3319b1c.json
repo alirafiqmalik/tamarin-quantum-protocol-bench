@@ -1,0 +1,247 @@
+{
+ "id": "19ebd684f3319b1c",
+ "protocol": "cka",
+ "options": {
+  "psk_mode": "pairwise",
+  "identity_bound": false
+ },
+ "label": "pairwise keys / plain MAC",
+ "lemma": "key_secret",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 14,
+ "seconds": 1.46,
+ "wall": 1.56,
+ "timed_out": false,
+ "hash": "0231894d19c1fafc7abb3f102ea6d77f415b9c1c3b695d68ac4ed69778d1572b",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:51",
+ "proof": {
+  "size": 27,
+  "depth": 13,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "AliceHas( r, g, bA ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Measure",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', <'basis', ~r, bB, test(~g)> ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'C', 'A', <'basis', ~r, bC, test(~g)> ) \u25b6\u2082 #i",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KU( key(~g) ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.15",
+    "status": "closed"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 13,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 9,
+    "kind": "solve",
+    "label": "GHZ_C( r.1, g.1 ) \u25b6\u2080 #vr.15",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 10,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 11,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 17,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( ~g ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 19,
+    "p": 18,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 11,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.15",
+    "status": "closed"
+   },
+   {
+    "i": 21,
+    "p": 20,
+    "d": 12,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 13,
+    "kind": "leaf",
+    "label": "solve( (#vr.12, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   },
+   {
+    "i": 23,
+    "p": 18,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 11,
+    "kind": "solve",
+    "label": "GHZ_C( r.1, g.1 ) \u25b6\u2080 #vr.15",
+    "status": "closed"
+   },
+   {
+    "i": 25,
+    "p": 24,
+    "d": 12,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 13,
+    "kind": "leaf",
+    "label": "solve( (#vr.12, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory CKA_pairwise_plain] Theory loaded\n[Theory CKA_pairwise_plain] Theory translated\n[Theory CKA_pairwise_plain] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/cka_pairwise_plain.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/e9cac1fe6ab0ba4964fe9e4db8f0033f128646ae535409d12981ed884c1320ee.spthy\n  processing time: 1.46s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): verified (14 steps)\n  agreement_AB (all-traces): analysis incomplete (1 steps)\n  agreement_AC (all-traces): analysis incomplete (1 steps)\n  aliveness (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "cka_pairwise_plain.spthy"
+}

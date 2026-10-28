@@ -1,75 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Symbolic model bench</title>
-  <link rel="stylesheet" href="/static/app.css">
-</head>
-<body>
-  <header>
-    <p class="eyebrow">PQQS demo</p>
-    <h1>Symbolic model bench</h1>
-    <p class="lead">Assemble a Tamarin theory for a quantum protocol, check the lemmas, and search the modeling choice that changes the result.</p>
-  </header>
-  <main class="layout">
-    <section class="panel" id="controls">
-      <h2>Protocol</h2>
-      <label for="protocol">Model</label>
-      <select id="protocol"></select>
-      <p id="blurb" class="blurb"></p>
-      <div id="fields"></div>
-      <label for="heuristic">Heuristic</label>
-      <select id="heuristic"></select>
-      <div class="actions">
-        <button type="button" id="load">Load theory</button>
-        <button type="button" id="verify">Verify</button>
-        <button type="button" id="search">Search abstractions</button>
-      </div>
-      <div class="presets">
-        <button type="button" data-preset="qkd">QKD executability</button>
-        <button type="button" data-preset="sound">Key stays off the channel</button>
-        <button type="button" data-preset="leak">Key goes on the channel</button>
-      </div>
-      <h2>Tamarin ML API</h2>
-      <p id="ml-status" class="blurb">Checking port 3001.</p>
-      <label for="ml-theory">Loaded theory</label>
-      <select id="ml-theory"></select>
-      <label for="ml-lemma">Lemma name</label>
-      <input id="ml-lemma" type="text" value="executable" spellcheck="false">
-      <button type="button" id="ml-methods">Fetch proof methods</button>
-      <ul id="ml-list"></ul>
-    </section>
-    <section class="panel theory-panel">
-      <div class="panel-head">
-        <h2>Theory</h2>
-        <span id="theory-label"></span>
-      </div>
-      <textarea id="theory" spellcheck="false"></textarea>
-    </section>
-    <section class="panel">
-      <h2>Result</h2>
-      <p id="status" class="blurb">No check yet.</p>
-      <table>
-        <thead>
-          <tr><th>Lemma</th><th>Result</th><th>Steps</th></tr>
-        </thead>
-        <tbody id="lemmas"></tbody>
-      </table>
-      <h2>Search</h2>
-      <p id="note" class="blurb"></p>
-      <table>
-        <thead>
-          <tr><th>Abstraction</th><th>H</th><th>Verified</th></tr>
-        </thead>
-        <tbody id="attempts"></tbody>
-      </table>
-      <pre id="log"></pre>
-    </section>
-  </main>
-  <footer>
-    <p>QKD fragments come from QKD-FEV. Proof-method calls use the Tamarin ML API client when that server is on port 3001. Lemma search on this page uses the local tamarin-prover.</p>
-  </footer>
-  <script src="/static/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulate it, or prove it?</title>
+    <script type="module" crossorigin src="/assets/index-P0YARTNd.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dmf-rAPN.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>

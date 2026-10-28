@@ -1,0 +1,510 @@
+{
+ "id": "a1799c9b73a03a3f",
+ "protocol": "qkd",
+ "options": {
+  "adv": "Network",
+  "auth": true,
+  "bo": "PostM",
+  "er": "TWEC",
+  "exec": true,
+  "secrecy": true,
+  "type": "EB",
+  "cm1": false,
+  "cm2": false
+ },
+ "label": "EB / Network / TWEC / unordered",
+ "lemma": "aliveness_A",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 30,
+ "seconds": 103.57,
+ "wall": 104.05,
+ "timed_out": false,
+ "hash": "25649aadd91c6d8314853add77e484bb4c040a1d575c0a65d0ebb22821c7e986",
+ "version": "1.12.0",
+ "recorded": "2026-10-26T22:11:28",
+ "proof": {
+  "size": 59,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "NKeyA( 'A', B, ~sid, EA, NKAB ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Send_FEC_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( B, 'A', EB, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'A', 'A',",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 13,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 15,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Send_FEC_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( B, 'A', EB, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 5,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'A', 'A',",
+    "status": "closed"
+   },
+   {
+    "i": 19,
+    "p": 16,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 21,
+    "p": 16,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 23,
+    "p": 16,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 25,
+    "p": 16,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 27,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Send_FEC_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 28,
+    "p": 27,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( B, 'A', EB, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 29,
+    "p": 28,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 30,
+    "p": 29,
+    "d": 5,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'A', 'A',",
+    "status": "closed"
+   },
+   {
+    "i": 31,
+    "p": 28,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 32,
+    "p": 31,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 33,
+    "p": 28,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 34,
+    "p": 33,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 35,
+    "p": 28,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 36,
+    "p": 35,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 37,
+    "p": 28,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 38,
+    "p": 37,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 39,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Send_FEC_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 40,
+    "p": 39,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( B, 'A', EB, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 41,
+    "p": 40,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 42,
+    "p": 41,
+    "d": 5,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'A', 'A',",
+    "status": "closed"
+   },
+   {
+    "i": 43,
+    "p": 40,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 44,
+    "p": 43,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 45,
+    "p": 40,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 46,
+    "p": 45,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 47,
+    "p": 40,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 48,
+    "p": 47,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 49,
+    "p": 40,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 50,
+    "p": 49,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 51,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 52,
+    "p": 51,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 53,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 54,
+    "p": 53,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 55,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 56,
+    "p": 55,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 57,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 58,
+    "p": 57,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory EB_protocol] Theory loaded\n[Theory EB_protocol] Theory translated\n[Theory EB_protocol] Derivation checks started\n[Theory EB_protocol] Derivation checks ended\n[Theory EB_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_EB_Network_TWEC_PostM_true_true_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/c2639b26187b53d4576a6cea5d5dbcbfdad257497af7026fbc181a07d127851e.spthy\n  processing time: 103.57s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): verified (30 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_EB_Network_TWEC_PostM_true_true_true.spthy"
+}

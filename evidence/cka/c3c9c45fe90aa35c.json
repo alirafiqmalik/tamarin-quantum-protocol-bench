@@ -1,0 +1,1186 @@
+{
+ "id": "c3c9c45fe90aa35c",
+ "protocol": "cka",
+ "options": {
+  "psk_mode": "group",
+  "identity_bound": true
+ },
+ "label": "group key / identity-bound MAC",
+ "lemma": "executable",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "exists-trace",
+ "steps": 21,
+ "seconds": 8.23,
+ "wall": 8.34,
+ "timed_out": false,
+ "hash": "653107e5b372cd20d517e89d02de254167426ba12a36589553ae3e127dc19ba1",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:51",
+ "proof": {
+  "size": 41,
+  "depth": 39,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "Commit( 'A', 'B', k ) @ #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Commit",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "AliceHas( r, g, bA ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Alice_Measure",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', <'basis', ~r, bB, test(~g)> ) \u25b6\u2081 #i",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'C', 'A', <'basis', ~r, bC, test(~g)> ) \u25b6\u2082 #i",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "Commit( 'B', 'A', key(~g) ) @ #j",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Bob_Commit",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "BobWait( r.1, ~g ) \u25b6\u2080 #j",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "Bob_Announce",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', <'accept', ~r, bA.1> ) \u25b6\u2081 #j",
+    "status": "trace"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 14,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 15,
+    "kind": "solve",
+    "label": "Commit( 'C', 'A', key(~g) ) @ #l",
+    "status": "trace"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 16,
+    "kind": "case",
+    "label": "Charlie_Commit",
+    "status": "trace"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 17,
+    "kind": "solve",
+    "label": "CharlieWait( r.1, ~g ) \u25b6\u2080 #l",
+    "status": "trace"
+   },
+   {
+    "i": 19,
+    "p": 18,
+    "d": 18,
+    "kind": "case",
+    "label": "Charlie_Announce",
+    "status": "trace"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 19,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'C', <'accept', ~r, bA.2> ) \u25b6\u2081 #l",
+    "status": "trace"
+   },
+   {
+    "i": 21,
+    "p": 20,
+    "d": 20,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 21,
+    "kind": "solve",
+    "label": "!KU( mac(<'B', 'A', 'basis', ~r, bB, test(~g)>, ~k) ) @ #vk.11",
+    "status": "trace"
+   },
+   {
+    "i": 23,
+    "p": 22,
+    "d": 22,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 23,
+    "kind": "solve",
+    "label": "!KU( mac(<'C', 'A', 'basis', ~r, bC, test(~g)>, ~k.1) ) @ #vk.29",
+    "status": "trace"
+   },
+   {
+    "i": 25,
+    "p": 24,
+    "d": 24,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 25,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', 'accept', ~r, bA.1>, ~k.2) ) @ #vk.32",
+    "status": "trace"
+   },
+   {
+    "i": 27,
+    "p": 26,
+    "d": 26,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 28,
+    "p": 27,
+    "d": 27,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'C', 'accept', ~r, bA.1>, ~k.3) ) @ #vk.35",
+    "status": "trace"
+   },
+   {
+    "i": 29,
+    "p": 28,
+    "d": 28,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 30,
+    "p": 29,
+    "d": 29,
+    "kind": "solve",
+    "label": "!KU( ~r ) @ #vk.20",
+    "status": "trace"
+   },
+   {
+    "i": 31,
+    "p": 30,
+    "d": 30,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 32,
+    "p": 31,
+    "d": 31,
+    "kind": "solve",
+    "label": "!KU( ~bB ) @ #vk.27",
+    "status": "trace"
+   },
+   {
+    "i": 33,
+    "p": 32,
+    "d": 32,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "trace"
+   },
+   {
+    "i": 34,
+    "p": 33,
+    "d": 33,
+    "kind": "solve",
+    "label": "!KU( ~bC ) @ #vk.31",
+    "status": "trace"
+   },
+   {
+    "i": 35,
+    "p": 34,
+    "d": 34,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 36,
+    "p": 35,
+    "d": 35,
+    "kind": "solve",
+    "label": "!KU( ~bA ) @ #vk.33",
+    "status": "trace"
+   },
+   {
+    "i": 37,
+    "p": 36,
+    "d": 36,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 38,
+    "p": 37,
+    "d": 37,
+    "kind": "solve",
+    "label": "!KU( test(~g) ) @ #vk.31",
+    "status": "trace"
+   },
+   {
+    "i": 39,
+    "p": 38,
+    "d": 38,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "trace"
+   },
+   {
+    "i": 40,
+    "p": 39,
+    "d": 39,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_CKA_group_bound_SL2-AS0-CL0-A1-C1-NB_executable-Alice_Commit-Alice_Measure-Chan_AuthIn-Chan_AuthIn-Bob_Commit-Bob_Announce-Chan_AuthIn-Charlie_Commit-Charlie_Announce-Chan_AuthIn-Chan_AuthOut_case_3-Chan_AuthOut_case_3-Chan_AuthOut_case_3-Chan_AuthOut_case_3-Chan_AuthOut_case_1-Chan_AuthOut_case_2-Chan_AuthOut_case_3-Chan_AuthOut_case_3-Chan_AuthOut_case_2",
+  "lanes": [
+   "alice",
+   "bob",
+   "charlie",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr.1",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_GHZ",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.3",
+    "t": 1,
+    "lane": "channel",
+    "rule": "Chan_Keys",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.5",
+    "t": 2,
+    "lane": "channel",
+    "rule": "Chan_Keys",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.9",
+    "t": 3,
+    "lane": "channel",
+    "rule": "Chan_Keys",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.13",
+    "t": 4,
+    "lane": "channel",
+    "rule": "Chan_Keys",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 5,
+    "lane": "alice",
+    "rule": "Alice_Measure",
+    "kind": "rule",
+    "actions": [
+     "Create( 'A', ~r )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.7",
+    "t": 6,
+    "lane": "bob",
+    "rule": "Bob_Measure",
+    "kind": "rule",
+    "actions": [
+     "Create( 'B', ~r )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.11",
+    "t": 7,
+    "lane": "charlie",
+    "rule": "Charlie_Measure",
+    "kind": "rule",
+    "actions": [
+     "Create( 'C', ~r )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.6",
+    "t": 8,
+    "lane": "bob",
+    "rule": "Bob_Announce",
+    "kind": "rule",
+    "actions": [
+     "Running( 'B', 'A', key(~g) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.10",
+    "t": 9,
+    "lane": "charlie",
+    "rule": "Charlie_Announce",
+    "kind": "rule",
+    "actions": [
+     "Running( 'C', 'A', key(~g) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.14",
+    "t": 10,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.18",
+    "t": 11,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vl",
+    "t": 12,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'B', 'A', <'basis', ~r, ~bB, test(~g)>, mac(<'B', 'A', 'basis', ~r, ~bB, \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vl.1",
+    "t": 13,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'C', 'A', 'basis', ~r, ~bC, \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.15",
+    "t": 14,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', <'basis', ~r, ~bB, test(~g)>, mac(<'B', 'A', 'basis', ~r, ~bB, test(\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.19",
+    "t": 15,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', <'basis', ~r, ~bC, test(~g)>, mac(<'C', 'A', 'basis', ~r, ~bC, test(\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.16",
+    "t": 16,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <<'basis', ~r, ~bB, test(~g)>, mac(<'B', 'A', 'basis', ~r, ~bB, test(~g)>,\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.20",
+    "t": 17,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <<'basis', ~r, ~bC, test(~g)>, mac(<'C', 'A', 'basis', ~r, ~bC, test(~g)>,\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 18,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'B', 'A', 'basis', ~r, ~bB, test(~g)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.30",
+    "t": 19,
+    "lane": "attacker",
+    "rule": "Destrd_0_fst",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'basis', ~r, ~bB, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 20,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'C', 'A', 'basis', ~r, ~bC, test(~g)>, ~k.1) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.35",
+    "t": 21,
+    "lane": "attacker",
+    "rule": "Destrd_0_fst",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'basis', ~r, ~bC, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.31",
+    "t": 22,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~r, ~bB, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.36",
+    "t": 23,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~r, ~bC, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.4",
+    "t": 24,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~r )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.33",
+    "t": 25,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~bB, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.37",
+    "t": 26,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~bC, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.5",
+    "t": 27,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~bB )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.8",
+    "t": 28,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( test(~g) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.6",
+    "t": 29,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~bC )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.3",
+    "t": 30,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'B', 'A', <'basis', ~r, ~bB, test(~g)>, mac(<'B', 'A', 'basis', ~r, ~bB, t\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.5",
+    "t": 31,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'C', 'A', 'basis', ~r, ~bC, t\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.2",
+    "t": 32,
+    "lane": "channel",
+    "rule": "Chan_AuthIn",
+    "kind": "rule",
+    "actions": [
+     "Eq( mac(<'B', 'A', 'basis', ~r, ~bB, test(~g)>, ~k), mac(<'B', 'A', 'basis', ~r\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.4",
+    "t": 33,
+    "lane": "channel",
+    "rule": "Chan_AuthIn",
+    "kind": "rule",
+    "actions": [
+     "Eq( mac(<'C', 'A', 'basis', ~r, ~bC, test(~g)>, ~k.1), mac(<'C', 'A', 'basis', \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 34,
+    "lane": "alice",
+    "rule": "Alice_Commit",
+    "kind": "rule",
+    "actions": [
+     "Commit( 'A', 'B', key(~g) )",
+     "Commit( 'A', 'C', key(~g) )",
+     "AliceKey( key(~g) )",
+     "Running( 'A', 'B', key(~g) )",
+     "Running( 'A', 'C', key(~g) )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.22",
+    "t": 35,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.26",
+    "t": 36,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vl.2",
+    "t": 37,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', 'B', <'accept', ~r, ~bA>, mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vl.3",
+    "t": 38,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', 'C', <'accept', ~r, ~bA>, mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.23",
+    "t": 39,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'B', <'accept', ~r, ~bA>, mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.27",
+    "t": 40,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'C', <'accept', ~r, ~bA>, mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.24",
+    "t": 41,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <<'accept', ~r, ~bA>, mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2) >)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.28",
+    "t": 42,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <<'accept', ~r, ~bA>, mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3) >)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 43,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.39",
+    "t": 44,
+    "lane": "attacker",
+    "rule": "Destrd_0_fst",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'accept', ~r, ~bA> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.3",
+    "t": 45,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.40",
+    "t": 46,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~r, ~bA> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.7",
+    "t": 47,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~bA )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.8",
+    "t": 48,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'A', 'B', <'accept', ~r, ~bA>, mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.11",
+    "t": 49,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'A', 'C', <'accept', ~r, ~bA>, mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.8",
+    "t": 50,
+    "lane": "channel",
+    "rule": "Chan_AuthIn",
+    "kind": "rule",
+    "actions": [
+     "Eq( mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2), mac(<'A', 'B', 'accept', ~r, ~bA>\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.12",
+    "t": 51,
+    "lane": "channel",
+    "rule": "Chan_AuthIn",
+    "kind": "rule",
+    "actions": [
+     "Eq( mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3), mac(<'A', 'C', 'accept', ~r, ~bA>\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 52,
+    "lane": "bob",
+    "rule": "Bob_Commit",
+    "kind": "rule",
+    "actions": [
+     "Commit( 'B', 'A', key(~g) )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#l",
+    "t": 53,
+    "lane": "charlie",
+    "rule": "Charlie_Commit",
+    "kind": "rule",
+    "actions": [
+     "Commit( 'C', 'A', key(~g) )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vr.1",
+    "to": "#vr",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 5,
+    "fact": "GHZ_A",
+    "label": "GHZ_A( ~r, ~g )",
+    "full": "GHZ_A( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#vr.7",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 6,
+    "fact": "GHZ_B",
+    "label": "GHZ_B( ~r, ~g )",
+    "full": "GHZ_B( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#vr.11",
+    "fromLane": "channel",
+    "toLane": "charlie",
+    "t": 7,
+    "fact": "GHZ_C",
+    "label": "GHZ_C( ~r, ~g )",
+    "full": "GHZ_C( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.6",
+    "to": "#vr.14",
+    "fromLane": "bob",
+    "toLane": "channel",
+    "t": 10,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'B', 'A', <'basis', ~r, ~bB, test(~g)\u2026",
+    "full": "Out_Auth( 'B', 'A', <'basis', ~r, ~bB, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.10",
+    "to": "#vr.18",
+    "fromLane": "charlie",
+    "toLane": "channel",
+    "t": 11,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)\u2026",
+    "full": "Out_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.14",
+    "to": "#vl",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 12,
+    "fact": "Out",
+    "label": "Out( <'B', 'A', <'basis', ~r, ~bB, test(~g)>, m\u2026",
+    "full": "Out( <'B', 'A', <'basis', ~r, ~bB, test(~g)>, mac(<'B', 'A', 'basis', ~r, ~bB, test(~g)>, ~k)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.18",
+    "to": "#vl.1",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 13,
+    "fact": "Out",
+    "label": "Out( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, m\u2026",
+    "full": "Out( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'C', 'A', 'basis', ~r, ~bC, test(~g)>, ~k.1)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.3",
+    "to": "#vr.2",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 32,
+    "fact": "In",
+    "label": "In( <'B', 'A', <'basis', ~r, ~bB, test(~g)>, ma\u2026",
+    "full": "In( <'B', 'A', <'basis', ~r, ~bB, test(~g)>, mac(<'B', 'A', 'basis', ~r, ~bB, test(~g)>, ~k)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.5",
+    "to": "#vr.4",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 33,
+    "fact": "In",
+    "label": "In( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, ma\u2026",
+    "full": "In( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'C', 'A', 'basis', ~r, ~bC, test(~g)>, ~k.1)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.2",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 34,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'B', 'A', <'basis', ~r, ~bB, test(~g)>\u2026",
+    "full": "In_Auth( 'B', 'A', <'basis', ~r, ~bB, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.4",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 34,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)>\u2026",
+    "full": "In_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vr.22",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 35,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'A', 'B', <'accept', ~r, ~bA> )",
+    "full": "Out_Auth( 'A', 'B', <'accept', ~r, ~bA> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vr.26",
+    "fromLane": "alice",
+    "toLane": "channel",
+    "t": 36,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'A', 'C', <'accept', ~r, ~bA> )",
+    "full": "Out_Auth( 'A', 'C', <'accept', ~r, ~bA> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.22",
+    "to": "#vl.2",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 37,
+    "fact": "Out",
+    "label": "Out( <'A', 'B', <'accept', ~r, ~bA>, mac(<'A', \u2026",
+    "full": "Out( <'A', 'B', <'accept', ~r, ~bA>, mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.26",
+    "to": "#vl.3",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 38,
+    "fact": "Out",
+    "label": "Out( <'A', 'C', <'accept', ~r, ~bA>, mac(<'A', \u2026",
+    "full": "Out( <'A', 'C', <'accept', ~r, ~bA>, mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.8",
+    "to": "#vr.8",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 50,
+    "fact": "In",
+    "label": "In( <'A', 'B', <'accept', ~r, ~bA>, mac(<'A', '\u2026",
+    "full": "In( <'A', 'B', <'accept', ~r, ~bA>, mac(<'A', 'B', 'accept', ~r, ~bA>, ~k.2)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.11",
+    "to": "#vr.12",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 51,
+    "fact": "In",
+    "label": "In( <'A', 'C', <'accept', ~r, ~bA>, mac(<'A', '\u2026",
+    "full": "In( <'A', 'C', <'accept', ~r, ~bA>, mac(<'A', 'C', 'accept', ~r, ~bA>, ~k.3)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.8",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 52,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'A', 'B', <'accept', ~r, ~bA> )",
+    "full": "In_Auth( 'A', 'B', <'accept', ~r, ~bA> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.12",
+    "to": "#l",
+    "fromLane": "channel",
+    "toLane": "charlie",
+    "t": 53,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'A', 'C', <'accept', ~r, ~bA> )",
+    "full": "In_Auth( 'A', 'C', <'accept', ~r, ~bA> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   }
+  ],
+  "violation": [
+   "#i",
+   "#j",
+   "#l"
+  ],
+  "size": 54
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory CKA_group_bound] Theory loaded\n[Theory CKA_group_bound] Theory translated\n[Theory CKA_group_bound] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/cka_group_bound.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/0d965b97e6767df8f3d2bdc196358ccc4e9dd7c59ce9e34ccf04e881e5803226.spthy\n  processing time: 8.23s\n  \n  executable (exists-trace): verified (21 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  agreement_AB (all-traces): analysis incomplete (1 steps)\n  agreement_AC (all-traces): analysis incomplete (1 steps)\n  aliveness (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "cka_group_bound.spthy"
+}

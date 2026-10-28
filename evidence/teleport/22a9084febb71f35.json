@@ -1,0 +1,264 @@
+{
+ "id": "22a9084febb71f35",
+ "protocol": "teleport",
+ "options": {
+  "auth": false,
+  "trusted_source": false
+ },
+ "label": "no MAC / attacker source",
+ "lemma": "state_secret",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 5,
+ "seconds": 0.2,
+ "wall": 0.29,
+ "timed_out": false,
+ "hash": "036c07c1b2e49d43bdadd2061b8b7a0763e9db83335ec4b6531b9fcb9eaa514c",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 9,
+  "depth": 7,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairA( sid, e ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!KU( ~psi ) @ #vk",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "!KU( half(e) ) @ #vk.4",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "c_half",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_Teleport_plain_evesource_SL2-AS0-CL0-A1-C1-NB_state_secret-Eve_Source-Alice_Teleport-c_half",
+  "lanes": [
+   "alice",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vk.3",
+    "t": 0,
+    "lane": "attacker",
+    "rule": "!KU( sid )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.4",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( e )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( e )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <sid, e> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Constrc_half",
+    "kind": "attacker",
+    "actions": [
+     "!KU( half(e) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 4,
+    "lane": "channel",
+    "rule": "Eve_Source",
+    "kind": "rule",
+    "actions": [
+     "SourcePair( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 5,
+    "lane": "alice",
+    "rule": "Alice_Teleport",
+    "kind": "rule",
+    "actions": [
+     "Teleported( 'A', ~psi )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vl",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <sid, bm(~psi, e)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.2",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Destrd_1_recover",
+    "kind": "attacker",
+    "actions": [
+     "!KD( ~psi )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 8,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~psi )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 9,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( ~psi )"
+    ],
+    "violation": false
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vf.1",
+    "to": "#vr",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 4,
+    "fact": "In",
+    "label": "In( <sid, e> )",
+    "full": "In( <sid, e> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 5,
+    "fact": "PairA",
+    "label": "PairA( sid, e )",
+    "full": "PairA( sid, e )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vl",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 6,
+    "fact": "Out",
+    "label": "Out( <sid, bm(~psi, e)> )",
+    "full": "Out( <sid, bm(~psi, e)> )",
+    "channel": "public",
+    "relation": "default"
+   }
+  ],
+  "violation": [
+   "#i"
+  ],
+  "size": 10
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Teleport_plain_evesource] Theory loaded\n[Theory Teleport_plain_evesource] Theory translated\n[Theory Teleport_plain_evesource] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/teleport_plain_evesource.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/a33450fd0df01d8eef288e0ffd1729bba6d94676695954333d5aa7ee45643532.spthy\n  processing time: 0.20s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  state_secret (all-traces): falsified - found trace (5 steps)\n  state_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "teleport_plain_evesource.spthy"
+}

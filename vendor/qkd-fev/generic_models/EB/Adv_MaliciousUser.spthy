@@ -1,11 +1,11 @@
-/* Authenticated Classical Channel rules */
+CM2_ELSE(<!include(generic_models/common/CM/cm2_EB_MaliciousUser.spthy)!>,<!/* Authenticated Classical Channel rules */
 rule ChanOut_Auth:
 [ Out_Auth(roleA,roleB,msg,type) ]--[ AChanOut(roleA,<msg,type>) ]->
 [ !Auth(roleA,roleB,msg,type)]
 
 rule ChanIn_Auth:
 [ !Auth(roleA,roleB,msg,type)]--[ AChanIn(roleA,roleB,<msg,type>) ]->
-[ In_Auth(roleA,roleB,msg,type) ]
+[ In_Auth(roleA,roleB,msg,type) ]!>)
 
 
 /* Session Setup rules */
@@ -104,10 +104,10 @@ rule Chan_In_Forward_B:
 /* Malicious User Rules */
 //// Eve Session Rules
 rule Session_Eve_A:
-[SessionA('E',Y,~sid_eb)] -->[SessEB('E',Y,~sid_eb), !AuthSession('E',psk(~sid_eb))]
+[SessionA('E',Y,~sid_eb)] -->[SessEB('E',Y,~sid_eb), !AuthSession('E',psk(~sid_eb)CM2_ONLY(<!,'initiator'!>))]
    
 rule Session_Eve_B:
-[SessionB(X,'E',~sid_ae)] -->[SessAE(X,'E',~sid_ae), !AuthSession('E',psk(~sid_ae))]
+[SessionB(X,'E',~sid_ae)] -->[SessAE(X,'E',~sid_ae), !AuthSession('E',psk(~sid_ae)CM2_ONLY(<!,'responder'!>))]
 
 // //// Eve Quantum Rules
 // rule Eve_forward_qA:

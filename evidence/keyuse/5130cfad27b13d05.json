@@ -1,0 +1,90 @@
+{
+ "id": "5130cfad27b13d05",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "tls",
+  "authorize_slave": true,
+  "keyid_transport": "authenticated",
+  "consume": false,
+  "reuse_guard": true
+ },
+ "label": "TLS / authorized slave / MAC'd key ID / persistent pool / single use",
+ "lemma": "delivered_to_authorized",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 4,
+ "seconds": 0.79,
+ "wall": 0.9,
+ "timed_out": false,
+ "hash": "2173856635f4c41b29fbaab637eee0a6f90769580313de5ab1b4648be3c123e8",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:54:45",
+ "proof": {
+  "size": 7,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "!KMEPoolB( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!Authz( ~kid, sae ) \u25b6\u2082 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_tls_authz_macid_persist_once] Theory loaded\n[Theory KeyUse_tls_authz_macid_persist_once] Theory translated\n[Theory KeyUse_tls_authz_macid_persist_once] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_tls_true_authenticated_false_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/882075b7a40f17ce5c78679fdf1a4226b421446d95bad816fa70eb02e72a2fd0.spthy\n  processing time: 0.79s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): verified (4 steps)\n  single_delivery (all-traces): analysis incomplete (1 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_tls_true_authenticated_false_true.spthy"
+}

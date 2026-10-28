@@ -1,0 +1,397 @@
+{
+ "id": "8d03de6247015695",
+ "protocol": "qss",
+ "options": {
+  "dealer_order": "last",
+  "dishonest": "charlie"
+ },
+ "label": "dealer last / dishonest Charlie",
+ "lemma": "executable",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "exists-trace",
+ "steps": 8,
+ "seconds": 0.85,
+ "wall": 0.92,
+ "timed_out": false,
+ "hash": "bc6d9e9ba5dd72ca6ff89c7114861d90f28528472735b6b213275889d530a0ec",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 15,
+  "depth": 13,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "GHZ_A( r, g ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "BobAnnounced( ~r, ~g ) \u25b6\u2080 #j",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Bob_Announce",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "CShare( ~r, shareC(secret(~g)) ) \u25b6\u2080 #k",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Charlie_Measure",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "CHasB( ~r, shareB(secret(~g)) ) \u25b6\u2081 #k",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Charlie_Receive",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', ~r, bA.1> ) \u25b6\u2081 #j",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "In_Auth( 'C', <'basis', ~r, bC> ) \u25b6\u2082 #j",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthIn_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_QSS_last_charlie_SL2-AS0-CL0-A1-C1-NB_executable-Source_GHZ-Bob_Announce-Charlie_Measure-Charlie_Receive-Chan_AuthIn-Chan_AuthIn_case_1",
+  "lanes": [
+   "dealer",
+   "bob",
+   "charlie",
+   "channel"
+  ],
+  "events": [
+   {
+    "id": "#vr",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_GHZ",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 1,
+    "lane": "dealer",
+    "rule": "Dealer_Measure",
+    "kind": "rule",
+    "actions": [
+     "DealerSecret( ~r, secret(~g) )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.2",
+    "t": 2,
+    "lane": "bob",
+    "rule": "Bob_Measure",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.3",
+    "t": 3,
+    "lane": "charlie",
+    "rule": "Charlie_Measure",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.1",
+    "t": 4,
+    "lane": "bob",
+    "rule": "Bob_Announce",
+    "kind": "rule",
+    "actions": [
+     "Announce( ~r, 'B' )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.12",
+    "t": 5,
+    "lane": "charlie",
+    "rule": "Charlie_Announce",
+    "kind": "rule",
+    "actions": [
+     "Announce( ~r, 'C' )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.9",
+    "t": 6,
+    "lane": "dealer",
+    "rule": "Dealer_Announce",
+    "kind": "rule",
+    "actions": [
+     "Announce( ~r, 'A' )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.11",
+    "t": 7,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.8",
+    "t": 8,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 9,
+    "lane": "bob",
+    "rule": "Bob_Reveal",
+    "kind": "rule",
+    "actions": [
+     "BobShared( ~r, shareB(secret(~g)) )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.6",
+    "t": 10,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#k",
+    "t": 11,
+    "lane": "charlie",
+    "rule": "Charlie_Recover",
+    "kind": "rule",
+    "actions": [
+     "CharlieRecovers( ~r, secret(~g) )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "dealer",
+    "t": 1,
+    "fact": "GHZ_A",
+    "label": "GHZ_A( ~r, ~g )",
+    "full": "GHZ_A( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr",
+    "to": "#vr.2",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 2,
+    "fact": "GHZ_B",
+    "label": "GHZ_B( ~r, ~g )",
+    "full": "GHZ_B( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr",
+    "to": "#vr.3",
+    "fromLane": "channel",
+    "toLane": "charlie",
+    "t": 3,
+    "fact": "GHZ_C",
+    "label": "GHZ_C( ~r, ~g )",
+    "full": "GHZ_C( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.12",
+    "to": "#vr.11",
+    "fromLane": "charlie",
+    "toLane": "channel",
+    "t": 7,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'C', <'basis', ~r, ~bC> )",
+    "full": "Out_Auth( 'C', <'basis', ~r, ~bC> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.9",
+    "to": "#vr.8",
+    "fromLane": "dealer",
+    "toLane": "channel",
+    "t": 8,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'A', <'basis', ~r, ~bA> )",
+    "full": "Out_Auth( 'A', <'basis', ~r, ~bA> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.11",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 9,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'C', <'basis', ~r, ~bC> )",
+    "full": "In_Auth( 'C', <'basis', ~r, ~bC> )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#vr.8",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 9,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'A', <'basis', ~r, ~bA> )",
+    "full": "In_Auth( 'A', <'basis', ~r, ~bA> )",
+    "channel": "classical-auth",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#j",
+    "to": "#vr.6",
+    "fromLane": "bob",
+    "toLane": "channel",
+    "t": 10,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'B', <'share', ~r, shareB(secret(~g))\u2026",
+    "full": "Out_Auth( 'B', <'share', ~r, shareB(secret(~g))> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.6",
+    "to": "#k",
+    "fromLane": "channel",
+    "toLane": "charlie",
+    "t": 11,
+    "fact": "CHasB",
+    "label": "CHasB( ~r, shareB(secret(~g)) )",
+    "full": "CHasB( ~r, shareB(secret(~g)) )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   }
+  ],
+  "violation": [
+   "#i",
+   "#j",
+   "#k"
+  ],
+  "size": 12
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory QSS_last_charlie] Theory loaded\n[Theory QSS_last_charlie] Theory translated\n[Theory QSS_last_charlie] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qss_last_charlie.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/77c0083783df2764dc4f6ea8c2ad2879223a7838ba7fbaa01ab91629de95103e.spthy\n  processing time: 0.85s\n  \n  executable (exists-trace): verified (8 steps)\n  outsider_secret (all-traces): analysis incomplete (1 steps)\n  insider_alone (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qss_last_charlie.spthy"
+}

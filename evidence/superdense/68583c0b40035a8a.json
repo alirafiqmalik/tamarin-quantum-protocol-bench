@@ -1,0 +1,249 @@
+{
+ "id": "68583c0b40035a8a",
+ "protocol": "superdense",
+ "options": {
+  "trusted_source": true,
+  "confirm": false
+ },
+ "label": "trusted source / no confirmation",
+ "lemma": "message_integrity",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 6,
+ "seconds": 0.33,
+ "wall": 0.41,
+ "timed_out": false,
+ "hash": "b69c8538abc6ccd0aa3c9101c3d60e252c14053791e056701e304ffbbaa91ac0",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 11,
+  "depth": 9,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairB( sid, hB ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_Pair",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "QIn( ~sid, q ) \u25b6\u2081 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Eve_Inject",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "splitEqs(0)",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "split_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KU( ~sid ) @ #vk.1",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_Pair",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_Superdense_trusted_plain_SL2-AS0-CL0-A1-C1-NB_message_integrity-Source_Pair-Eve_Inject-split_case_1-Source_Pair",
+  "lanes": [
+   "bob",
+   "channel",
+   "eve",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_Pair",
+    "kind": "rule",
+    "actions": [
+     "SourcePair( ~sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( q )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( q )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.2",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <~sid, q> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.1",
+    "t": 4,
+    "lane": "eve",
+    "rule": "Eve_Inject",
+    "kind": "rule",
+    "actions": [
+     "EveInject( ~sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 5,
+    "lane": "bob",
+    "rule": "Bob_Decode",
+    "kind": "rule",
+    "actions": [
+     "Decoded( decodeSD(q, halfB(~e)) )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vr",
+    "to": "#vk",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 2,
+    "fact": "Out",
+    "label": "Out( ~sid )",
+    "full": "Out( ~sid )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#vf.2",
+    "to": "#vr.1",
+    "fromLane": "attacker",
+    "toLane": "eve",
+    "t": 4,
+    "fact": "In",
+    "label": "In( <~sid, q> )",
+    "full": "In( <~sid, q> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 5,
+    "fact": "PairB",
+    "label": "PairB( ~sid, halfB(~e) )",
+    "full": "PairB( ~sid, halfB(~e) )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#i",
+    "fromLane": "eve",
+    "toLane": "bob",
+    "t": 5,
+    "fact": "QIn",
+    "label": "QIn( ~sid, q )",
+    "full": "QIn( ~sid, q )",
+    "channel": "state",
+    "relation": "ProtoFact"
+   }
+  ],
+  "violation": [
+   "#i"
+  ],
+  "size": 6
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Superdense_trusted_plain] Theory loaded\n[Theory Superdense_trusted_plain] Theory translated\n[Theory Superdense_trusted_plain] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/superdense_trusted_plain.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/a1c7790b420660712bb677f1260fbaa3819bd5884e3a0e33da1dddc7251bb218.spthy\n  processing time: 0.33s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): falsified - found trace (6 steps)\n\n==============================================================================",
+ "theory_file": "superdense_trusted_plain.spthy"
+}

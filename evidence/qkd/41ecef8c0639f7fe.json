@@ -1,0 +1,2398 @@
+{
+ "id": "41ecef8c0639f7fe",
+ "protocol": "qkd",
+ "options": {
+  "type": "PM",
+  "adv": "Network",
+  "er": "TWEC",
+  "bo": "SeqB",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": false,
+  "cm2": true
+ },
+ "label": "PM / Network / TWEC / B2A / CM2",
+ "lemma": "secret_key_B",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 148,
+ "seconds": 85.56,
+ "wall": 86.05,
+ "timed_out": false,
+ "hash": "6f3f48f694f49de64e49d5f2e474a8f333074552858a02de97df65efe2438836",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T03:20:25",
+ "proof": {
+  "size": 295,
+  "depth": 23,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "NKeyA( X, 'B', ~sid, EB, NKAB ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Send_FEC",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'B', 'A', sample(siftkey(x, BA(~ba), BB)), 'sample'",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', sample(siftkey(x, BA(~ba), BB)), 'sample' ) \u25b6\u2081 #vr.4",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 6,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', BB(~bb), 'sift' ) \u25b6\u2081 #vr.7",
+    "status": "closed"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 8,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 9,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', BA(~ba), 'sift' ) \u25b6\u2081 #vr.18",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 10,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( Correct(noise(~kab), <FEC(noise(~kab)), FEC(noise(~kab))>) ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 12,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 17,
+    "p": 14,
+    "d": 12,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 19,
+    "p": 14,
+    "d": 12,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 21,
+    "p": 14,
+    "d": 12,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 23,
+    "p": 14,
+    "d": 12,
+    "kind": "case",
+    "label": "c_Correct",
+    "status": "closed"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.26",
+    "status": "closed"
+   },
+   {
+    "i": 25,
+    "p": 24,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 27,
+    "p": 24,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 28,
+    "p": 27,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 29,
+    "p": 24,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 30,
+    "p": 29,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 31,
+    "p": 24,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 32,
+    "p": 31,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 33,
+    "p": 24,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure",
+    "status": "closed"
+   },
+   {
+    "i": 34,
+    "p": 33,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.27",
+    "status": "closed"
+   },
+   {
+    "i": 35,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 36,
+    "p": 35,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 37,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 38,
+    "p": 37,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 39,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 40,
+    "p": 39,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 41,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 42,
+    "p": 41,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 43,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 44,
+    "p": 43,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 45,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 46,
+    "p": 45,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 47,
+    "p": 34,
+    "d": 16,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 48,
+    "p": 47,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( ~ba ) @ #vk.43",
+    "status": "closed"
+   },
+   {
+    "i": 49,
+    "p": 48,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 50,
+    "p": 49,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 51,
+    "p": 48,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 52,
+    "p": 51,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 53,
+    "p": 48,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 54,
+    "p": 53,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 55,
+    "p": 48,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 56,
+    "p": 55,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 57,
+    "p": 24,
+    "d": 14,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 58,
+    "p": 57,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.27",
+    "status": "closed"
+   },
+   {
+    "i": 59,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 60,
+    "p": 59,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 61,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 62,
+    "p": 61,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 63,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 64,
+    "p": 63,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 65,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 66,
+    "p": 65,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 67,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 68,
+    "p": 67,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 69,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 70,
+    "p": 69,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 71,
+    "p": 58,
+    "d": 16,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 72,
+    "p": 71,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( ~ba ) @ #vk.43",
+    "status": "closed"
+   },
+   {
+    "i": 73,
+    "p": 72,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 74,
+    "p": 73,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 75,
+    "p": 72,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 76,
+    "p": 75,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 77,
+    "p": 72,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 78,
+    "p": 77,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 79,
+    "p": 72,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 80,
+    "p": 79,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 81,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 82,
+    "p": 81,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', sample(siftkey(x, BA(~ba), BB)), 'sample' ) \u25b6\u2081 #vr.4",
+    "status": "closed"
+   },
+   {
+    "i": 83,
+    "p": 82,
+    "d": 6,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 84,
+    "p": 83,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', BB(~bb), 'sift' ) \u25b6\u2081 #vr.7",
+    "status": "closed"
+   },
+   {
+    "i": 85,
+    "p": 84,
+    "d": 8,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 86,
+    "p": 85,
+    "d": 9,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', BA(~ba), 'sift' ) \u25b6\u2081 #vr.19",
+    "status": "closed"
+   },
+   {
+    "i": 87,
+    "p": 86,
+    "d": 10,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 88,
+    "p": 87,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( Correct(noise(~kab), <FEC(noise(~kab)), FEC(noise(~kab))>) ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 89,
+    "p": 88,
+    "d": 12,
+    "kind": "case",
+    "label": "c_Correct",
+    "status": "closed"
+   },
+   {
+    "i": 90,
+    "p": 89,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( noise(~kab) ) @ #vk.38",
+    "status": "closed"
+   },
+   {
+    "i": 91,
+    "p": 90,
+    "d": 14,
+    "kind": "case",
+    "label": "c_noise",
+    "status": "closed"
+   },
+   {
+    "i": 92,
+    "p": 91,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( ~kab ) @ #vk.39",
+    "status": "closed"
+   },
+   {
+    "i": 93,
+    "p": 92,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 94,
+    "p": 93,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 95,
+    "p": 92,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 96,
+    "p": 95,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 97,
+    "p": 92,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 98,
+    "p": 97,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 99,
+    "p": 92,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 100,
+    "p": 99,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 101,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 102,
+    "p": 101,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( X, 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 103,
+    "p": 102,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 104,
+    "p": 103,
+    "d": 5,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'A', 'B',",
+    "status": "closed"
+   },
+   {
+    "i": 105,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 106,
+    "p": 105,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( X, 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 107,
+    "p": 106,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 108,
+    "p": 107,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', sample(siftkey(x, BA.1, BB(~bb))), 'sample' ) \u25b6\u2081 #vr.4",
+    "status": "closed"
+   },
+   {
+    "i": 109,
+    "p": 108,
+    "d": 6,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 110,
+    "p": 109,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', BA(~ba), 'sift' ) \u25b6\u2081 #vr.7",
+    "status": "closed"
+   },
+   {
+    "i": 111,
+    "p": 110,
+    "d": 8,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 112,
+    "p": 111,
+    "d": 9,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', sample(siftkey(x, BA(~ba), BB(~bb))), 'sample' ) \u25b6\u2081 #vr.17",
+    "status": "closed"
+   },
+   {
+    "i": 113,
+    "p": 112,
+    "d": 10,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 114,
+    "p": 113,
+    "d": 11,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', BB(~bb), 'sift' ) \u25b6\u2081 #vr.19",
+    "status": "closed"
+   },
+   {
+    "i": 115,
+    "p": 114,
+    "d": 12,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 116,
+    "p": 115,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( ~kab ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 117,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 118,
+    "p": 117,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 119,
+    "p": 118,
+    "d": 16,
+    "kind": "case",
+    "label": "QChan_Adv_Measure",
+    "status": "closed"
+   },
+   {
+    "i": 120,
+    "p": 119,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 121,
+    "p": 120,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 122,
+    "p": 121,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 123,
+    "p": 120,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 124,
+    "p": 123,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 125,
+    "p": 120,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 126,
+    "p": 125,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.50 )",
+    "status": "closed"
+   },
+   {
+    "i": 127,
+    "p": 118,
+    "d": 16,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 128,
+    "p": 127,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 129,
+    "p": 128,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 130,
+    "p": 129,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 131,
+    "p": 128,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 132,
+    "p": 131,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 133,
+    "p": 128,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 134,
+    "p": 133,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.50 )",
+    "status": "closed"
+   },
+   {
+    "i": 135,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 136,
+    "p": 135,
+    "d": 15,
+    "kind": "solve",
+    "label": "(#vr.33, 0) ~~> (#vk, 0)",
+    "status": "closed"
+   },
+   {
+    "i": 137,
+    "p": 136,
+    "d": 16,
+    "kind": "case",
+    "label": "Var_fresh_kab",
+    "status": "closed"
+   },
+   {
+    "i": 138,
+    "p": 137,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 139,
+    "p": 138,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 140,
+    "p": 139,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 141,
+    "p": 138,
+    "d": 18,
+    "kind": "case",
+    "label": "QChan_Adv_Measure",
+    "status": "closed"
+   },
+   {
+    "i": 142,
+    "p": 141,
+    "d": 19,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 143,
+    "p": 142,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 144,
+    "p": 143,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 145,
+    "p": 142,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 146,
+    "p": 145,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 147,
+    "p": 142,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 148,
+    "p": 147,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 149,
+    "p": 142,
+    "d": 20,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 150,
+    "p": 149,
+    "d": 21,
+    "kind": "solve",
+    "label": "!KU( ~ba ) @ #vk.49",
+    "status": "closed"
+   },
+   {
+    "i": 151,
+    "p": 150,
+    "d": 22,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 152,
+    "p": 151,
+    "d": 23,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 153,
+    "p": 138,
+    "d": 18,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 154,
+    "p": 153,
+    "d": 19,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 155,
+    "p": 154,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 156,
+    "p": 155,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 157,
+    "p": 154,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 158,
+    "p": 157,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 159,
+    "p": 154,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 160,
+    "p": 159,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 161,
+    "p": 154,
+    "d": 20,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 162,
+    "p": 161,
+    "d": 21,
+    "kind": "solve",
+    "label": "!KU( ~ba ) @ #vk.49",
+    "status": "closed"
+   },
+   {
+    "i": 163,
+    "p": 162,
+    "d": 22,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 164,
+    "p": 163,
+    "d": 23,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 165,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 166,
+    "p": 165,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 167,
+    "p": 166,
+    "d": 16,
+    "kind": "case",
+    "label": "QChan_Adv_Measure",
+    "status": "closed"
+   },
+   {
+    "i": 168,
+    "p": 167,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 169,
+    "p": 168,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 170,
+    "p": 169,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 171,
+    "p": 168,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 172,
+    "p": 171,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 173,
+    "p": 168,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 174,
+    "p": 173,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.51 )",
+    "status": "closed"
+   },
+   {
+    "i": 175,
+    "p": 166,
+    "d": 16,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 176,
+    "p": 175,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 177,
+    "p": 176,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 178,
+    "p": 177,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 179,
+    "p": 176,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 180,
+    "p": 179,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 181,
+    "p": 176,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 182,
+    "p": 181,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.51 )",
+    "status": "closed"
+   },
+   {
+    "i": 183,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 184,
+    "p": 183,
+    "d": 15,
+    "kind": "solve",
+    "label": "(#vr.39, 0) ~~> (#vk, 0)",
+    "status": "closed"
+   },
+   {
+    "i": 185,
+    "p": 184,
+    "d": 16,
+    "kind": "case",
+    "label": "Var_fresh_kab",
+    "status": "closed"
+   },
+   {
+    "i": 186,
+    "p": 185,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 187,
+    "p": 186,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 188,
+    "p": 187,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 189,
+    "p": 186,
+    "d": 18,
+    "kind": "case",
+    "label": "QChan_Adv_Measure",
+    "status": "closed"
+   },
+   {
+    "i": 190,
+    "p": 189,
+    "d": 19,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 191,
+    "p": 190,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 192,
+    "p": 191,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 193,
+    "p": 190,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 194,
+    "p": 193,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 195,
+    "p": 190,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 196,
+    "p": 195,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 197,
+    "p": 190,
+    "d": 20,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 198,
+    "p": 197,
+    "d": 21,
+    "kind": "solve",
+    "label": "!KU( ~ba ) @ #vk.50",
+    "status": "closed"
+   },
+   {
+    "i": 199,
+    "p": 198,
+    "d": 22,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 200,
+    "p": 199,
+    "d": 23,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 201,
+    "p": 186,
+    "d": 18,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 202,
+    "p": 201,
+    "d": 19,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 203,
+    "p": 202,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 204,
+    "p": 203,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 205,
+    "p": 202,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 206,
+    "p": 205,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 207,
+    "p": 202,
+    "d": 20,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 208,
+    "p": 207,
+    "d": 21,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 209,
+    "p": 202,
+    "d": 20,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 210,
+    "p": 209,
+    "d": 21,
+    "kind": "solve",
+    "label": "!KU( ~ba ) @ #vk.50",
+    "status": "closed"
+   },
+   {
+    "i": 211,
+    "p": 210,
+    "d": 22,
+    "kind": "case",
+    "label": "ChanOut_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 212,
+    "p": 211,
+    "d": 23,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 213,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 214,
+    "p": 213,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 215,
+    "p": 214,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 216,
+    "p": 215,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 217,
+    "p": 214,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 218,
+    "p": 217,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 219,
+    "p": 214,
+    "d": 16,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 220,
+    "p": 219,
+    "d": 17,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.51 )",
+    "status": "closed"
+   },
+   {
+    "i": 221,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 222,
+    "p": 221,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 223,
+    "p": 222,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 224,
+    "p": 223,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 225,
+    "p": 222,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 226,
+    "p": 225,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 227,
+    "p": 222,
+    "d": 16,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 228,
+    "p": 227,
+    "d": 17,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.51 )",
+    "status": "closed"
+   },
+   {
+    "i": 229,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 230,
+    "p": 229,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 231,
+    "p": 230,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 232,
+    "p": 231,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 233,
+    "p": 230,
+    "d": 16,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 234,
+    "p": 233,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 235,
+    "p": 230,
+    "d": 16,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 236,
+    "p": 235,
+    "d": 17,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.50 )",
+    "status": "closed"
+   },
+   {
+    "i": 237,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 238,
+    "p": 237,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 239,
+    "p": 238,
+    "d": 16,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 240,
+    "p": 239,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 241,
+    "p": 240,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 242,
+    "p": 241,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 243,
+    "p": 240,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 244,
+    "p": 243,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 245,
+    "p": 240,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 246,
+    "p": 245,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.52 )",
+    "status": "closed"
+   },
+   {
+    "i": 247,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 248,
+    "p": 247,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 249,
+    "p": 248,
+    "d": 16,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 250,
+    "p": 249,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 251,
+    "p": 250,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 252,
+    "p": 251,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 253,
+    "p": 250,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 254,
+    "p": 253,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 255,
+    "p": 250,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 256,
+    "p": 255,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.51 )",
+    "status": "closed"
+   },
+   {
+    "i": 257,
+    "p": 116,
+    "d": 14,
+    "kind": "case",
+    "label": "QChan_Adv_Measure_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 258,
+    "p": 257,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( key(noise(~kab), BA(~ba)) ) @ #vk.22",
+    "status": "closed"
+   },
+   {
+    "i": 259,
+    "p": 258,
+    "d": 16,
+    "kind": "case",
+    "label": "c_key",
+    "status": "closed"
+   },
+   {
+    "i": 260,
+    "p": 259,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( BA(~ba) ) @ #vk.23",
+    "status": "closed"
+   },
+   {
+    "i": 261,
+    "p": 260,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 262,
+    "p": 261,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 263,
+    "p": 260,
+    "d": 18,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 264,
+    "p": 263,
+    "d": 19,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 265,
+    "p": 260,
+    "d": 18,
+    "kind": "case",
+    "label": "c_BA",
+    "status": "closed"
+   },
+   {
+    "i": 266,
+    "p": 265,
+    "d": 19,
+    "kind": "leaf",
+    "label": "solve( !KU( ~ba ) @ #vk.50 )",
+    "status": "closed"
+   },
+   {
+    "i": 267,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Send_REC_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 268,
+    "p": 267,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 269,
+    "p": 268,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 270,
+    "p": 269,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', sample(siftkey(x, BA, BB(~bb))), 'sample' ) \u25b6\u2081 #vr.4",
+    "status": "closed"
+   },
+   {
+    "i": 271,
+    "p": 270,
+    "d": 6,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 272,
+    "p": 271,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', BA(~ba), 'sift' ) \u25b6\u2081 #vr.7",
+    "status": "closed"
+   },
+   {
+    "i": 273,
+    "p": 272,
+    "d": 8,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 274,
+    "p": 273,
+    "d": 9,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', sample(siftkey(x, BA(~ba), BB(~bb))), 'sample' ) \u25b6\u2081 #vr.18",
+    "status": "closed"
+   },
+   {
+    "i": 275,
+    "p": 274,
+    "d": 10,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 276,
+    "p": 275,
+    "d": 11,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', BB(~bb), 'sift' ) \u25b6\u2081 #vr.20",
+    "status": "closed"
+   },
+   {
+    "i": 277,
+    "p": 276,
+    "d": 12,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 278,
+    "p": 277,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( ~k ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 279,
+    "p": 278,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 280,
+    "p": 279,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( noise(~k) ) @ #vk.44",
+    "status": "closed"
+   },
+   {
+    "i": 281,
+    "p": 280,
+    "d": 16,
+    "kind": "case",
+    "label": "c_noise",
+    "status": "closed"
+   },
+   {
+    "i": 282,
+    "p": 281,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 283,
+    "p": 278,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 284,
+    "p": 283,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( noise(~k) ) @ #vk.44",
+    "status": "closed"
+   },
+   {
+    "i": 285,
+    "p": 284,
+    "d": 16,
+    "kind": "case",
+    "label": "c_noise",
+    "status": "closed"
+   },
+   {
+    "i": 286,
+    "p": 285,
+    "d": 17,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 287,
+    "p": 278,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 288,
+    "p": 287,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( psk(~sid) ) @ #vk.44",
+    "status": "closed"
+   },
+   {
+    "i": 289,
+    "p": 288,
+    "d": 16,
+    "kind": "case",
+    "label": "c_psk",
+    "status": "closed"
+   },
+   {
+    "i": 290,
+    "p": 289,
+    "d": 17,
+    "kind": "leaf",
+    "label": "solve( !KU( ~sid ) @ #vk.47 )",
+    "status": "closed"
+   },
+   {
+    "i": 291,
+    "p": 278,
+    "d": 14,
+    "kind": "case",
+    "label": "ChanOut_Auth_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 292,
+    "p": 291,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( psk(~sid) ) @ #vk.44",
+    "status": "closed"
+   },
+   {
+    "i": 293,
+    "p": 292,
+    "d": 16,
+    "kind": "case",
+    "label": "c_psk",
+    "status": "closed"
+   },
+   {
+    "i": 294,
+    "p": 293,
+    "d": 17,
+    "kind": "leaf",
+    "label": "solve( !KU( ~sid ) @ #vk.46 )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory PM_protocol] Theory loaded\n[Theory PM_protocol] Theory translated\n[Theory PM_protocol] Theory closed\n[Open Chains] Too many chain constraints, stopping precomputation. Open Chains limits (can be changed with -c=): 10\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_PM_Network_TWEC_SeqB_true_true_true_cm2.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/b89ec16a1713375c947b2588103e8e72d62930266b87682609a305ae53308b03.spthy\n  processing time: 85.56s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): verified (148 steps)\n  aliveness_A (all-traces): analysis incomplete (1 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_PM_Network_TWEC_SeqB_true_true_true_cm2.spthy"
+}

@@ -1,0 +1,103 @@
+{
+ "id": "5985c315f57f5ef4",
+ "protocol": "qss",
+ "options": {
+  "dealer_order": "first",
+  "dishonest": "none"
+ },
+ "label": "dealer first / honest parties",
+ "lemma": "insider_alone",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 5,
+ "seconds": 0.63,
+ "wall": 0.72,
+ "timed_out": false,
+ "hash": "e35202523db1b2e6ac99acf8b41bb326c50942731b6699bd0145e9395fd7e15d",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 9,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "CShare( r, shareC(secret(g)) ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Charlie_Measure_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "CHasB( ~r, shareB(secret(~g)) ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Charlie_Receive",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 7,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Charlie_Measure_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 3,
+    "kind": "leaf",
+    "label": "solve( CHasB( r, shareB(secret(~f)) ) \u25b6\u2081 #i )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory QSS_first_none] Theory loaded\n[Theory QSS_first_none] Theory translated\n[Theory QSS_first_none] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qss_first_none.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/ebaf731a648a7ad34316896936d9a76c2c823430e91029fb8f53d762f0cccf9a.spthy\n  processing time: 0.63s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  outsider_secret (all-traces): analysis incomplete (1 steps)\n  insider_alone (all-traces): verified (5 steps)\n\n==============================================================================",
+ "theory_file": "qss_first_none.spthy"
+}

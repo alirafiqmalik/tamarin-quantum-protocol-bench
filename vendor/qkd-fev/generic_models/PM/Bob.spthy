@@ -13,16 +13,17 @@ rule Bob_quantum_phase:
    Create_B('A',~sid)
  ]-> 
  [
-   !AuthSession('B',psk(~sid)),
+   !AuthSession('B',psk(~sid)CM2_ONLY(<!,'responder'!>)),
    Measured(X,'B',~sid,KBraw), 
    BobBasis(X,'B',~sid,BB(~bb)), 
-   GetAliceBasis(X,'B',~sid)
+   GetAliceBasis(X,'B',~sid)CM1_ONLY(<!,
+   ToCommitB(X,'B',~sid,KBraw)!>)
  ]
 
 
 // Key Sifting
 rule Bob_Send_BB:
- [ BobBasis(X,'B',~sid,BB) ]
+ [ BobBasis(X,'B',~sid,BB)CM1_ONLY(<!, Bob_Received_CommitA(X,'B',~sid,cA)!>) ]
  --[ Send_BB('B',X,BB) ]->
  [
    Out_Auth('B',X,BB,'sift'), 

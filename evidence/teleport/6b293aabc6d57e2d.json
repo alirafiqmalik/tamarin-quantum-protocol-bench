@@ -1,0 +1,389 @@
+{
+ "id": "6b293aabc6d57e2d",
+ "protocol": "teleport",
+ "options": {
+  "auth": true,
+  "trusted_source": true
+ },
+ "label": "MAC on / trusted source",
+ "lemma": "executable",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "exists-trace",
+ "steps": 9,
+ "seconds": 0.62,
+ "wall": 0.73,
+ "timed_out": false,
+ "hash": "0429d4bd0ac44d7172bb15c5fcd46a99b5186f80426774ac57c37983d3142654",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 17,
+  "depth": 15,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairA( sid, e ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_Pair",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!PSK( k ) \u25b6\u2082 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "PairB( sid.1, e.1 ) \u25b6\u2080 #j",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_Pair",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!PSK( k.1 ) \u25b6\u2083 #j",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( bm(~psi, ~e.1) ) @ #vk.2",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Alice_Teleport_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k.1) ) @ #vk.3",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( ~sid ) @ #vk.3",
+    "status": "trace"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 14,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "trace"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 15,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_Teleport_auth_trusted_SL2-AS0-CL0-A1-C1-NB_executable-Source_Pair-Chan_PSK-Source_Pair-Chan_PSK-Alice_Teleport_case_1-Alice_Teleport-Alice_Teleport",
+  "lanes": [
+   "alice",
+   "bob",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_Pair",
+    "kind": "rule",
+    "actions": [
+     "SourcePair( ~sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.1",
+    "t": 1,
+    "lane": "channel",
+    "rule": "Chan_PSK",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 2,
+    "lane": "alice",
+    "rule": "Alice_Teleport",
+    "kind": "rule",
+    "actions": [
+     "Teleported( 'A', ~psi )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vl",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~sid, bm(~psi, ~e)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 4,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 5,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( bm(~psi, ~e) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.2",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 8,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <~sid, bm(~psi, ~e)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 9,
+    "lane": "bob",
+    "rule": "Bob_Recover",
+    "kind": "rule",
+    "actions": [
+     "Eq( <'A', 'B', ~sid, bm(~psi, ~e)>, <'A', 'B', ~sid, bm(~psi, ~e)>)",
+     "Recovered( 'B', ~psi )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 2,
+    "fact": "PairA",
+    "label": "PairA( ~sid, ~e )",
+    "full": "PairA( ~sid, ~e )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 2,
+    "fact": "!PSK",
+    "label": "!PSK( ~k )",
+    "full": "!PSK( ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vl",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 3,
+    "fact": "Out",
+    "label": "Out( <~sid, bm(~psi, ~e)> )",
+    "full": "Out( <~sid, bm(~psi, ~e)> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#i",
+    "to": "#vk.1",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 4,
+    "fact": "Out",
+    "label": "Out( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k) )",
+    "full": "Out( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k) )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#vf.1",
+    "to": "#j",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 9,
+    "fact": "In",
+    "label": "In( <~sid, bm(~psi, ~e)> )",
+    "full": "In( <~sid, bm(~psi, ~e)> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.2",
+    "to": "#j",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 9,
+    "fact": "In",
+    "label": "In( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k) )",
+    "full": "In( mac(<'A', 'B', ~sid, bm(~psi, ~e)>, ~k) )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 9,
+    "fact": "PairB",
+    "label": "PairB( ~sid, ~e )",
+    "full": "PairB( ~sid, ~e )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 9,
+    "fact": "!PSK",
+    "label": "!PSK( ~k )",
+    "full": "!PSK( ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   }
+  ],
+  "violation": [
+   "#i",
+   "#j"
+  ],
+  "size": 10
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Teleport_auth_trusted] Theory loaded\n[Theory Teleport_auth_trusted] Theory translated\n[Theory Teleport_auth_trusted] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/teleport_auth_trusted.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/a7ffa74239886bb6fadcaa9bd455d7d8ca4ec6ec47e70f5a20977fe3b21baa7b.spthy\n  processing time: 0.62s\n  \n  executable (exists-trace): verified (9 steps)\n  state_secret (all-traces): analysis incomplete (1 steps)\n  state_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "teleport_auth_trusted.spthy"
+}

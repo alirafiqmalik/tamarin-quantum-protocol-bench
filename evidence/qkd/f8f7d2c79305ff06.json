@@ -1,0 +1,110 @@
+{
+ "id": "f8f7d2c79305ff06",
+ "protocol": "qkd",
+ "options": {
+  "type": "PM",
+  "adv": "Network",
+  "er": "REC",
+  "bo": "SeqB",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": false,
+  "cm2": false
+ },
+ "label": "PM / Network / REC / B2A",
+ "lemma": "aliveness_A",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 5,
+ "seconds": 28.16,
+ "wall": 28.46,
+ "timed_out": false,
+ "hash": "88be726b9b755e6e1d1c0c8606a455435cdd5a358fcb3090fa3b8c7dbae071e6",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T03:47:10",
+ "proof": {
+  "size": 9,
+  "depth": 3,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "KeywithErrorA( 'A', B, ~sid, KA ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "leaf",
+    "label": "solve( In_Auth( 'A', 'A', EB, 'error' ) \u25b6\u2081 #i )",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 7,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Paramater_Estimation_NoEve_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 3,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory PM_protocol] Theory loaded\n[Theory PM_protocol] Theory translated\n[Theory PM_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_PM_Network_REC_SeqB_true_true_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/7e5553b5b438790d7e9274b19d85ec230f61652bb9b17c9b52af9b56641fcd22.spthy\n  processing time: 28.16s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): verified (5 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_PM_Network_REC_SeqB_true_true_true.spthy"
+}

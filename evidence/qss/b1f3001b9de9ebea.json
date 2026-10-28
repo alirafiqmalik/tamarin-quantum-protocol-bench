@@ -1,0 +1,183 @@
+{
+ "id": "b1f3001b9de9ebea",
+ "protocol": "qss",
+ "options": {
+  "dealer_order": "last",
+  "dishonest": "charlie"
+ },
+ "label": "dealer last / dishonest Charlie",
+ "lemma": "insider_alone",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 10,
+ "seconds": 0.91,
+ "wall": 1.01,
+ "timed_out": false,
+ "hash": "bc6d9e9ba5dd72ca6ff89c7114861d90f28528472735b6b213275889d530a0ec",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 19,
+  "depth": 9,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "CShare( r, shareC(secret(g)) ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Charlie_Measure_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "CHasB( ~r, shareB(secret(~g)) ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Charlie_Adapt",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', ~r, bA> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Charlie_Receive",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Charlie_Measure_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 3,
+    "kind": "solve",
+    "label": "CHasB( r, shareB(secret(~f)) ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 4,
+    "kind": "case",
+    "label": "Charlie_Adapt",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 5,
+    "kind": "solve",
+    "label": "GHZ_C( r, g ) \u25b6\u2080 #vr.1",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', ~r, bA> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory QSS_last_charlie] Theory loaded\n[Theory QSS_last_charlie] Theory translated\n[Theory QSS_last_charlie] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qss_last_charlie.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/610cb5e9847ccbc3e6b495568924f510aa718f2b68432cadbc9142399c6665de.spthy\n  processing time: 0.91s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  outsider_secret (all-traces): analysis incomplete (1 steps)\n  insider_alone (all-traces): verified (10 steps)\n\n==============================================================================",
+ "theory_file": "qss_last_charlie.spthy"
+}

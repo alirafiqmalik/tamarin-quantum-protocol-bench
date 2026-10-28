@@ -1,0 +1,542 @@
+{
+ "id": "d85ffc5c79e0c773",
+ "protocol": "cka",
+ "options": {
+  "psk_mode": "group",
+  "identity_bound": false
+ },
+ "label": "group key / plain MAC",
+ "lemma": "aliveness",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 11,
+ "seconds": 4.08,
+ "wall": 4.17,
+ "timed_out": false,
+ "hash": "f904bab903cba90866f75530f16e66db99151bb446ac31a0a921fd6c6d75eb07",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:51",
+ "proof": {
+  "size": 21,
+  "depth": 19,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "Commit( 'A', x, k ) @ #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Alice_Commit_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "AliceHas( r, g, bA ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Alice_Measure",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'B', 'A', <'basis', ~r, bB, test(~g)> ) \u25b6\u2081 #i",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'C', 'A', <'basis', ~r, bC, test(~g)> ) \u25b6\u2082 #i",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( mac(<'basis', ~r, bB, test(~g)>, ~k) ) @ #vk.7",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( mac(<'basis', ~r, bC.1, test(~g)>, ~k.1) ) @ #vk.20",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "solve",
+    "label": "!KU( ~r ) @ #vk.10",
+    "status": "trace"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 14,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 15,
+    "kind": "solve",
+    "label": "!KU( ~bC ) @ #vk.12",
+    "status": "trace"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 16,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "trace"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 17,
+    "kind": "solve",
+    "label": "!KU( test(~g) ) @ #vk.13",
+    "status": "trace"
+   },
+   {
+    "i": 19,
+    "p": 18,
+    "d": 18,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "trace"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 19,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_CKA_group_plain_SL2-AS0-CL0-A1-C1-NB_aliveness-Alice_Commit_case_1-Alice_Measure-Chan_AuthIn-Chan_AuthIn-Chan_AuthOut_case_4-Chan_AuthOut_case_4-Chan_AuthOut_case_3-Chan_AuthOut_case_3-Chan_AuthOut_case_4",
+  "lanes": [
+   "alice",
+   "charlie",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr.1",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Source_GHZ",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr.3",
+    "t": 1,
+    "lane": "channel",
+    "rule": "Chan_Keys",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 2,
+    "lane": "alice",
+    "rule": "Alice_Measure",
+    "kind": "rule",
+    "actions": [
+     "Create( 'A', ~r )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.10",
+    "t": 3,
+    "lane": "charlie",
+    "rule": "Charlie_Measure",
+    "kind": "rule",
+    "actions": [
+     "Create( 'C', ~r )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.9",
+    "t": 4,
+    "lane": "charlie",
+    "rule": "Charlie_Announce",
+    "kind": "rule",
+    "actions": [
+     "Running( 'C', 'A', key(~g) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.5",
+    "t": 5,
+    "lane": "channel",
+    "rule": "Chan_AuthOut",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vl",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>,\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.6",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, ~k)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.7",
+    "t": 8,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <<'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, ~k)>)"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 9,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'basis', ~r, ~bC, test(~g)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.11",
+    "t": 10,
+    "lane": "attacker",
+    "rule": "Destrd_0_fst",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <'basis', ~r, ~bC, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.12",
+    "t": 11,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~r, ~bC, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 12,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~r )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.14",
+    "t": 13,
+    "lane": "attacker",
+    "rule": "Destrd_0_snd",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <~bC, test(~g)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 14,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~bC )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.3",
+    "t": 15,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( test(~g) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.3",
+    "t": 16,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'B', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.5",
+    "t": 17,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, \u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.2",
+    "t": 18,
+    "lane": "channel",
+    "rule": "Chan_AuthIn",
+    "kind": "rule",
+    "actions": [
+     "Eq( mac(<'basis', ~r, ~bC, test(~g)>, ~k), mac(<'basis', ~r, ~bC, test(~g)>, ~k\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr.4",
+    "t": 19,
+    "lane": "channel",
+    "rule": "Chan_AuthIn",
+    "kind": "rule",
+    "actions": [
+     "Eq( mac(<'basis', ~r, ~bC, test(~g)>, ~k), mac(<'basis', ~r, ~bC, test(~g)>, ~k\u2026"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 20,
+    "lane": "alice",
+    "rule": "Alice_Commit",
+    "kind": "rule",
+    "actions": [
+     "Commit( 'A', 'B', key(~g) )",
+     "Commit( 'A', 'C', key(~g) )",
+     "AliceKey( key(~g) )",
+     "Running( 'A', 'B', key(~g) )",
+     "Running( 'A', 'C', key(~g) )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vr.1",
+    "to": "#vr",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 2,
+    "fact": "GHZ_A",
+    "label": "GHZ_A( ~r, ~g )",
+    "full": "GHZ_A( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#vr.10",
+    "fromLane": "channel",
+    "toLane": "charlie",
+    "t": 3,
+    "fact": "GHZ_C",
+    "label": "GHZ_C( ~r, ~g )",
+    "full": "GHZ_C( ~r, ~g )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.9",
+    "to": "#vr.5",
+    "fromLane": "charlie",
+    "toLane": "channel",
+    "t": 5,
+    "fact": "Out_Auth",
+    "label": "Out_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)\u2026",
+    "full": "Out_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.5",
+    "to": "#vl",
+    "fromLane": "channel",
+    "toLane": "attacker",
+    "t": 6,
+    "fact": "Out",
+    "label": "Out( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, m\u2026",
+    "full": "Out( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, ~k)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.3",
+    "to": "#vr.2",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 18,
+    "fact": "In",
+    "label": "In( <'B', 'A', <'basis', ~r, ~bC, test(~g)>, ma\u2026",
+    "full": "In( <'B', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, ~k)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.5",
+    "to": "#vr.4",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 19,
+    "fact": "In",
+    "label": "In( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, ma\u2026",
+    "full": "In( <'C', 'A', <'basis', ~r, ~bC, test(~g)>, mac(<'basis', ~r, ~bC, test(~g)>, ~k)>)",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.2",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 20,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'B', 'A', <'basis', ~r, ~bC, test(~g)>\u2026",
+    "full": "In_Auth( 'B', 'A', <'basis', ~r, ~bC, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.4",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 20,
+    "fact": "In_Auth",
+    "label": "In_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)>\u2026",
+    "full": "In_Auth( 'C', 'A', <'basis', ~r, ~bC, test(~g)> )",
+    "channel": "classical-auth",
+    "relation": "ProtoFact"
+   }
+  ],
+  "violation": [
+   "#vr",
+   "#vr.10",
+   "#i"
+  ],
+  "size": 21
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory CKA_group_plain] Theory loaded\n[Theory CKA_group_plain] Theory translated\n[Theory CKA_group_plain] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/cka_group_plain.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/acbc57d35f8575742e5fbecc436d12431df7a4b7d2fba3b48fb592c5b13adfb9.spthy\n  processing time: 4.08s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  agreement_AB (all-traces): analysis incomplete (1 steps)\n  agreement_AC (all-traces): analysis incomplete (1 steps)\n  aliveness (all-traces): falsified - found trace (11 steps)\n\n==============================================================================",
+ "theory_file": "cka_group_plain.spthy"
+}

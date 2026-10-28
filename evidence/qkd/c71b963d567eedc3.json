@@ -1,0 +1,254 @@
+{
+ "id": "c71b963d567eedc3",
+ "protocol": "qkd",
+ "options": {
+  "type": "EB",
+  "adv": "Network",
+  "er": "FEC",
+  "bo": "PostM",
+  "exec": true,
+  "secrecy": true,
+  "auth": true,
+  "cm1": false,
+  "cm2": false
+ },
+ "label": "EB / Network / FEC / unordered",
+ "lemma": "weak_agreement_B",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 14,
+ "seconds": 92.17,
+ "wall": 92.63,
+ "timed_out": false,
+ "hash": "02df2dafbbd38415e5dc8c8fd381ba44877816235b67aabfe67fd380a057280f",
+ "version": "1.12.0",
+ "recorded": "2026-10-28T01:49:52",
+ "proof": {
+  "size": 27,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "KeywithErrorB( A, 'B', ~sid, KB ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 7,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 15,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 17,
+    "p": 16,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 19,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 21,
+    "p": 20,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 23,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Bob_Paramater_Estimation_NoEve_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 3,
+    "kind": "solve",
+    "label": "In_Auth( 'A', 'B', EA, 'error' ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 25,
+    "p": 24,
+    "d": 4,
+    "kind": "case",
+    "label": "ChanIn_Auth",
+    "status": "closed"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory EB_protocol] Theory loaded\n[Theory EB_protocol] Theory translated\n[Theory EB_protocol] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qkd_EB_Network_FEC_PostM_true_true_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/24b867c24f856ff7d6d72612c0a0ba21582045399c1c062529280f4e73ecac40.spthy\n  processing time: 92.17s\n  \n  executability_success (exists-trace): analysis incomplete (1 steps)\n  secret_key_A (all-traces): analysis incomplete (1 steps)\n  secret_key_B (all-traces): analysis incomplete (1 steps)\n  aliveness_A (all-traces): analysis incomplete (1 steps)\n  aliveness_B (all-traces): analysis incomplete (1 steps)\n  weak_agreement_A (all-traces): analysis incomplete (1 steps)\n  weak_agreement_B (all-traces): verified (14 steps)\n  noninjectiveagreement_A (all-traces): analysis incomplete (1 steps)\n  noninjectiveagreement_B (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qkd_EB_Network_FEC_PostM_true_true_true.spthy"
+}

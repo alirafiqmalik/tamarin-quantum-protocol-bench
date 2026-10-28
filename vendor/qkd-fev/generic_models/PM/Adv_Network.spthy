@@ -63,7 +63,7 @@ rule QChan_In_Forward:
 
 
 
-/* Authenticated Classical Channel rules */
+CM2_ELSE(<!include(generic_models/common/CM/cm2_PM_Network.spthy)!>,<!/* Authenticated Classical Channel rules */
 rule ChanOut_Auth:
   let
     tag=mac(msg,key_roleA)
@@ -76,5 +76,5 @@ rule ChanIn_Auth:
   verifymac_tag=verifymac(tag, key_roleB)
   in
 [ !AuthSession(roleB,key_roleB), !Auth(roleA,msg,tag,type), In(<roleA,roleB,msg,tag,type>)]--[ Eq(msg,verifymac_tag), AChanIn(roleA,roleB,<msg,type>) ]->
-[ In_Auth(roleA,roleB,msg,type) ]
+[ In_Auth(roleA,roleB,msg,type) ]!>)
 

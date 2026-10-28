@@ -1,0 +1,90 @@
+{
+ "id": "94bba00cb015bdfe",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "plain",
+  "authorize_slave": true,
+  "keyid_transport": "public",
+  "consume": false,
+  "reuse_guard": false
+ },
+ "label": "plain / authorized slave / public key ID / persistent pool / key reuse",
+ "lemma": "delivered_to_authorized",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 4,
+ "seconds": 0.31,
+ "wall": 0.38,
+ "timed_out": false,
+ "hash": "354c52440b575a77b38d4de163c8b05ddc611b43929c78697371949b0b2dede4",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:56:41",
+ "proof": {
+  "size": 7,
+  "depth": 5,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "!KMEPoolB( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!Authz( ~kid, sae ) \u25b6\u2082 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "KmeA_Deliver",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_plain_authz_pubid_persist_reuse] Theory loaded\n[Theory KeyUse_plain_authz_pubid_persist_reuse] Theory translated\n[Theory KeyUse_plain_authz_pubid_persist_reuse] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_plain_true_public_false_false.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/f387a436894f6e4a4541fe93963e467a27869f51c59a36d31e24dd529eeeec42.spthy\n  processing time: 0.31s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): verified (4 steps)\n  single_delivery (all-traces): analysis incomplete (1 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_plain_true_public_false_false.spthy"
+}

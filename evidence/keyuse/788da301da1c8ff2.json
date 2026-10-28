@@ -1,0 +1,154 @@
+{
+ "id": "788da301da1c8ff2",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "plain",
+  "authorize_slave": false,
+  "keyid_transport": "public",
+  "consume": true,
+  "reuse_guard": true
+ },
+ "label": "plain / bearer key ID / public key ID / consume / single use",
+ "lemma": "single_delivery",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 8,
+ "seconds": 0.42,
+ "wall": 0.52,
+ "timed_out": false,
+ "hash": "765d7b27a21ae4521a0b255ff6deba32a346d9924bd60a58886f11bda880062a",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:57:06",
+ "proof": {
+  "size": 15,
+  "depth": 7,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "(#i < #j)  \u2225 (#j < #i)",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "case_1",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', ~kid, ~k ) \u25b6\u2081 #j",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "case_2",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 3,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', kid, k ) \u25b6\u2081 #i",
+    "status": "closed"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 4,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 5,
+    "kind": "solve",
+    "label": "KMEPool( 'KME_B', ~kid, ~k ) \u25b6\u2081 #j",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_QKD",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_plain_bearer_pubid_consume_once] Theory loaded\n[Theory KeyUse_plain_bearer_pubid_consume_once] Theory translated\n[Theory KeyUse_plain_bearer_pubid_consume_once] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_plain_false_public_true_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/228e1e9a5ef0972df49b96cf9a8f5d43af028c8d2bca5bd5df044e62699852de.spthy\n  processing time: 0.42s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): analysis incomplete (1 steps)\n  single_delivery (all-traces): verified (8 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_plain_false_public_true_true.spthy"
+}

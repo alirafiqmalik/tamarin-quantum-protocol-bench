@@ -1,0 +1,45 @@
+// Countermeasure 1 (this demo's encoding): measurement commitment phase.
+// After the quantum phase each party sends h(raw key) over the authenticated
+// channel with message kind 'commit'. A party may only announce its basis
+// (Alice_Send_BA / Bob_Send_BB) after it has received the peer's commitment:
+// those rules consume Alice_Received_CommitB / Bob_Received_CommitA when the
+// CM-1 flag is on. The ToCommit facts are produced by the quantum-phase rules.
+functions: h/1
+
+rule Alice_Send_CommitA:
+ let
+    cA=h(KAraw)
+ in
+ [ ToCommitA('A',Y,~sid,KAraw) ]
+ --[ Send_CommitA('A',Y,cA) ]->
+ [
+   Out_Auth('A',Y,cA,'commit'),
+   Alice_Sent_CommitA('A',Y,~sid,cA)
+ ]
+
+rule Alice_Receive_CommitB:
+ [
+   Alice_Sent_CommitA('A',Y,~sid,cA),
+   In_Auth(Y,'A',cB,'commit')
+ ]
+ --[ Receive_CommitB(Y,'A',cB) ]->
+ [ Alice_Received_CommitB('A',Y,~sid,cB) ]
+
+rule Bob_Send_CommitB:
+ let
+    cB=h(KBraw)
+ in
+ [ ToCommitB(X,'B',~sid,KBraw) ]
+ --[ Send_CommitB('B',X,cB) ]->
+ [
+   Out_Auth('B',X,cB,'commit'),
+   Bob_Sent_CommitB(X,'B',~sid,cB)
+ ]
+
+rule Bob_Receive_CommitA:
+ [
+   Bob_Sent_CommitB(X,'B',~sid,cB),
+   In_Auth(X,'B',cA,'commit')
+ ]
+ --[ Receive_CommitA(X,'B',cA) ]->
+ [ Bob_Received_CommitA(X,'B',~sid,cA) ]

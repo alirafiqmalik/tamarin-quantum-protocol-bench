@@ -1,47 +1,23 @@
+import argparse
+import difflib
 import json
+import mimetypes
+import queue
 import threading
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
-from bench.assemble import WORK, assemble
-from bench.catalog import CATALOG, HEURISTICS
+from bench import registry
 from bench.learn import learn
-from bench.ml_client import overview, proof_methods
-from bench.prove import LOCK, prove_file
+from bench.manifest import EVIDENCE, environment, load_index, load_record
+from bench.prove import LOCK, WORK, prove_file
 
 ROOT = Path(__file__).resolve().parent
 STATIC = ROOT / "static"
-HOST = "0.0.0.0"
-PORT = 8765
 MAX_THEORY = 200_000
-
-
-def _choices(protocol):
-    found = next(item for item in CATALOG["protocols"] if item["id"] == protocol)
-    spec = {}
-    for field in found["fields"]:
-        if field["kind"] == "choice":
-            spec[field["key"]] = {opt["id"] for opt in field["options"]}
-        else:
-            spec[field["key"]] = "bool"
-    return found, spec
-
-
-def normalize(protocol, raw):
-    _found, spec = _choices(protocol)
-    raw = raw or {}
-    options = {}
-    for key, allowed in spec.items():
-        if allowed == "bool":
-            options[key] = bool(raw.get(key))
-        else:
-            value = raw.get(key)
-            if value not in allowed:
-                raise ValueError(f"Unknown {key}: {value}")
-            options[key] = value
-    return options
+MAX_TIMEOUT = 600
 
 
 def check_theory(text):
@@ -64,9 +40,32 @@ def write_edit(text):
     return path
 
 
+def clamp_timeout(value, default=40):
+    try:
+        timeout = int(value or default)
+    except (TypeError, ValueError):
+        timeout = default
+    return max(5, min(timeout, MAX_TIMEOUT))
+
+
+def resolve_target(body):
+    """Return (path, label, lanes, protocol) for a verify request."""
+    protocol = body.get("protocol")
+    if body.get("theory"):
+        text = check_theory(body["theory"])
+        target = write_edit(text)
+        lanes = registry.lanes(protocol) if protocol in registry.ids() else None
+        return target, "edited theory", lanes, protocol
+    options = registry.normalize(protocol, body.get("options"))
+    _theory, target, label = registry.assemble(protocol, options)
+    return target, label, registry.lanes(protocol), protocol
+
+
 class Handler(BaseHTTPRequestHandler):
+    protocol_version = "HTTP/1.1"
+
     def log_message(self, fmt, *args):
-        print(f"{self.address_string()} {fmt % args}")
+        print(f"{self.address_string()} {fmt % args}", flush=True)
 
     def _json(self, code, payload):
         body = json.dumps(payload).encode()
@@ -76,11 +75,15 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
-    def _file(self, path, content_type):
+    def _file(self, path):
         data = path.read_bytes()
+        kind = mimetypes.guess_type(str(path))[0] or "application/octet-stream"
+        if path.suffix in (".html", ".js", ".css", ".json", ".svg"):
+            kind += "; charset=utf-8"
         self.send_response(200)
-        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Type", kind)
         self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-cache")
         self.end_headers()
         self.wfile.write(data)
 
@@ -89,7 +92,7 @@ class Handler(BaseHTTPRequestHandler):
         if length > MAX_THEORY + 10_000:
             raise ValueError("Request is too large.")
         raw = self.rfile.read(length) if length else b"{}"
-        return json.loads(raw.decode())
+        return json.loads(raw.decode() or "{}")
 
     def _busy(self):
         if not LOCK.acquire(blocking=False):
@@ -97,43 +100,106 @@ class Handler(BaseHTTPRequestHandler):
             return True
         return False
 
+    def _static(self, path):
+        rel = path.lstrip("/") or "index.html"
+        target = (STATIC / rel).resolve()
+        if STATIC.resolve() not in target.parents and target != STATIC.resolve():
+            return False
+        if target.is_file():
+            self._file(target)
+            return True
+        return False
+
     def do_HEAD(self):
-        path = urlparse(self.path).path
-        if path == "/":
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html; charset=utf-8")
-            self.end_headers()
-            return
-        self.send_response(404)
+        self.send_response(200 if urlparse(self.path).path == "/" else 404)
+        self.send_header("Content-Length", "0")
         self.end_headers()
 
     def do_GET(self):
-        path = urlparse(self.path).path
+        parsed = urlparse(self.path)
+        path = parsed.path
         try:
-            if path == "/":
-                self._file(STATIC / "index.html", "text/html; charset=utf-8")
-                return
             if path == "/api/catalog":
-                self._json(200, CATALOG)
+                self._json(200, registry.catalog())
                 return
-            if path == "/api/ml":
-                self._json(200, overview())
+            if path == "/api/environment":
+                self._json(200, environment())
                 return
-            if path.startswith("/static/"):
-                rel = path[len("/static/") :]
-                target = (STATIC / rel).resolve()
-                if STATIC.resolve() not in target.parents and target != STATIC.resolve():
+            if path == "/api/evidence":
+                self._json(200, load_index())
+                return
+            if path.startswith("/api/evidence/"):
+                record = load_record(path.rsplit("/", 1)[1])
+                if record is None:
+                    self._json(404, {"error": "No such record."})
+                else:
+                    self._json(200, record)
+                return
+            if path == "/catalog.json":
+                self._json(200, registry.catalog())
+                return
+            if path.startswith("/evidence/"):
+                rel = path[len("/evidence/"):]
+                target = (EVIDENCE / rel).resolve()
+                if EVIDENCE.resolve() in target.parents and target.is_file():
+                    self._file(target)
+                else:
                     self._json(404, {"error": "Not found."})
-                    return
-                if not target.is_file():
-                    self._json(404, {"error": "Not found."})
-                    return
-                kind = "text/css" if target.suffix == ".css" else "text/javascript"
-                self._file(target, kind)
                 return
-            self._json(404, {"error": "Not found."})
+            if path.startswith("/api/"):
+                self._json(404, {"error": "Not found."})
+                return
+            if self._static(path):
+                return
+            if path.startswith("/static/") and self._static(path[len("/static/"):]):
+                return
+            # SPA fallback
+            self._file(STATIC / "index.html")
         except Exception as exc:
             self._json(500, {"error": str(exc)})
+
+    def _stream_verify(self, body):
+        """Server-sent events: log lines, heartbeat, then the result."""
+        self.send_response(200)
+        self.send_header("Content-Type", "text/event-stream")
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Connection", "close")
+        self.end_headers()
+        events = queue.Queue()
+
+        def emit(kind, payload):
+            events.put((kind, payload))
+
+        def worker():
+            try:
+                heuristic = body.get("heuristic") or "S"
+                timeout = clamp_timeout(body.get("timeout"))
+                lemma = body.get("lemma") or None
+                target, label, lanes, _protocol = resolve_target(body)
+                emit("status", {"label": label, "timeout": timeout})
+                result = prove_file(target, heuristic=heuristic, timeout=timeout, lemma=lemma, lanes=lanes, on_line=lambda line: emit("log", {"line": line}))
+                result["label"] = label
+                emit("result", result)
+            except Exception as exc:
+                emit("error", {"error": str(exc)})
+            finally:
+                LOCK.release()
+                events.put(None)
+
+        threading.Thread(target=worker, daemon=True).start()
+        while True:
+            try:
+                item = events.get(timeout=1.0)
+            except queue.Empty:
+                self.wfile.write(b"event: tick\ndata: {}\n\n")
+                self.wfile.flush()
+                continue
+            if item is None:
+                break
+            kind, payload = item
+            data = json.dumps(payload)
+            self.wfile.write(f"event: {kind}\ndata: {data}\n\n".encode())
+            self.wfile.flush()
 
     def do_POST(self):
         path = urlparse(self.path).path
@@ -141,38 +207,41 @@ class Handler(BaseHTTPRequestHandler):
             body = self._read_json()
             if path == "/api/assemble":
                 protocol = body.get("protocol")
-                options = normalize(protocol, body.get("options"))
-                theory, _path, label = assemble(protocol, options)
-                self._json(200, {"theory": theory, "label": label})
+                options = registry.normalize(protocol, body.get("options"))
+                theory, _path, label = registry.assemble(protocol, options)
+                self._json(200, {"theory": theory, "label": label, "lemmas": registry.lemmas(protocol, options), "options": options})
+                return
+            if path == "/api/diff":
+                protocol = body.get("protocol")
+                left = registry.normalize(protocol, body.get("a"))
+                right = registry.normalize(protocol, body.get("b"))
+                text_a, _p, label_a = registry.assemble(protocol, left)
+                text_b, _p, label_b = registry.assemble(protocol, right)
+                diff = list(difflib.unified_diff(text_a.splitlines(), text_b.splitlines(), label_a, label_b, lineterm="", n=2))
+                self._json(200, {"a": label_a, "b": label_b, "diff": diff})
                 return
             if path == "/api/verify":
                 heuristic = body.get("heuristic") or "S"
-                if heuristic not in HEURISTICS:
+                if heuristic not in registry.HEURISTICS:
                     raise ValueError("Unknown heuristic.")
-                timeout = int(body.get("timeout") or 40)
-                timeout = max(5, min(timeout, 90))
                 if self._busy():
                     return
+                if body.get("stream"):
+                    self._stream_verify(body)
+                    return
                 try:
-                    if body.get("theory"):
-                        text = check_theory(body["theory"])
-                        target = write_edit(text)
-                        label = "edited theory"
-                    else:
-                        protocol = body.get("protocol")
-                        options = normalize(protocol, body.get("options"))
-                        _theory, target, label = assemble(protocol, options)
-                    result = prove_file(target, heuristic=heuristic, timeout=timeout)
+                    timeout = clamp_timeout(body.get("timeout"))
+                    target, label, lanes, _protocol = resolve_target(body)
+                    result = prove_file(target, heuristic=heuristic, timeout=timeout, lemma=body.get("lemma") or None, lanes=lanes)
                 finally:
                     LOCK.release()
                 result["label"] = label
                 self._json(200, result)
                 return
-            if path == "/api/learn":
+            if path == "/api/compare":
                 protocol = body.get("protocol")
-                options = normalize(protocol, body.get("options"))
-                timeout = int(body.get("timeout") or 40)
-                timeout = max(5, min(timeout, 90))
+                options = registry.normalize(protocol, body.get("options"))
+                timeout = clamp_timeout(body.get("timeout"))
                 if self._busy():
                     return
                 try:
@@ -181,26 +250,18 @@ class Handler(BaseHTTPRequestHandler):
                     LOCK.release()
                 self._json(200, result)
                 return
-            if path == "/api/ml/methods":
-                state = overview()
-                if not state.get("up"):
-                    self._json(200, state)
-                    return
-                methods = proof_methods(
-                    body.get("theoryKind") or "trace",
-                    body.get("theoryIndex"),
-                    body.get("lemma"),
-                )
-                self._json(200, methods)
-                return
             self._json(404, {"error": "Not found."})
         except Exception as exc:
             self._json(400, {"error": str(exc)})
 
 
 def main():
-    server = ThreadingHTTPServer((HOST, PORT), Handler)
-    print(f"http://127.0.0.1:{PORT}", flush=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=8780)
+    args = parser.parse_args()
+    server = ThreadingHTTPServer((args.host, args.port), Handler)
+    print(f"http://{args.host}:{args.port}", flush=True)
     server.serve_forever()
 
 

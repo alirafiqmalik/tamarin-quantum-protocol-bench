@@ -1,0 +1,407 @@
+{
+ "id": "0916a656c2288795",
+ "protocol": "teleport",
+ "options": {
+  "auth": true,
+  "trusted_source": false
+ },
+ "label": "MAC on / attacker source",
+ "lemma": "executable",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "exists-trace",
+ "steps": 8,
+ "seconds": 0.46,
+ "wall": 0.56,
+ "timed_out": false,
+ "hash": "3f49f904646aed88aaf8187e02add55487007e8ee7adef7dd06d0232f30f8d33",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 15,
+  "depth": 13,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairA( sid, e ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!PSK( k ) \u25b6\u2082 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "PairB( sid.1, e.1 ) \u25b6\u2080 #j",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!PSK( k.1 ) \u25b6\u2083 #j",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( bm(~psi, e.1) ) @ #vk.3",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Alice_Teleport_case_1",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', sid.1, bm(~psi, e)>, ~k.1) ) @ #vk.4",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_Teleport_auth_evesource_SL2-AS0-CL0-A1-C1-NB_executable-Eve_Source-Chan_PSK-Eve_Source-Chan_PSK-Alice_Teleport_case_1-Alice_Teleport",
+  "lanes": [
+   "alice",
+   "bob",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr.1",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Chan_PSK",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vk.3",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( sid )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.5",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "!KU( e )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( e )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.3",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <sid, e> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 4,
+    "lane": "channel",
+    "rule": "Eve_Source",
+    "kind": "rule",
+    "actions": [
+     "SourcePair( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 5,
+    "lane": "alice",
+    "rule": "Alice_Teleport",
+    "kind": "rule",
+    "actions": [
+     "Teleported( 'A', ~psi )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vl",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( <sid, bm(~psi, e)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'A', 'B', sid, bm(~psi, e)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 8,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( bm(~psi, e) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.2",
+    "t": 9,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( mac(<'A', 'B', sid, bm(~psi, e)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 10,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <sid, bm(~psi, e)> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 11,
+    "lane": "bob",
+    "rule": "Bob_Recover",
+    "kind": "rule",
+    "actions": [
+     "Eq( <'A', 'B', sid, bm(~psi, e)>, <'A', 'B', sid, bm(~psi, e)> )",
+     "Recovered( 'B', ~psi )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vf.3",
+    "to": "#vr",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 4,
+    "fact": "In",
+    "label": "In( <sid, e> )",
+    "full": "In( <sid, e> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 5,
+    "fact": "PairA",
+    "label": "PairA( sid, e )",
+    "full": "PairA( sid, e )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 5,
+    "fact": "!PSK",
+    "label": "!PSK( ~k )",
+    "full": "!PSK( ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vl",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 6,
+    "fact": "Out",
+    "label": "Out( <sid, bm(~psi, e)> )",
+    "full": "Out( <sid, bm(~psi, e)> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#i",
+    "to": "#vk.1",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 7,
+    "fact": "Out",
+    "label": "Out( mac(<'A', 'B', sid, bm(~psi, e)>, ~k) )",
+    "full": "Out( mac(<'A', 'B', sid, bm(~psi, e)>, ~k) )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#vf.1",
+    "to": "#j",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 11,
+    "fact": "In",
+    "label": "In( <sid, bm(~psi, e)> )",
+    "full": "In( <sid, bm(~psi, e)> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vf.2",
+    "to": "#j",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 11,
+    "fact": "In",
+    "label": "In( mac(<'A', 'B', sid, bm(~psi, e)>, ~k) )",
+    "full": "In( mac(<'A', 'B', sid, bm(~psi, e)>, ~k) )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 11,
+    "fact": "PairB",
+    "label": "PairB( sid, e )",
+    "full": "PairB( sid, e )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 11,
+    "fact": "!PSK",
+    "label": "!PSK( ~k )",
+    "full": "!PSK( ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   }
+  ],
+  "violation": [
+   "#i",
+   "#j"
+  ],
+  "size": 12
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Teleport_auth_evesource] Theory loaded\n[Theory Teleport_auth_evesource] Theory translated\n[Theory Teleport_auth_evesource] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/teleport_auth_evesource.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/e8d5a9e98e8de01fd0edb42ba56d5bc5193851b1777035bb706f4c70602c0fa3.spthy\n  processing time: 0.46s\n  \n  executable (exists-trace): verified (8 steps)\n  state_secret (all-traces): analysis incomplete (1 steps)\n  state_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "teleport_auth_evesource.spthy"
+}

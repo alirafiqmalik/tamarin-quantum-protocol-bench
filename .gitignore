@@ -2,3 +2,7 @@ work/
 __pycache__/
 **/__pycache__/
 *.proof
+web/node_modules/
+web/dist/
+static/evidence/
+static/catalog.json

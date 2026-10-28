@@ -1,0 +1,362 @@
+{
+ "id": "d9c77ad4da2d3ce1",
+ "protocol": "superdense",
+ "options": {
+  "trusted_source": false,
+  "confirm": true
+ },
+ "label": "attacker source / confirmation MAC",
+ "lemma": "executable",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "exists-trace",
+ "steps": 8,
+ "seconds": 0.5,
+ "wall": 0.59,
+ "timed_out": false,
+ "hash": "d5f87781a682481da6288d5641fefa0979afd6c7560c25d6add4d80926e3de8e",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 15,
+  "depth": 13,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairA( sid, hA ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!PSK( k ) \u25b6\u2082 #i",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "PairB( sid.1, halfB(x) ) \u25b6\u2080 #j",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "QIn( sid.1, encodeSD(halfA(x), ~m) ) \u25b6\u2081 #j",
+    "status": "trace"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_QIn",
+    "status": "trace"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "solve",
+    "label": "!PSK( k.1 ) \u25b6\u2083 #j",
+    "status": "trace"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "trace"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', sid, h(~m)>, ~k.1) ) @ #vk",
+    "status": "trace"
+   },
+   {
+    "i": 13,
+    "p": 12,
+    "d": 12,
+    "kind": "case",
+    "label": "Alice_Encode",
+    "status": "trace"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 13,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_Superdense_evesource_confirm_SL2-AS0-CL0-A1-C1-NB_executable-Eve_Source-Chan_PSK-Eve_Source-Chan_QIn-Chan_PSK-Alice_Encode",
+  "lanes": [
+   "alice",
+   "bob",
+   "channel",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vr.1",
+    "t": 0,
+    "lane": "channel",
+    "rule": "Chan_PSK",
+    "kind": "rule",
+    "actions": [],
+    "violation": false
+   },
+   {
+    "id": "#vk.2",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( sid )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.3",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "!KU( e )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( e )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.2",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <sid, e> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 4,
+    "lane": "channel",
+    "rule": "Eve_Source",
+    "kind": "rule",
+    "actions": [
+     "SourcePair( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 5,
+    "lane": "alice",
+    "rule": "Alice_Encode",
+    "kind": "rule",
+    "actions": [
+     "Sent( ~m )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vk",
+    "t": 6,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( mac(<'A', 'B', sid, h(~m)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 7,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( mac(<'A', 'B', sid, h(~m)>, ~k) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 8,
+    "lane": "bob",
+    "rule": "Bob_Decode",
+    "kind": "rule",
+    "actions": [
+     "Eq( <'A', 'B', sid, h(~m)>, <'A', 'B', sid, h(~m)> )",
+     "Decoded( ~m )"
+    ],
+    "violation": true
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vf.2",
+    "to": "#vr",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 4,
+    "fact": "In",
+    "label": "In( <sid, e> )",
+    "full": "In( <sid, e> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 5,
+    "fact": "PairA",
+    "label": "PairA( sid, halfA(e) )",
+    "full": "PairA( sid, halfA(e) )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 5,
+    "fact": "!PSK",
+    "label": "!PSK( ~k )",
+    "full": "!PSK( ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vk",
+    "fromLane": "alice",
+    "toLane": "attacker",
+    "t": 6,
+    "fact": "Out",
+    "label": "Out( mac(<'A', 'B', sid, h(~m)>, ~k) )",
+    "full": "Out( mac(<'A', 'B', sid, h(~m)>, ~k) )",
+    "channel": "public",
+    "relation": "KFact"
+   },
+   {
+    "from": "#i",
+    "to": "#j",
+    "fromLane": "alice",
+    "toLane": "bob",
+    "t": 8,
+    "fact": "QIn",
+    "label": "QIn( sid, encodeSD(halfA(e), ~m) )",
+    "full": "QIn( sid, encodeSD(halfA(e), ~m) )",
+    "channel": "state",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vf.1",
+    "to": "#j",
+    "fromLane": "attacker",
+    "toLane": "bob",
+    "t": 8,
+    "fact": "In",
+    "label": "In( mac(<'A', 'B', sid, h(~m)>, ~k) )",
+    "full": "In( mac(<'A', 'B', sid, h(~m)>, ~k) )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 8,
+    "fact": "PairB",
+    "label": "PairB( sid, halfB(e) )",
+    "full": "PairB( sid, halfB(e) )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#j",
+    "fromLane": "channel",
+    "toLane": "bob",
+    "t": 8,
+    "fact": "!PSK",
+    "label": "!PSK( ~k )",
+    "full": "!PSK( ~k )",
+    "channel": "state",
+    "relation": "PersistentFact"
+   }
+  ],
+  "violation": [
+   "#i",
+   "#j"
+  ],
+  "size": 9
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Superdense_evesource_confirm] Theory loaded\n[Theory Superdense_evesource_confirm] Theory translated\n[Theory Superdense_evesource_confirm] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/superdense_evesource_confirm.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/150fb063582ea5008311321b535860d9111d9372f74164517f145c53c593ddc1.spthy\n  processing time: 0.50s\n  \n  executable (exists-trace): verified (8 steps)\n  message_secret (all-traces): analysis incomplete (1 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "superdense_evesource_confirm.spthy"
+}

@@ -1,0 +1,300 @@
+{
+ "id": "fd9707654702f12a",
+ "protocol": "superdense",
+ "options": {
+  "trusted_source": false,
+  "confirm": false
+ },
+ "label": "attacker source / no confirmation",
+ "lemma": "message_secret",
+ "heuristic": "S",
+ "status": "falsified - found trace",
+ "verified": false,
+ "quantifier": "all-traces",
+ "steps": 5,
+ "seconds": 0.4,
+ "wall": 0.51,
+ "timed_out": false,
+ "hash": "1c00cb3b8a0833a55ca27f5ee5f38540d20a7919baed001117c954f7bf074214",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 9,
+  "depth": 7,
+  "status": "trace",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "trace"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairA( sid, hA ) \u25b6\u2080 #i",
+    "status": "trace"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "trace"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!KU( ~m ) @ #vk",
+    "status": "trace"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Eve_Measure",
+    "status": "trace"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "!KU( halfB(e) ) @ #vk.4",
+    "status": "trace"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "c_halfB",
+    "status": "trace"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "trace found",
+    "status": "trace"
+   }
+  ]
+ },
+ "trace": {
+  "label": "trace_Superdense_evesource_plain_SL2-AS0-CL0-A1-C1-NB_message_secret-Eve_Source-Eve_Measure-c_halfB",
+  "lanes": [
+   "alice",
+   "channel",
+   "eve",
+   "attacker"
+  ],
+  "events": [
+   {
+    "id": "#vk.3",
+    "t": 0,
+    "lane": "attacker",
+    "rule": "!KU( sid )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.4",
+    "t": 1,
+    "lane": "attacker",
+    "rule": "!KU( e )",
+    "kind": "attacker",
+    "actions": [
+     "!KU( e )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.1",
+    "t": 2,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( <sid, e> )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk.1",
+    "t": 3,
+    "lane": "attacker",
+    "rule": "Constrc_halfB",
+    "kind": "attacker",
+    "actions": [
+     "!KU( halfB(e) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vr",
+    "t": 4,
+    "lane": "channel",
+    "rule": "Eve_Source",
+    "kind": "rule",
+    "actions": [
+     "SourcePair( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vf.2",
+    "t": 5,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( halfB(e) )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#i",
+    "t": 6,
+    "lane": "alice",
+    "rule": "Alice_Encode",
+    "kind": "rule",
+    "actions": [
+     "Sent( ~m )"
+    ],
+    "violation": true
+   },
+   {
+    "id": "#vr.1",
+    "t": 7,
+    "lane": "eve",
+    "rule": "Eve_Measure",
+    "kind": "rule",
+    "actions": [
+     "EveMeasure( sid )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vl",
+    "t": 8,
+    "lane": "attacker",
+    "rule": "Recv",
+    "kind": "attacker",
+    "actions": [
+     "!KD( ~m )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#vk",
+    "t": 9,
+    "lane": "attacker",
+    "rule": "Coerce",
+    "kind": "attacker",
+    "actions": [
+     "!KU( ~m )"
+    ],
+    "violation": false
+   },
+   {
+    "id": "#j",
+    "t": 10,
+    "lane": "attacker",
+    "rule": "Send",
+    "kind": "attacker",
+    "actions": [
+     "In( ~m )"
+    ],
+    "violation": false
+   }
+  ],
+  "messages": [
+   {
+    "from": "#vf.1",
+    "to": "#vr",
+    "fromLane": "attacker",
+    "toLane": "channel",
+    "t": 4,
+    "fact": "In",
+    "label": "In( <sid, e> )",
+    "full": "In( <sid, e> )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr",
+    "to": "#i",
+    "fromLane": "channel",
+    "toLane": "alice",
+    "t": 6,
+    "fact": "PairA",
+    "label": "PairA( sid, halfA(e) )",
+    "full": "PairA( sid, halfA(e) )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#i",
+    "to": "#vr.1",
+    "fromLane": "alice",
+    "toLane": "eve",
+    "t": 7,
+    "fact": "Quantum",
+    "label": "Quantum( sid, encodeSD(halfA(e), ~m) )",
+    "full": "Quantum( sid, encodeSD(halfA(e), ~m) )",
+    "channel": "quantum",
+    "relation": "ProtoFact"
+   },
+   {
+    "from": "#vf.2",
+    "to": "#vr.1",
+    "fromLane": "attacker",
+    "toLane": "eve",
+    "t": 7,
+    "fact": "In",
+    "label": "In( halfB(e) )",
+    "full": "In( halfB(e) )",
+    "channel": "public",
+    "relation": "default"
+   },
+   {
+    "from": "#vr.1",
+    "to": "#vl",
+    "fromLane": "eve",
+    "toLane": "attacker",
+    "t": 8,
+    "fact": "Out",
+    "label": "Out( ~m )",
+    "full": "Out( ~m )",
+    "channel": "public",
+    "relation": "default"
+   }
+  ],
+  "violation": [
+   "#i"
+  ],
+  "size": 11
+ },
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Superdense_evesource_plain] Theory loaded\n[Theory Superdense_evesource_plain] Theory translated\n[Theory Superdense_evesource_plain] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/superdense_evesource_plain.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/70fe10b8dbcda6fa721caed1c073cc503a5e003a1b0d5f1d924a2f8ac10e8d9e.spthy\n  processing time: 0.40s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  message_secret (all-traces): falsified - found trace (5 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "superdense_evesource_plain.spthy"
+}

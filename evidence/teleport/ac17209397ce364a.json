@@ -1,0 +1,183 @@
+{
+ "id": "ac17209397ce364a",
+ "protocol": "teleport",
+ "options": {
+  "auth": true,
+  "trusted_source": true
+ },
+ "label": "MAC on / trusted source",
+ "lemma": "state_integrity",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 10,
+ "seconds": 0.48,
+ "wall": 0.58,
+ "timed_out": false,
+ "hash": "0429d4bd0ac44d7172bb15c5fcd46a99b5186f80426774ac57c37983d3142654",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 19,
+  "depth": 9,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairB( sid, e ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_Pair",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!PSK( k ) \u25b6\u2083 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "splitEqs(0)",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "split_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', ~sid, bits>, ~k) ) @ #vk.3",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* non-normal terms */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "c_mac",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( !KU( ~k ) @ #vk.6 )",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "split_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', ~sid, bm(psi, ~e)>, ~k) ) @ #vk.3",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 8,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 17,
+    "p": 14,
+    "d": 8,
+    "kind": "case",
+    "label": "c_mac",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( !KU( ~k ) @ #vk.6 )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Teleport_auth_trusted] Theory loaded\n[Theory Teleport_auth_trusted] Theory translated\n[Theory Teleport_auth_trusted] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Step 2 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/teleport_auth_trusted.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/2c56752c32bad17d800741c1a61988e22a89168c0ea23996dcca3c45a90dd7cf.spthy\n  processing time: 0.48s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  state_secret (all-traces): analysis incomplete (1 steps)\n  state_integrity (all-traces): verified (10 steps)\n\n==============================================================================",
+ "theory_file": "teleport_auth_trusted.spthy"
+}

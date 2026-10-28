@@ -1,0 +1,106 @@
+{
+ "id": "40ac9bfc288f9c25",
+ "protocol": "keyuse",
+ "options": {
+  "sae_channel": "tls",
+  "authorize_slave": true,
+  "keyid_transport": "authenticated",
+  "consume": false,
+  "reuse_guard": true
+ },
+ "label": "TLS / authorized slave / MAC'd key ID / persistent pool / single use",
+ "lemma": "message_secret",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 5,
+ "seconds": 0.89,
+ "wall": 0.99,
+ "timed_out": false,
+ "hash": "2173856635f4c41b29fbaab637eee0a6f90769580313de5ab1b4648be3c123e8",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:54:47",
+ "proof": {
+  "size": 9,
+  "depth": 7,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "SaeAKey( kid, k ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "SaeA_KeyIn",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "Sec( 'SAE_A', 'KME_A', <'getkey', slave> ) \u25b6\u2080 #vr.3",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "SaeA_GetKey",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "!KU( ~m ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "SaeA_Send",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "solve( !KU( ~k ) @ #vk.1 )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory KeyUse_tls_authz_macid_persist_once] Theory loaded\n[Theory KeyUse_tls_authz_macid_persist_once] Theory translated\n[Theory KeyUse_tls_authz_macid_persist_once] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/keyuse_tls_true_authenticated_false_true.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/76f441627d895dddf40e9f7e6312d1a86e2af2143586ec2c891fd8946a06be84.spthy\n  processing time: 0.89s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  key_secret (all-traces): analysis incomplete (1 steps)\n  delivered_to_authorized (all-traces): analysis incomplete (1 steps)\n  single_delivery (all-traces): analysis incomplete (1 steps)\n  message_secret (all-traces): verified (5 steps)\n  message_integrity (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "keyuse_tls_true_authenticated_false_true.spthy"
+}

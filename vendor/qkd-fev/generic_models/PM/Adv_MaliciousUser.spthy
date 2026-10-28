@@ -66,7 +66,7 @@ rule QChan_Out_In:
 //  [ In_Auth(roleA,roleB,msg,type) ]
 
 
-/* Authenticated Classical Channel rules */
+CM2_ELSE(<!include(generic_models/common/CM/cm2_PM_MaliciousUser.spthy)!>,<!/* Authenticated Classical Channel rules */
 rule ChanOut_Auth:
   let
     tag=mac(msg,key_roleA)
@@ -79,17 +79,17 @@ rule ChanIn_Auth:
   verifymac_tag=verifymac(tag,key_roleB)
   in
 [ !AuthSession(roleB,key_roleB), !Auth(roleA,roleB,msg,tag,type)]--[ Eq(msg,verifymac_tag), AChanIn(roleA,roleB,<msg,type>) ]->
-[ In_Auth(roleA,roleB,msg,type) ]
+[ In_Auth(roleA,roleB,msg,type) ]!>)
 
 
 /* Malicious User Rules */
 
 //// Eve Session Rules
 rule Session_Eve_as_A:
-  [SessionA('E',Y,~sid_eb)] -->[SessAE('E',Y,~sid_eb), !AuthSession('E',psk(~sid_eb)), Out(~sid_eb)]
+  [SessionA('E',Y,~sid_eb)] -->[SessAE('E',Y,~sid_eb), !AuthSession('E',psk(~sid_eb)CM2_ONLY(<!,'initiator'!>)), Out(~sid_eb)]
 
 rule Session_Eve_as_B:
-  [SessionB(X,'E',~sid_ae)] -->[SessEB(X,'E',~sid_ae), !AuthSession('E',psk(~sid_ae)), Out(~sid_ae)]
+  [SessionB(X,'E',~sid_ae)] -->[SessEB(X,'E',~sid_ae), !AuthSession('E',psk(~sid_ae)CM2_ONLY(<!,'responder'!>)), Out(~sid_ae)]
 
 
 rule Eve_as_B_receiveqA:

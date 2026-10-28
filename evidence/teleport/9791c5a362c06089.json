@@ -1,0 +1,183 @@
+{
+ "id": "9791c5a362c06089",
+ "protocol": "teleport",
+ "options": {
+  "auth": true,
+  "trusted_source": false
+ },
+ "label": "MAC on / attacker source",
+ "lemma": "state_integrity",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 10,
+ "seconds": 0.42,
+ "wall": 0.52,
+ "timed_out": false,
+ "hash": "3f49f904646aed88aaf8187e02add55487007e8ee7adef7dd06d0232f30f8d33",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 19,
+  "depth": 9,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "PairB( sid, e ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Eve_Source",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!PSK( k ) \u25b6\u2083 #i",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_PSK",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "splitEqs(0)",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "split_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', sid, bits>, ~k) ) @ #vk.4",
+    "status": "closed"
+   },
+   {
+    "i": 9,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* non-normal terms */",
+    "status": "contradiction"
+   },
+   {
+    "i": 11,
+    "p": 8,
+    "d": 8,
+    "kind": "case",
+    "label": "c_mac",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( !KU( ~k ) @ #vk.8 )",
+    "status": "closed"
+   },
+   {
+    "i": 13,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "split_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 7,
+    "kind": "solve",
+    "label": "!KU( mac(<'A', 'B', sid, bm(psi, e)>, ~k) ) @ #vk.4",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 8,
+    "kind": "case",
+    "label": "Alice_Teleport",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   },
+   {
+    "i": 17,
+    "p": 14,
+    "d": 8,
+    "kind": "case",
+    "label": "c_mac",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( !KU( ~k ) @ #vk.8 )",
+    "status": "closed"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory Teleport_auth_evesource] Theory loaded\n[Theory Teleport_auth_evesource] Theory translated\n[Theory Teleport_auth_evesource] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/teleport_auth_evesource.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/3c8812585597a63633c97dfbb4130d5dc85685d38fb704bf3a27c9b119d068d1.spthy\n  processing time: 0.42s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  state_secret (all-traces): analysis incomplete (1 steps)\n  state_integrity (all-traces): verified (10 steps)\n\n==============================================================================",
+ "theory_file": "teleport_auth_evesource.spthy"
+}

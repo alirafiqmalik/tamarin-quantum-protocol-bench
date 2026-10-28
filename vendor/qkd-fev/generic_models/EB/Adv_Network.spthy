@@ -68,7 +68,7 @@ rule QChan_Adv_Measure_B:
 // [ !Auth(roleA,msg,type), In(roleB)]--[ AChanIn(roleA,roleB,<msg,type>) ]->
 // [ In_Auth(roleA,roleB,msg,type) ]
 
-// /* Authenticated Classical Channel rules */
+CM2_ELSE(<!include(generic_models/common/CM/cm2_EB_Network.spthy)!>,<!// /* Authenticated Classical Channel rules */
 rule ChanOut_Auth:
   let
     tag=mac(msg,key_roleA)
@@ -81,7 +81,7 @@ rule ChanIn_Auth:
   verifymac_tag=verifymac(tag, key_roleB)
   in
 [ !AuthSession(roleB,key_roleB), !Auth(roleA,msg,tag,type), In(<roleB>)]--[ Eq(msg,verifymac_tag), AChanIn(roleA,roleB,<msg,type>) ]->
-[ In_Auth(roleA,roleB,msg,type) ]
+[ In_Auth(roleA,roleB,msg,type) ]!>)
 
 /* Authenticated Classical Channel rules */
 // rule ChanOut_Auth:

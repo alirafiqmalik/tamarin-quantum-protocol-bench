@@ -1,0 +1,999 @@
+{
+ "id": "511435a350028751",
+ "protocol": "qss",
+ "options": {
+  "dealer_order": "last",
+  "dishonest": "charlie"
+ },
+ "label": "dealer last / dishonest Charlie",
+ "lemma": "outsider_secret",
+ "heuristic": "S",
+ "status": "verified",
+ "verified": true,
+ "quantifier": "all-traces",
+ "steps": 61,
+ "seconds": 1.84,
+ "wall": 1.92,
+ "timed_out": false,
+ "hash": "bc6d9e9ba5dd72ca6ff89c7114861d90f28528472735b6b213275889d530a0ec",
+ "version": "1.12.0",
+ "recorded": "2026-10-27T02:55:50",
+ "proof": {
+  "size": 121,
+  "depth": 15,
+  "status": "closed",
+  "order": [
+   {
+    "i": 0,
+    "p": null,
+    "d": 0,
+    "kind": "lemma",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 1,
+    "p": 0,
+    "d": 1,
+    "kind": "simplify",
+    "label": "",
+    "status": "closed"
+   },
+   {
+    "i": 2,
+    "p": 0,
+    "d": 1,
+    "kind": "solve",
+    "label": "GHZ_A( r, g ) \u25b6\u2080 #i",
+    "status": "closed"
+   },
+   {
+    "i": 3,
+    "p": 2,
+    "d": 2,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 4,
+    "p": 3,
+    "d": 3,
+    "kind": "solve",
+    "label": "!KU( secret(~g) ) @ #vk",
+    "status": "closed"
+   },
+   {
+    "i": 5,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 6,
+    "p": 5,
+    "d": 5,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.6",
+    "status": "closed"
+   },
+   {
+    "i": 7,
+    "p": 6,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 8,
+    "p": 7,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 9,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 10,
+    "p": 9,
+    "d": 5,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.6",
+    "status": "closed"
+   },
+   {
+    "i": 11,
+    "p": 10,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 12,
+    "p": 11,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 13,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 14,
+    "p": 13,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 15,
+    "p": 14,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 16,
+    "p": 15,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 17,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 18,
+    "p": 17,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 19,
+    "p": 18,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 20,
+    "p": 19,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 21,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 22,
+    "p": 21,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', ~r, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 23,
+    "p": 22,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 24,
+    "p": 23,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'C', <'basis', ~r, bC> ) \u25b6\u2082 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 25,
+    "p": 24,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 26,
+    "p": 25,
+    "d": 9,
+    "kind": "solve",
+    "label": "!KU( shareC(secret(~g)) ) @ #vk.1",
+    "status": "closed"
+   },
+   {
+    "i": 27,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 28,
+    "p": 27,
+    "d": 11,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.20",
+    "status": "closed"
+   },
+   {
+    "i": 29,
+    "p": 28,
+    "d": 12,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 30,
+    "p": 29,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 31,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 32,
+    "p": 31,
+    "d": 11,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.20",
+    "status": "closed"
+   },
+   {
+    "i": 33,
+    "p": 32,
+    "d": 12,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 34,
+    "p": 33,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 35,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 36,
+    "p": 35,
+    "d": 11,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.16",
+    "status": "closed"
+   },
+   {
+    "i": 37,
+    "p": 36,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 38,
+    "p": 37,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 39,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 40,
+    "p": 39,
+    "d": 11,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.16",
+    "status": "closed"
+   },
+   {
+    "i": 41,
+    "p": 40,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 42,
+    "p": 41,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 43,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 44,
+    "p": 43,
+    "d": 11,
+    "kind": "solve",
+    "label": "GHZ_C( r.1, g.1 ) \u25b6\u2080 #vr.20",
+    "status": "closed"
+   },
+   {
+    "i": 45,
+    "p": 44,
+    "d": 12,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 46,
+    "p": 45,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 47,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 48,
+    "p": 47,
+    "d": 11,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.16",
+    "status": "closed"
+   },
+   {
+    "i": 49,
+    "p": 48,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 50,
+    "p": 49,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 51,
+    "p": 26,
+    "d": 10,
+    "kind": "case",
+    "label": "c_shareC",
+    "status": "closed"
+   },
+   {
+    "i": 52,
+    "p": 51,
+    "d": 11,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 53,
+    "p": 24,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 54,
+    "p": 53,
+    "d": 9,
+    "kind": "solve",
+    "label": "GHZ_C( ~r, g.1 ) \u25b6\u2080 #vr.15",
+    "status": "closed"
+   },
+   {
+    "i": 55,
+    "p": 54,
+    "d": 10,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 56,
+    "p": 55,
+    "d": 11,
+    "kind": "solve",
+    "label": "!KU( shareC(secret(~g)) ) @ #vk.1",
+    "status": "closed"
+   },
+   {
+    "i": 57,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 58,
+    "p": 57,
+    "d": 13,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.21",
+    "status": "closed"
+   },
+   {
+    "i": 59,
+    "p": 58,
+    "d": 14,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 60,
+    "p": 59,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 61,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 62,
+    "p": 61,
+    "d": 13,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.21",
+    "status": "closed"
+   },
+   {
+    "i": 63,
+    "p": 62,
+    "d": 14,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 64,
+    "p": 63,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 65,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 66,
+    "p": 65,
+    "d": 13,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.17",
+    "status": "closed"
+   },
+   {
+    "i": 67,
+    "p": 66,
+    "d": 14,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 68,
+    "p": 67,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 69,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 70,
+    "p": 69,
+    "d": 13,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.17",
+    "status": "closed"
+   },
+   {
+    "i": 71,
+    "p": 70,
+    "d": 14,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 72,
+    "p": 71,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 73,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 74,
+    "p": 73,
+    "d": 13,
+    "kind": "solve",
+    "label": "GHZ_C( r.1, g.1 ) \u25b6\u2080 #vr.21",
+    "status": "closed"
+   },
+   {
+    "i": 75,
+    "p": 74,
+    "d": 14,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 76,
+    "p": 75,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 77,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 78,
+    "p": 77,
+    "d": 13,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.17",
+    "status": "closed"
+   },
+   {
+    "i": 79,
+    "p": 78,
+    "d": 14,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 80,
+    "p": 79,
+    "d": 15,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 81,
+    "p": 56,
+    "d": 12,
+    "kind": "case",
+    "label": "c_shareC",
+    "status": "closed"
+   },
+   {
+    "i": 82,
+    "p": 81,
+    "d": 13,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 83,
+    "p": 24,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 84,
+    "p": 83,
+    "d": 9,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', ~r, bA.1> ) \u25b6\u2081 #vr.13",
+    "status": "closed"
+   },
+   {
+    "i": 85,
+    "p": 84,
+    "d": 10,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 86,
+    "p": 85,
+    "d": 11,
+    "kind": "leaf",
+    "label": "contradiction /* cyclic */",
+    "status": "contradiction"
+   },
+   {
+    "i": 87,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 88,
+    "p": 87,
+    "d": 5,
+    "kind": "solve",
+    "label": "GHZ_C( r.1, g.1 ) \u25b6\u2080 #vr.6",
+    "status": "closed"
+   },
+   {
+    "i": 89,
+    "p": 88,
+    "d": 6,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 90,
+    "p": 89,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 91,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_7",
+    "status": "closed"
+   },
+   {
+    "i": 92,
+    "p": 91,
+    "d": 5,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 93,
+    "p": 92,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 94,
+    "p": 93,
+    "d": 7,
+    "kind": "leaf",
+    "label": "contradiction /* impossible chain */",
+    "status": "contradiction"
+   },
+   {
+    "i": 95,
+    "p": 4,
+    "d": 4,
+    "kind": "case",
+    "label": "c_secret",
+    "status": "closed"
+   },
+   {
+    "i": 96,
+    "p": 95,
+    "d": 5,
+    "kind": "solve",
+    "label": "!KU( ~g ) @ #vk.1",
+    "status": "closed"
+   },
+   {
+    "i": 97,
+    "p": 96,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_1",
+    "status": "closed"
+   },
+   {
+    "i": 98,
+    "p": 97,
+    "d": 7,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.6",
+    "status": "closed"
+   },
+   {
+    "i": 99,
+    "p": 98,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 100,
+    "p": 99,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( (#vr.4, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   },
+   {
+    "i": 101,
+    "p": 96,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_2",
+    "status": "closed"
+   },
+   {
+    "i": 102,
+    "p": 101,
+    "d": 7,
+    "kind": "solve",
+    "label": "GHZ_B( r.1, g.1 ) \u25b6\u2080 #vr.6",
+    "status": "closed"
+   },
+   {
+    "i": 103,
+    "p": 102,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 104,
+    "p": 103,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( (#vr.4, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   },
+   {
+    "i": 105,
+    "p": 96,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_3",
+    "status": "closed"
+   },
+   {
+    "i": 106,
+    "p": 105,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 107,
+    "p": 106,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 108,
+    "p": 107,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( (#vr.4, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   },
+   {
+    "i": 109,
+    "p": 96,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_4",
+    "status": "closed"
+   },
+   {
+    "i": 110,
+    "p": 109,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 111,
+    "p": 110,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 112,
+    "p": 111,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( (#vr.4, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   },
+   {
+    "i": 113,
+    "p": 96,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_5",
+    "status": "closed"
+   },
+   {
+    "i": 114,
+    "p": 113,
+    "d": 7,
+    "kind": "solve",
+    "label": "GHZ_C( r.1, g.1 ) \u25b6\u2080 #vr.6",
+    "status": "closed"
+   },
+   {
+    "i": 115,
+    "p": 114,
+    "d": 8,
+    "kind": "case",
+    "label": "Source_GHZ",
+    "status": "closed"
+   },
+   {
+    "i": 116,
+    "p": 115,
+    "d": 9,
+    "kind": "leaf",
+    "label": "solve( (#vr.4, 0) ~~> (#vk.1, 0) )",
+    "status": "closed"
+   },
+   {
+    "i": 117,
+    "p": 96,
+    "d": 6,
+    "kind": "case",
+    "label": "Chan_AuthOut_case_6",
+    "status": "closed"
+   },
+   {
+    "i": 118,
+    "p": 117,
+    "d": 7,
+    "kind": "solve",
+    "label": "In_Auth( 'A', <'basis', r.1, bA.1> ) \u25b6\u2081 #vr.2",
+    "status": "closed"
+   },
+   {
+    "i": 119,
+    "p": 118,
+    "d": 8,
+    "kind": "case",
+    "label": "Chan_AuthIn",
+    "status": "closed"
+   },
+   {
+    "i": 120,
+    "p": 119,
+    "d": 9,
+    "kind": "leaf",
+    "label": "contradiction /* from formulas */",
+    "status": "contradiction"
+   }
+  ]
+ },
+ "trace": null,
+ "log": "maude tool: 'maude'\n checking version: 3.3.1. OK.\n checking installation: OK.\n[Theory QSS_last_charlie] Theory loaded\n[Theory QSS_last_charlie] Theory translated\n[Theory QSS_last_charlie] Theory closed\n[Saturating Sources] Step 1 (Max 5)\n[Saturating Sources] Done\n\n==============================================================================\nsummary of summaries:\n\nanalyzed: /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/qss_last_charlie.spthy\n\n  output:          /home/ahm/Desktop/project/research/pqqs-poster-demo/demo/demo-src/work/proofs/f369de6174554d768f99d7dfd3c4d146c2374736f71590822b31cff6982519d2.spthy\n  processing time: 1.84s\n  \n  executable (exists-trace): analysis incomplete (1 steps)\n  outsider_secret (all-traces): verified (61 steps)\n  insider_alone (all-traces): analysis incomplete (1 steps)\n\n==============================================================================",
+ "theory_file": "qss_last_charlie.spthy"
+}
